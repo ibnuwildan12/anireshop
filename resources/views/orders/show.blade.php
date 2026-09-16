@@ -303,12 +303,39 @@
 
     <div class="mt-4">
 
-        <a
-            href="{{ route('home') }}"
-            class="btn btn-light"
-        >
-            Kembali Belanja
+        <div class="d-flex gap-2 flex-wrap mt-4">
+
+    @if($order->payment_status === 'PENDING')
+        <a href="{{ route('payments.show', $order) }}"
+           class="btn btn-primary">
+            💳 Bayar Sekarang
         </a>
+    @endif
+
+    @if($order->payment_status === 'WAITING_VERIFICATION')
+        <span class="btn btn-warning disabled">
+            ⏳ Menunggu Verifikasi Admin
+        </span>
+    @endif
+
+    @if($order->payment_status === 'PAID')
+        <span class="btn btn-success disabled">
+            ✓ Pembayaran Terverifikasi
+        </span>
+    @endif
+
+    @if($order->payment_status === 'REJECTED')
+        <a href="{{ route('payments.show', $order) }}"
+           class="btn btn-danger">
+            🔄 Upload Ulang Bukti Pembayaran
+        </a>
+    @endif
+
+    <a href="{{ url('/') }}" class="btn btn-secondary">
+        Kembali Belanja
+    </a>
+
+</div>
 
     </div>
 

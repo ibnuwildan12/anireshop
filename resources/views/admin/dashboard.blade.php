@@ -1,85 +1,234 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@extends('layouts.app')
 
-    <title>Admin Dashboard - Anireshop</title>
+@section('title', 'Admin Dashboard - Anireshop')
 
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
-</head>
+@section('content')
 
-<body>
+<div class="admin-page">
 
-<div class="container py-5">
+    {{-- HEADER --}}
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <h1>Admin Dashboard</h1>
-            <p class="text-muted mb-0">
-                Selamat datang, {{ auth()->user()->name }}
-            </p>
-        </div>
+    <div class="container">
 
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
+        <div class="admin-header">
 
-            <button type="submit" class="btn btn-outline-danger">
-                Logout
-            </button>
-        </form>
-    </div>
+            <div>
 
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-
-    <div class="row g-3">
-
-        <div class="col-md-3">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h5>Products</h5>
-                    <p class="text-muted">Kelola produk</p>
+                <div class="admin-label">
+                    ADMIN PANEL
                 </div>
+
+                <h1>
+                    Dashboard
+                </h1>
+
+                <p>
+                    Selamat datang, {{ auth()->user()->name }}
+                </p>
+
             </div>
+
+            <div>
+
+                <span class="admin-badge">
+                    Administrator
+                </span>
+
+            </div>
+
         </div>
 
-        <div class="col-md-3">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h5>Categories</h5>
-                    <p class="text-muted">Kelola kategori</p>
-                </div>
+
+        @if(session('success'))
+
+            <div class="alert alert-success">
+                {{ session('success') }}
             </div>
+
+        @endif
+
+
+        {{-- MENU --}}
+
+        <div class="row g-4 mt-2">
+
+
+            {{-- PRODUCTS --}}
+
+            <div class="col-md-6 col-lg-3">
+
+                <a
+                    href="#"
+                    class="admin-menu-card"
+                >
+
+                    <div class="admin-icon purple">
+                        ◈
+                    </div>
+
+                    <h4>
+                        Products
+                    </h4>
+
+                    <p>
+                        Kelola produk Anireshop
+                    </p>
+
+                    <span class="admin-card-link">
+                        Kelola Produk →
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            {{-- CATEGORIES --}}
+
+            <div class="col-md-6 col-lg-3">
+
+                <a
+                    href="#"
+                    class="admin-menu-card"
+                >
+
+                    <div class="admin-icon pink">
+                        ◇
+                    </div>
+
+                    <h4>
+                        Categories
+                    </h4>
+
+                    <p>
+                        Kelola kategori produk
+                    </p>
+
+                    <span class="admin-card-link">
+                        Kelola Kategori →
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            {{-- ORDERS --}}
+
+            <div class="col-md-6 col-lg-3">
+
+                <a
+                    href="#"
+                    class="admin-menu-card"
+                >
+
+                    <div class="admin-icon purple">
+                        ◎
+                    </div>
+
+                    <h4>
+                        Orders
+                    </h4>
+
+                    <p>
+                        Kelola pesanan customer
+                    </p>
+
+                    <span class="admin-card-link">
+                        Kelola Pesanan →
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            {{-- SHIPPING --}}
+
+            <div class="col-md-6 col-lg-3">
+
+                <a
+                    href="#"
+                    class="admin-menu-card"
+                >
+
+                    <div class="admin-icon pink">
+                        ✦
+                    </div>
+
+                    <h4>
+                        Shipping
+                    </h4>
+
+                    <p>
+                        Kelola tarif pengiriman
+                    </p>
+
+                    <span class="admin-card-link">
+                        Kelola Ongkir →
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            {{-- PAYMENT --}}
+
+            <div class="col-md-6 col-lg-3">
+
+                <a
+                    href="{{ route('admin.payments.index') }}"
+                    class="admin-menu-card"
+                >
+
+                    <div class="admin-icon pink">
+                        ✓
+                    </div>
+
+                    <h4>
+                        Payments
+                    </h4>
+
+                    <p>
+                        Verifikasi pembayaran customer
+                    </p>
+
+                    <span class="admin-card-link">
+                        Verifikasi →
+                    </span>
+
+                </a>
+
+            </div>
+
         </div>
 
-        <div class="col-md-3">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h5>Orders</h5>
-                    <p class="text-muted">Kelola pesanan</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-md-3">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h5>Shipping</h5>
-                    <p class="text-muted">Kelola ongkir</p>
-                </div>
-            </div>
+        {{-- LOGOUT --}}
+
+        <div class="admin-bottom">
+
+            <form
+                method="POST"
+                action="{{ route('logout') }}"
+            >
+
+                @csrf
+
+                <button
+                    type="submit"
+                    class="btn btn-outline-danger"
+                >
+                    Logout Admin
+                </button>
+
+            </form>
+
         </div>
 
     </div>
 
 </div>
 
-</body>
-</html>
+@endsection

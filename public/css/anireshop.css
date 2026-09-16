@@ -1,0 +1,2272 @@
+:root {
+    --ani-black: #111111;
+    --ani-black-soft: #1a1a1a;
+
+    --ani-purple: #7c3aed;
+    --ani-purple-dark: #6d28d9;
+
+    --ani-pink: #ec4899;
+    --ani-pink-dark: #db2777;
+
+    --ani-bg: #160d24;
+    --ani-card: #ffffff;
+
+    --ani-text: #1f1f23;
+    --ani-muted: #6b7280;
+
+    --ani-border: #eadcff;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
+body {
+    background: var(--ani-bg);
+    color: var(--ani-text);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.ani-navbar {
+    background: var(--ani-black);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+}
+
+.ani-brand {
+    color: var(--ani-pink) !important;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.ani-brand span {
+    color: var(--ani-purple);
+}
+
+.ani-navbar .nav-link {
+    color: #eeeeee !important;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.ani-navbar .nav-link:hover {
+    color: var(--ani-pink) !important;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.btn-ani {
+    background: var(--ani-purple);
+    border: 1px solid var(--ani-purple);
+    color: white;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 10px 18px;
+    transition: 0.2s;
+}
+
+.btn-ani:hover {
+    background: var(--ani-purple-dark);
+    border-color: var(--ani-purple-dark);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.btn-ani-pink {
+    background: var(--ani-pink);
+    border: 1px solid var(--ani-pink);
+    color: white;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 10px 18px;
+}
+
+.btn-ani-pink:hover {
+    background: var(--ani-pink-dark);
+    border-color: var(--ani-pink-dark);
+    color: white;
+}
+
+.btn-outline-ani {
+    border: 1px solid var(--ani-purple);
+    color: var(--ani-purple);
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+.btn-outline-ani:hover {
+    background: var(--ani-purple);
+    color: white;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.ani-card {
+    background: var(--ani-card);
+    border: 1px solid var(--ani-border);
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.06);
+    transition: 0.2s;
+}
+
+.ani-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(124, 58, 237, 0.12);
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.ani-section {
+    padding: 60px 0;
+}
+
+.ani-section-title {
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.ani-section-title span {
+    color: var(--ani-purple);
+}
+
+.ani-section-subtitle {
+    color: var(--ani-muted);
+}
+
+/* =========================
+   BADGE
+========================= */
+
+.ani-badge {
+    display: inline-block;
+    background: #f3e8ff;
+    color: var(--ani-purple-dark);
+    border: 1px solid #ddd6fe;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-control,
+.form-select {
+    border-radius: 10px;
+    border: 1px solid #dcd6e8;
+    padding: 10px 12px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--ani-purple);
+    box-shadow: 0 0 0 0.2rem rgba(124, 58, 237, 0.12);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.ani-footer {
+    background: var(--ani-black);
+    color: #cccccc;
+    padding: 40px 0 20px;
+    margin-top: 60px;
+}
+
+.ani-footer h5 {
+    color: var(--ani-pink);
+    font-weight: 700;
+}
+
+.ani-footer a {
+    color: #cccccc;
+}
+
+.ani-footer a:hover {
+    color: var(--ani-pink);
+}
+
+/* =========================
+   ALERT
+========================= */
+
+.alert {
+    border-radius: 10px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    .ani-section {
+        padding: 40px 0;
+    }
+
+    .ani-brand {
+        font-size: 1.2rem;
+    }
+
+}
+
+/* =========================
+   HOME - HERO
+========================= */
+
+.ani-hero {
+    padding: 100px 0;
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(124, 58, 237, 0.25),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #111111,
+            #1c1028,
+            #25102f
+        );
+}
+
+.ani-hero-title {
+    color: white;
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+.ani-hero-title span {
+    color: var(--ani-pink);
+}
+
+.text-pink {
+    color: var(--ani-pink);
+}
+
+
+/* =========================
+   HOME - CATEGORY
+========================= */
+
+.category-card {
+    background: #211331;
+    border: 1px solid #3b2454;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    transition: 0.25s;
+    height: 100%;
+    color: white;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--ani-pink);
+    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.18);
+}
+
+.category-card h5 {
+    font-weight: 700;
+}
+
+
+/* =========================
+   HOME - PRODUCTS
+========================= */
+
+.product-link {
+    color: var(--ani-text);
+    display: block;
+    height: 100%;
+}
+
+.product-card {
+    background: #211331;
+    border: 1px solid #3b2454;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 100%;
+    transition: 0.25s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--ani-pink);
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.25);
+}
+
+.product-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    background: #f1edf7;
+}
+
+.product-body {
+    padding: 18px;
+}
+
+.product-name {
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.product-category {
+    color: #b8a9c9;
+    font-size: 0.9rem;
+}
+
+.price {
+    color: var(--ani-pink);
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+
+/* =========================
+   HOME - RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    .ani-hero {
+        padding: 70px 0;
+    }
+
+    .ani-hero-title {
+        font-size: 2.2rem;
+    }
+
+    .product-image {
+        height: 180px;
+    }
+
+}
+
+/* =========================
+   ANIRESHOP COLOR FIX
+========================= */
+
+/* Global text */
+body {
+    background: #160d24 !important;
+    color: #ffffff !important;
+}
+
+/* Navbar */
+.ani-navbar {
+    background: #111111 !important;
+}
+
+.ani-navbar .navbar-brand {
+    color: #ec4899 !important;
+}
+
+.ani-navbar .nav-link {
+    color: #ffffff !important;
+}
+
+.ani-navbar .nav-link:hover {
+    color: #ec4899 !important;
+}
+
+/* Section title */
+.ani-section-title {
+    color: #ffffff !important;
+    font-weight: 800;
+}
+
+.ani-section-title span {
+    color: #ec4899 !important;
+}
+
+.ani-section-subtitle {
+    color: #b8a9c9 !important;
+}
+
+/* Hero */
+.ani-hero {
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(124, 58, 237, 0.25),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #111111,
+            #1c1028,
+            #25102f
+        ) !important;
+}
+
+.ani-hero-title {
+    color: #ffffff !important;
+}
+
+.ani-hero-title span {
+    color: #ec4899 !important;
+}
+
+.text-pink {
+    color: #ec4899 !important;
+}
+
+/* Buttons */
+.btn-ani {
+    background: #7c3aed !important;
+    border-color: #7c3aed !important;
+    color: #ffffff !important;
+}
+
+.btn-ani:hover {
+    background: #6d28d9 !important;
+    border-color: #6d28d9 !important;
+    color: #ffffff !important;
+}
+
+.btn-ani-pink {
+    background: #ec4899 !important;
+    border-color: #ec4899 !important;
+    color: #ffffff !important;
+}
+
+.btn-ani-pink:hover {
+    background: #db2777 !important;
+    border-color: #db2777 !important;
+    color: #ffffff !important;
+}
+
+/* Category */
+.category-card {
+    background: #211331 !important;
+    color: #ffffff !important;
+    border-color: #3b2454 !important;
+}
+
+.category-card h5 {
+    color: #ffffff !important;
+}
+
+/* Product */
+.product-card {
+    background: #211331 !important;
+    border-color: #3b2454 !important;
+}
+
+.product-name {
+    color: #ffffff !important;
+}
+
+.product-category {
+    color: #b8a9c9 !important;
+}
+
+.price {
+    color: #ec4899 !important;
+}
+
+/* Product links */
+.product-link {
+    color: #ffffff !important;
+}
+
+.product-link:hover {
+    color: #ffffff !important;
+}
+
+/* Footer */
+.ani-footer {
+    background: #111111 !important;
+    color: #cccccc !important;
+}
+
+.ani-footer h5 {
+    color: #ec4899 !important;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-text {
+    color: #e9dff2 !important;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.ani-section h2,
+.ani-section h3,
+.ani-section h4,
+.ani-section h5 {
+    color: #ffffff !important;
+}
+
+.text-muted {
+    color: #b8a9c9 !important;
+}
+
+.text-secondary {
+    color: #c8bbd6 !important;
+}
+
+/* =====================================
+   ANIRESHOP HERO V2
+===================================== */
+
+.ani-hero-wrapper {
+    padding-top: 24px;
+}
+
+
+/* HERO PANEL */
+
+.ani-hero {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 520px;
+
+    border-radius: 24px;
+
+    border: 1px solid rgba(139, 92, 246, 0.7);
+
+    background:
+        radial-gradient(
+            circle at 80% 40%,
+            rgba(236, 72, 153, 0.25),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 30% 20%,
+            rgba(124, 58, 237, 0.35),
+            transparent 40%
+        ),
+        linear-gradient(
+            135deg,
+            #17102d 0%,
+            #291348 50%,
+            #351052 100%
+        );
+
+    box-shadow:
+        0 0 40px rgba(124, 58, 237, 0.12);
+
+}
+
+
+/* =====================================
+   ANIRESHOP HERO
+===================================== */
+
+.ani-hero-wrapper {
+    padding-top: 24px;
+}
+
+
+/* HERO */
+
+.ani-hero {
+    position: relative;
+
+    /*
+     * Rasio desktop:
+     * 8 : 3 = lebar : tinggi
+     */
+    aspect-ratio: 8 / 3;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    border: 1px solid rgba(168, 85, 247, 0.7);
+
+    background: #1a0d2b;
+
+    box-shadow:
+        0 0 45px rgba(124, 58, 237, 0.18);
+}
+
+
+/* =====================================
+   BACKGROUND IMAGE
+===================================== */
+
+.hero-bg {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+}
+
+.hero-bg img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    display: block;
+
+    transform: scale(1.02);
+}
+
+
+/* =====================================
+   OVERLAY
+===================================== */
+
+.hero-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(13, 7, 25, 0.98) 0%,
+            rgba(20, 9, 36, 0.95) 25%,
+            rgba(29, 11, 48, 0.82) 43%,
+            rgba(38, 13, 57, 0.55) 62%,
+            rgba(38, 13, 57, 0.20) 100%
+        );
+}
+
+
+/* =====================================
+   HERO CONTENT
+===================================== */
+
+.ani-hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    padding: 25px 50px 55px;
+}
+
+.hero-content-inner {
+    width: 62%;
+
+    max-width: 700px;
+}
+
+
+/* =====================================
+   LABEL
+===================================== */
+
+.hero-label {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color: #f472b6;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 20px;
+}
+
+.hero-label span {
+    width: 38px;
+
+    height: 2px;
+
+    background: #ec4899;
+
+    display: inline-block;
+}
+
+
+/* =====================================
+   TITLE
+===================================== */
+
+.ani-hero-title {
+    color: #ffffff !important;
+
+    font-size: 3.2rem;
+
+    line-height: 1.08;
+
+    font-weight: 900;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.45);
+}
+
+.ani-hero-title span {
+    color: #ec4899 !important;
+
+    text-shadow:
+        0 3px 15px rgba(236, 72, 153, 0.25);
+}
+
+
+/* =====================================
+   DESCRIPTION
+===================================== */
+
+.ani-hero-description {
+    color: #eee5f5 !important;
+
+    font-size: 1.05rem;
+
+    line-height: 1.7;
+
+    max-width: 600px;
+
+    margin-bottom: 28px;
+
+    text-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+
+/* =====================================
+   BUTTON
+===================================== */
+
+.hero-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 15px 24px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ec4899,
+            #d946ef
+        );
+
+    color: #ffffff !important;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 8px 25px rgba(236, 72, 153, 0.4);
+
+    transition: 0.25s;
+}
+
+.hero-button:hover {
+    color: #ffffff !important;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 35px rgba(236, 72, 153, 0.55);
+}
+
+.hero-button span {
+    font-size: 20px;
+
+    transition: 0.25s;
+}
+
+.hero-button:hover span {
+    transform: translateX(5px);
+}
+
+
+/* =====================================
+   BENEFITS
+===================================== */
+
+.hero-benefits {
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+    margin-top: 38px;
+}
+
+.hero-benefit {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+.benefit-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #d946ef;
+
+    border-radius: 10px;
+
+    color: #ec4899;
+
+    background: rgba(236, 72, 153, 0.10);
+
+    font-size: 20px;
+
+    flex-shrink: 0;
+}
+
+.hero-benefit strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 13px;
+}
+
+.hero-benefit small {
+    display: block;
+
+    color: #cfc1d9;
+
+    margin-top: 3px;
+
+    font-size: 12px;
+}
+
+.hero-divider {
+    width: 1px;
+
+    height: 38px;
+
+    background: rgba(255, 255, 255, 0.25);
+
+    flex-shrink: 0;
+}
+
+
+/* =====================================
+   TABLET
+===================================== */
+
+@media (max-width: 991px) {
+
+    .ani-hero {
+        min-height: 550px;
+    }
+
+    .ani-hero-content {
+        min-height: 550px;
+
+        padding: 55px 35px;
+    }
+
+    .hero-content-inner {
+        width: 72%;
+    }
+
+    .ani-hero-title {
+        font-size: 2.7rem;
+    }
+
+    .hero-bg img {
+        object-position: 65% center;
+    }
+
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 768px) {
+
+    .ani-hero {
+        min-height: 600px;
+    }
+
+    .ani-hero-content {
+        min-height: 600px;
+
+        padding: 45px 25px;
+
+        align-items: flex-start;
+
+        padding-top: 55px;
+    }
+
+    .hero-content-inner {
+        width: 100%;
+    }
+
+    .ani-hero-title {
+        font-size: 2.3rem;
+    }
+
+    .hero-overlay {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(13, 7, 25, 0.98) 0%,
+                rgba(20, 9, 36, 0.90) 45%,
+                rgba(29, 11, 48, 0.65) 100%
+            );
+    }
+
+    .hero-bg img {
+        object-position: 70% center;
+    }
+
+}
+
+
+@media (max-width: 576px) {
+
+    .ani-hero {
+        border-radius: 18px;
+    }
+
+    .ani-hero-content {
+        padding: 40px 20px;
+    }
+
+    .ani-hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-benefits {
+        display: block;
+    }
+
+    .hero-benefit {
+        margin-bottom: 14px;
+    }
+
+    .hero-divider {
+        display: none;
+    }
+
+}
+
+/* =====================================
+   AUTH - LOGIN & REGISTER
+===================================== */
+
+.auth-page {
+    min-height: 75vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 60px 20px;
+}
+
+
+.auth-card {
+    width: 100%;
+    max-width: 440px;
+
+    background: #211331;
+
+    border: 1px solid #4c2670;
+
+    border-radius: 22px;
+
+    padding: 40px;
+
+    box-shadow:
+        0 15px 50px rgba(0, 0, 0, 0.35),
+        0 0 35px rgba(124, 58, 237, 0.08);
+}
+
+
+/* LOGO */
+
+.auth-logo {
+    text-align: center;
+
+    font-size: 2rem;
+
+    font-weight: 900;
+
+    color: #ec4899;
+
+    margin-bottom: 15px;
+}
+
+.auth-logo span {
+    color: #8b5cf6;
+}
+
+
+/* TITLE */
+
+.auth-title {
+    text-align: center;
+
+    color: #ffffff;
+
+    font-size: 1.7rem;
+
+    font-weight: 800;
+
+    margin-bottom: 8px;
+}
+
+
+.auth-subtitle {
+    text-align: center;
+
+    color: #b8a9c9;
+
+    margin-bottom: 30px;
+}
+
+
+/* LABEL */
+
+.auth-label {
+    display: block;
+
+    color: #eee5f5;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+}
+
+
+/* INPUT */
+
+.auth-input {
+    background: #160d24 !important;
+
+    border: 1px solid #4c2670 !important;
+
+    color: #ffffff !important;
+
+    border-radius: 10px;
+
+    padding: 12px 14px;
+}
+
+.auth-input::placeholder {
+    color: #887a99;
+}
+
+.auth-input:focus {
+    background: #160d24 !important;
+
+    color: #ffffff !important;
+
+    border-color: #ec4899 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(236, 72, 153, 0.12) !important;
+}
+
+
+/* BUTTON */
+
+.auth-button {
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #ec4899
+        );
+
+    color: #ffffff !important;
+
+    font-weight: 800;
+
+    transition: 0.25s;
+}
+
+.auth-button:hover {
+    color: #ffffff !important;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(236, 72, 153, 0.3);
+}
+
+
+/* FOOTER */
+
+.auth-footer {
+    text-align: center;
+
+    color: #b8a9c9;
+
+    margin-top: 25px;
+}
+
+.auth-footer a {
+    color: #ec4899;
+
+    font-weight: 700;
+}
+
+.auth-footer a:hover {
+    color: #f472b6;
+}
+
+/* =====================================
+   ADMIN DASHBOARD
+===================================== */
+
+.admin-page {
+    min-height: 75vh;
+
+    padding: 45px 0 70px;
+}
+
+
+/* HEADER */
+
+.admin-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 30px;
+
+    padding: 28px 32px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #211331,
+            #291343
+        );
+
+    border: 1px solid #4c2670;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+.admin-label {
+    color: #ec4899;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 5px;
+}
+
+
+.admin-header h1 {
+    color: #ffffff;
+
+    font-size: 2.3rem;
+
+    font-weight: 900;
+
+    margin: 0;
+}
+
+
+.admin-header p {
+    color: #b8a9c9;
+
+    margin: 5px 0 0;
+}
+
+
+.admin-badge {
+    display: inline-block;
+
+    padding: 8px 14px;
+
+    border-radius: 20px;
+
+    background: rgba(236, 72, 153, 0.12);
+
+    border: 1px solid #ec4899;
+
+    color: #f472b6;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+/* MENU CARD */
+
+.admin-menu-card {
+    display: block;
+
+    height: 100%;
+
+    padding: 25px;
+
+    background: #211331;
+
+    border: 1px solid #3b2454;
+
+    border-radius: 18px;
+
+    color: #ffffff;
+
+    transition: 0.25s;
+}
+
+.admin-menu-card:hover {
+    color: #ffffff;
+
+    transform: translateY(-5px);
+
+    border-color: #ec4899;
+
+    box-shadow:
+        0 10px 30px rgba(124, 58, 237, 0.15);
+}
+
+
+/* ICON */
+
+.admin-icon {
+    width: 48px;
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 12px;
+
+    font-size: 22px;
+
+    margin-bottom: 18px;
+}
+
+.admin-icon.purple {
+    background: rgba(124, 58, 237, 0.15);
+
+    border: 1px solid #7c3aed;
+
+    color: #a78bfa;
+}
+
+.admin-icon.pink {
+    background: rgba(236, 72, 153, 0.12);
+
+    border: 1px solid #ec4899;
+
+    color: #f472b6;
+}
+
+
+/* CARD TEXT */
+
+.admin-menu-card h4 {
+    color: #ffffff;
+
+    font-size: 1.1rem;
+
+    font-weight: 800;
+
+    margin-bottom: 8px;
+}
+
+.admin-menu-card p {
+    color: #b8a9c9;
+
+    font-size: 14px;
+
+    min-height: 42px;
+
+    margin-bottom: 15px;
+}
+
+.admin-card-link {
+    color: #ec4899;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+/* BOTTOM */
+
+.admin-bottom {
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 35px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 576px) {
+
+    .admin-page {
+        padding-top: 25px;
+    }
+
+    .admin-header {
+        display: block;
+
+        padding: 22px;
+    }
+
+    .admin-badge {
+        margin-top: 15px;
+    }
+
+    .admin-header h1 {
+        font-size: 1.9rem;
+    }
+
+}
+
+/* =====================================
+   ADMIN PAYMENT TABLE
+===================================== */
+
+.ani-admin-table {
+    background: #211331 !important;
+    color: #ffffff !important;
+}
+
+.ani-admin-table thead {
+    background: #160d24 !important;
+}
+
+.ani-admin-table thead th {
+    background: #160d24 !important;
+    color: #e9d5ff !important;
+
+    border-bottom: 1px solid #4c2670;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    padding: 16px;
+}
+
+.ani-admin-table tbody tr {
+    background: #211331 !important;
+
+    border-color: #3b2454;
+}
+
+.ani-admin-table tbody tr:hover {
+    background: #29183d !important;
+}
+
+.ani-admin-table tbody td {
+    color: #ffffff !important;
+
+    border-color: #3b2454;
+
+    padding: 16px;
+}
+
+.order-number {
+    color: #f472b6;
+}
+
+.customer-email {
+    color: #b8a9c9 !important;
+}
+
+.payment-price {
+    color: #ec4899;
+}
+
+.payment-method {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+.payment-method.qris {
+    color: #c4b5fd;
+
+    background: rgba(124, 58, 237, 0.15);
+
+    border: 1px solid #7c3aed;
+}
+
+.payment-method.bank {
+    color: #f9a8d4;
+
+    background: rgba(236, 72, 153, 0.12);
+
+    border: 1px solid #ec4899;
+}
+
+.submitted-date {
+    color: #e9d5ff;
+
+    font-size: 13px;
+}
+
+.submitted-date small {
+    color: #a99ab5;
+}
+
+.payment-status {
+    display: inline-block;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    background: rgba(245, 158, 11, 0.12);
+
+    border: 1px solid #f59e0b;
+
+    color: #fbbf24;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =====================================
+   EMPTY PAYMENT
+===================================== */
+
+.empty-payment {
+    text-align: center;
+
+    padding: 70px 20px;
+}
+
+.empty-payment-icon {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 20px;
+
+    border-radius: 50%;
+
+    background: rgba(124, 58, 237, 0.15);
+
+    border: 1px solid #7c3aed;
+
+    color: #a78bfa;
+
+    font-size: 25px;
+}
+
+.empty-payment h4 {
+    color: #ffffff;
+
+    font-weight: 800;
+
+    margin-bottom: 8px;
+}
+
+.empty-payment p {
+    color: #b8a9c9;
+
+    margin-bottom: 0;
+}
+
+
+/* =====================================
+   ADMIN PAGINATION
+===================================== */
+
+.admin-pagination .pagination {
+    justify-content: center;
+}
+
+.admin-pagination .page-link {
+    background: #211331;
+
+    border-color: #3b2454;
+
+    color: #c4b5fd;
+}
+
+.admin-pagination .page-link:hover {
+    background: #7c3aed;
+
+    border-color: #7c3aed;
+
+    color: #ffffff;
+}
+
+.admin-pagination .page-item.active .page-link {
+    background: #ec4899;
+
+    border-color: #ec4899;
+
+    color: #ffffff;
+}
+
+/* =========================================================
+   ANIRESHOP GLOBAL DARK THEME
+   Guest + Customer + Admin
+   ========================================================= */
+
+:root {
+    --ani-black: #080808;
+    --ani-black-soft: #111111;
+    --ani-black-card: #151515;
+    --ani-black-card-2: #1b1b1b;
+
+    --ani-white: #ffffff;
+    --ani-text: #f5f5f5;
+    --ani-muted: #b8b8b8;
+
+    --ani-border: #2d2d2d;
+
+    --ani-purple: #7c3aed;
+    --ani-purple-dark: #6d28d9;
+
+    --ani-pink: #ec4899;
+    --ani-pink-dark: #db2777;
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+html {
+    background: var(--ani-black) !important;
+}
+
+body {
+    background: var(--ani-black) !important;
+    color: var(--ani-text) !important;
+}
+
+
+/* Semua section */
+section,
+main {
+    background: transparent !important;
+}
+
+
+/* Semua container umum */
+.container {
+    color: var(--ani-text);
+}
+
+
+/* Heading */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #ffffff !important;
+}
+
+
+/* Paragraph */
+p {
+    color: #d0d0d0;
+}
+
+
+/* Link */
+a {
+    color: #f5f5f5;
+}
+
+a:hover {
+    color: var(--ani-pink);
+}
+
+
+/* Bootstrap text utility */
+.text-dark {
+    color: #ffffff !important;
+}
+
+.text-black {
+    color: #ffffff !important;
+}
+
+.text-body {
+    color: #f5f5f5 !important;
+}
+
+.text-secondary {
+    color: #b8b8b8 !important;
+}
+
+.text-muted {
+    color: #aaaaaa !important;
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+    background: #080808 !important;
+    border-bottom: 1px solid #242424 !important;
+}
+
+.navbar-brand {
+    color: var(--ani-pink) !important;
+    font-weight: 800;
+}
+
+.navbar .nav-link {
+    color: #ffffff !important;
+}
+
+.navbar .nav-link:hover {
+    color: var(--ani-pink) !important;
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.card,
+.ani-card {
+    background: #151515 !important;
+    color: #ffffff !important;
+    border: 1px solid #2d2d2d !important;
+}
+
+
+/* Card body */
+.card-body {
+    background: #151515 !important;
+    color: #ffffff !important;
+}
+
+
+/* Card header/footer */
+.card-header,
+.card-footer {
+    background: #111111 !important;
+    color: #ffffff !important;
+    border-color: #2d2d2d !important;
+}
+
+
+/* =========================================================
+   FORMS
+   ========================================================= */
+
+.form-control,
+.form-select,
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="file"],
+input[type="date"],
+input[type="time"] {
+    background-color: #111111 !important;
+    color: #ffffff !important;
+    border: 1px solid #3a3a3a !important;
+}
+
+
+/* Placeholder */
+.form-control::placeholder,
+textarea::placeholder {
+    color: #888888 !important;
+}
+
+
+/* Focus */
+.form-control:focus,
+.form-select:focus,
+textarea:focus {
+    background-color: #111111 !important;
+    color: #ffffff !important;
+    border-color: var(--ani-purple) !important;
+    box-shadow: 0 0 0 0.2rem rgba(124, 58, 237, 0.20) !important;
+}
+
+
+/* Label */
+.form-label {
+    color: #ffffff !important;
+}
+
+
+/* Select option */
+.form-select option {
+    background: #111111 !important;
+    color: #ffffff !important;
+}
+
+
+/* File input */
+input[type="file"] {
+    color: #ffffff !important;
+}
+
+input[type="file"]::file-selector-button {
+    background: #222222;
+    color: #ffffff;
+    border: 0;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.btn-primary,
+.btn-ani {
+    background: var(--ani-purple) !important;
+    border-color: var(--ani-purple) !important;
+    color: #ffffff !important;
+}
+
+.btn-primary:hover,
+.btn-ani:hover {
+    background: var(--ani-purple-dark) !important;
+    border-color: var(--ani-purple-dark) !important;
+    color: #ffffff !important;
+}
+
+
+.btn-secondary {
+    background: #222222 !important;
+    border-color: #3a3a3a !important;
+    color: #ffffff !important;
+}
+
+.btn-secondary:hover {
+    background: #333333 !important;
+    border-color: #444444 !important;
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.table {
+    color: #ffffff !important;
+    border-color: #2d2d2d !important;
+}
+
+.table > :not(caption) > * > * {
+    background-color: #151515 !important;
+    color: #ffffff !important;
+    border-color: #2d2d2d !important;
+}
+
+.table thead th {
+    background: #0d0d0d !important;
+    color: #ffffff !important;
+}
+
+.table tbody tr {
+    background: #151515 !important;
+}
+
+.table tbody tr:hover {
+    background: #202020 !important;
+}
+
+
+/* Admin payment table */
+.ani-admin-table {
+    background: #151515 !important;
+    color: #ffffff !important;
+}
+
+.ani-admin-table thead,
+.ani-admin-table thead th {
+    background: #0d0d0d !important;
+    color: #ffffff !important;
+}
+
+.ani-admin-table tbody tr,
+.ani-admin-table tbody td {
+    background: #151515 !important;
+    color: #ffffff !important;
+    border-color: #2d2d2d !important;
+}
+
+.ani-admin-table tbody tr:hover td {
+    background: #202020 !important;
+}
+
+
+/* =========================================================
+   ALERT
+   ========================================================= */
+
+.alert {
+    border: 1px solid #333333 !important;
+}
+
+.alert-success {
+    background: #102417 !important;
+    color: #a7f3d0 !important;
+    border-color: #1f5134 !important;
+}
+
+.alert-danger {
+    background: #2a1114 !important;
+    color: #fecaca !important;
+    border-color: #64252b !important;
+}
+
+.alert-warning {
+    background: #29200d !important;
+    color: #fde68a !important;
+    border-color: #5a4715 !important;
+}
+
+.alert-info {
+    background: #101d29 !important;
+    color: #bae6fd !important;
+    border-color: #21445f !important;
+}
+
+
+/* =========================================================
+   AUTH — LOGIN & REGISTER
+   ========================================================= */
+
+.auth-page {
+    background: #080808 !important;
+}
+
+.auth-card {
+    background: #151515 !important;
+    border: 1px solid #2d2d2d !important;
+    color: #ffffff !important;
+}
+
+.auth-card h1,
+.auth-card h2,
+.auth-card h3,
+.auth-card h4,
+.auth-card h5 {
+    color: #ffffff !important;
+}
+
+.auth-card label {
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   ADMIN
+   ========================================================= */
+
+.admin-page {
+    background: transparent !important;
+    color: #ffffff !important;
+}
+
+.admin-header {
+    background: #181020 !important;
+    border: 1px solid #54277a !important;
+}
+
+.admin-header h1 {
+    color: #ffffff !important;
+}
+
+.admin-header p {
+    color: #c0c0c0 !important;
+}
+
+.admin-label {
+    color: var(--ani-pink) !important;
+}
+
+
+/* Admin cards */
+.admin-card,
+.admin-stat-card {
+    background: #151515 !important;
+    border: 1px solid #2d2d2d !important;
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   PRODUCT
+   ========================================================= */
+
+.product-card {
+    background: #151515 !important;
+    border: 1px solid #2d2d2d !important;
+    color: #ffffff !important;
+}
+
+.product-card:hover {
+    background: #1b1b1b !important;
+    border-color: #54277a !important;
+}
+
+.product-card h5,
+.product-card h4,
+.product-card h3 {
+    color: #ffffff !important;
+}
+
+.product-card p {
+    color: #b8b8b8 !important;
+}
+
+
+/* Product detail */
+.product-detail,
+.product-info {
+    background: #151515 !important;
+    color: #ffffff !important;
+    border: 1px solid #2d2d2d !important;
+}
+
+
+/* =========================================================
+   CART
+   ========================================================= */
+
+.cart-item,
+.cart-card {
+    background: #151515 !important;
+    color: #ffffff !important;
+    border: 1px solid #2d2d2d !important;
+}
+
+.cart-item h5,
+.cart-item h6 {
+    color: #ffffff !important;
+}
+
+.cart-item small,
+.cart-item p {
+    color: #b8b8b8 !important;
+}
+
+
+/* Cart summary */
+.cart-summary {
+    background: #151515 !important;
+    color: #ffffff !important;
+    border: 1px solid #2d2d2d !important;
+}
+
+
+/* =========================================================
+   CHECKOUT
+   ========================================================= */
+
+.checkout-card {
+    background: #151515 !important;
+    color: #ffffff !important;
+    border: 1px solid #2d2d2d !important;
+}
+
+.checkout-card h4,
+.checkout-card h5 {
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   ORDER
+   ========================================================= */
+
+.order-card {
+    background: #151515 !important;
+    color: #ffffff !important;
+    border: 1px solid #2d2d2d !important;
+}
+
+.order-card h4,
+.order-card h5,
+.order-card h6 {
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   PAYMENT
+   ========================================================= */
+
+.payment-card {
+    background: #151515 !important;
+    color: #ffffff !important;
+    border: 1px solid #2d2d2d !important;
+}
+
+
+/* Payment method box */
+.payment-method-box {
+    background: #111111 !important;
+    color: #ffffff !important;
+    border: 1px solid #333333 !important;
+}
+
+
+/* =========================================================
+   PAGINATION
+   ========================================================= */
+
+.pagination .page-link {
+    background: #151515 !important;
+    border-color: #333333 !important;
+    color: #ffffff !important;
+}
+
+.pagination .page-link:hover {
+    background: var(--ani-purple) !important;
+    border-color: var(--ani-purple) !important;
+    color: #ffffff !important;
+}
+
+.pagination .page-item.active .page-link {
+    background: var(--ani-pink) !important;
+    border-color: var(--ani-pink) !important;
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   DROPDOWN
+   ========================================================= */
+
+.dropdown-menu {
+    background: #111111 !important;
+    border: 1px solid #333333 !important;
+}
+
+.dropdown-item {
+    color: #ffffff !important;
+}
+
+.dropdown-item:hover {
+    background: #222222 !important;
+    color: var(--ani-pink) !important;
+}
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.modal-content {
+    background: #151515 !important;
+    color: #ffffff !important;
+    border: 1px solid #333333 !important;
+}
+
+.modal-header,
+.modal-footer {
+    background: #111111 !important;
+    border-color: #333333 !important;
+}
+
+.modal-title {
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    background: #050505 !important;
+    color: #ffffff !important;
+    border-top: 1px solid #242424 !important;
+}
+
+footer p,
+footer span {
+    color: #aaaaaa !important;
+}
+
+
+/* =========================================================
+   HR
+   ========================================================= */
+
+hr {
+    border-color: #333333 !important;
+    opacity: 1 !important;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.empty-payment,
+.empty-state {
+    background: #151515 !important;
+    color: #ffffff !important;
+}
+
+.empty-payment h4,
+.empty-state h4 {
+    color: #ffffff !important;
+}
+
+.empty-payment p,
+.empty-state p {
+    color: #aaaaaa !important;
+}
+
+
+/* =========================================================
+   BOOTSTRAP OVERRIDE
+   Menghilangkan background putih dari utility Bootstrap
+   ========================================================= */
+
+.bg-white {
+    background-color: #151515 !important;
+}
+
+.bg-light {
+    background-color: #111111 !important;
+}
+
+.bg-body {
+    background-color: #080808 !important;
+}
+
+.bg-dark {
+    background-color: #080808 !important;
+}
+
+
+/* Bootstrap text */
+.text-white {
+    color: #ffffff !important;
+}
+
+
+/* Border */
+.border,
+.border-top,
+.border-bottom,
+.border-start,
+.border-end {
+    border-color: #2d2d2d !important;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333333;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555555;
+}
