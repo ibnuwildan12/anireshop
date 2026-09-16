@@ -55,86 +55,83 @@
 
                 <ul class="navbar-nav ms-auto align-items-lg-center">
 
+                    {{-- HOME --}}
                     <li class="nav-item">
-                        <a
-                            class="nav-link"
-                            href="{{ route('home') }}"
-                        >
+                        <a class="nav-link" href="{{ route('home') }}">
                             Home
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a
-                            class="nav-link"
-                            href="{{ route('cart.index') }}"
-                        >
-                            Cart
-                        </a>
-                    </li>
+                    @guest
 
-                    @auth
+                        {{-- GUEST --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('cart.index') }}">
+                                Cart
+                            </a>
+                        </li>
 
-                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">
+                                Login
+                            </a>
+                        </li>
+
+                        <li class="nav-item ms-lg-2">
+                            <a href="{{ route('register') }}" class="btn btn-sm btn-ani">
+                                Register
+                            </a>
+                        </li>
+
+                    @else
+
+                        {{-- CUSTOMER --}}
+                        @if(auth()->user()->role !== 'admin')
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('cart.index') }}">
+                                    Cart
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('orders.index') }}">
+                                    My Orders
+                                </a>
+                            </li>
+
+                        @endif
+
+                        {{-- NAMA USER --}}
                         <li class="nav-item">
                             <span class="nav-link">
                                 Hi, {{ auth()->user()->name }}
                             </span>
                         </li>
 
+                        {{-- ADMIN --}}
                         @if(auth()->user()->role === 'admin')
 
                             <li class="nav-item">
-                                <a
-                                    class="nav-link"
-                                    href="{{ route('admin.dashboard') }}"
-                                >
+                                <a class="nav-link" href="{{ route('admin.dashboard') }}">
                                     Admin
                                 </a>
                             </li>
 
                         @endif
 
+                        {{-- LOGOUT --}}
                         <li class="nav-item ms-lg-2">
-
-                            <form
-                                action="{{ route('logout') }}"
-                                method="POST"
-                            >
+                            <form action="{{ route('logout') }}" method="POST">
                                 @csrf
 
-                                <button
-                                    type="submit"
-                                    class="btn btn-sm btn-ani-pink"
-                                >
+                                <button type="submit" class="btn btn-sm btn-ani-pink">
                                     Logout
                                 </button>
-
                             </form>
-
                         </li>
 
-                    @else
-
-                        <li class="nav-item">
-                            <a
-                                class="nav-link"
-                                href="{{ route('login') }}"
-                            >
-                                Login
-                            </a>
-                        </li>
-
-                        <li class="nav-item ms-lg-2">
-                            <a
-                                href="{{ route('register') }}"
-                                class="btn btn-sm btn-ani"
-                            >
-                                Register
-                            </a>
-                        </li>
-
-                    @endauth
+                    @endguest
 
                 </ul>
 

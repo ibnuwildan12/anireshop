@@ -88,7 +88,7 @@
             <div class="col-md-6 col-lg-3">
 
                 <a
-                    href="#"
+                    href="{{ route('admin.categories.index') }}"
                     class="admin-menu-card"
                 >
 
