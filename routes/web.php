@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\PaymentVerificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\ShippingRateController;
 
 
 /*
@@ -96,6 +97,24 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::delete('/admin/products/{product}', [AdminProductController::class, 'destroy'])
         ->name('admin.products.destroy');
+
+    Route::get('/admin/shipping-rates', [ShippingRateController::class, 'index'])
+        ->name('admin.shipping-rates.index');
+    
+    Route::get('/admin/shipping-rates/create', [ShippingRateController::class, 'create'])
+        ->name('admin.shipping-rates.create');
+    
+    Route::post('/admin/shipping-rates', [ShippingRateController::class, 'store'])
+        ->name('admin.shipping-rates.store');
+    
+    Route::get('/admin/shipping-rates/{shippingRate}/edit', [ShippingRateController::class, 'edit'])
+        ->name('admin.shipping-rates.edit');
+    
+    Route::put('/admin/shipping-rates/{shippingRate}', [ShippingRateController::class, 'update'])
+        ->name('admin.shipping-rates.update');
+    
+    Route::delete('/admin/shipping-rates/{shippingRate}', [ShippingRateController::class, 'destroy'])
+        ->name('admin.shipping-rates.destroy');
         
 });
 
@@ -163,3 +182,4 @@ Route::put('/cart/update/{product}', [CartController::class, 'update'])
 
 Route::delete('/cart/remove/{product}', [CartController::class, 'remove'])
     ->name('cart.remove');
+

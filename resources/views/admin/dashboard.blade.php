@@ -56,20 +56,16 @@
             {{-- PRODUCTS --}}
 
             <div class="col-md-6 col-lg-3">
-
                 <a
-                    href="#"
+                    href="{{ route('admin.products.index') }}"
                     class="admin-menu-card"
                 >
-
                     <div class="admin-icon purple">
                         ◈
                     </div>
-
                     <h4>
                         Products
                     </h4>
-
                     <p>
                         Kelola produk Anireshop
                     </p>
@@ -146,12 +142,10 @@
             {{-- SHIPPING --}}
 
             <div class="col-md-6 col-lg-3">
-
                 <a
-                    href="#"
+                    href="{{ route('admin.shipping-rates.index') }}"
                     class="admin-menu-card"
                 >
-
                     <div class="admin-icon pink">
                         ✦
                     </div>

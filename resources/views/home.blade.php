@@ -182,21 +182,42 @@
 
                     <div class="product-card">
 
-                        @if ($product->images->first())
+                    @if ($product->images->count())
+                        <div
+                            id="productCarousel{{ $product->id }}"
+                            class="carousel slide product-image"
+                            data-bs-ride="carousel"
+                            data-bs-interval="3000"
+                        >
 
-                            <img
-                                src="{{ asset('storage/' . $product->images->first()->image_path) }}"
-                                class="product-image"
-                                alt="{{ $product->name }}"
-                            >
+                            <div class="carousel-inner h-100">
+
+                                @foreach ($product->images as $image)
+
+                                    <div class="carousel-item h-100 {{ $loop->first ? 'active' : '' }}">
+
+                                        <img
+                                            src="{{ asset('storage/' . $image->image_path) }}"
+                                            class="d-block w-100 h-100"
+                                            alt="{{ $product->name }}"
+                                            style="object-fit: cover;"
+                                        >
+
+                                    </div>
+
+                                @endforeach
+
+                            </div>
+
+                        </div>
 
                         @else
 
-                            <div class="product-image d-flex align-items-center justify-content-center">
-                                <span class="text-muted">
-                                    No Image
-                                </span>
-                            </div>
+                        <div class="product-image d-flex align-items-center justify-content-center">
+                            <span class="text-muted">
+                                No Image
+                            </span>
+                        </div>
 
                         @endif
 
