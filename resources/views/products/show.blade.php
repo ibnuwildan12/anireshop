@@ -161,7 +161,7 @@
 
                 <img
                     id="mainImage"
-                    src="{{ asset('storage/' . $product->images->first()->image_path) }}"
+                    src="{{ asset('images/' . $product->images->first()->image_path) }}"
                     alt="{{ $product->name }}"
                     class="product-main-image"
                 >
@@ -171,9 +171,9 @@
                     @foreach ($product->images as $image)
 
                         <img
-                            src="{{ asset('storage/' . $image->image_path) }}"
+                            src="{{ asset('images/' . $image->image_path) }}"
                             class="thumbnail"
-                            onclick="changeImage('{{ asset('storage/' . $image->image_path) }}')"
+                            onclick="changeImage('{{ asset('images/' . $image->image_path) }}')"
                             alt="{{ $product->name }}"
                         >
 

@@ -155,7 +155,7 @@
                             <div class="col-6 col-md-3">
                                 <div class="card bg-dark border-secondary p-2">
 
-                                    <img src="{{ asset('storage/' . $image->image_path) }}"
+                                    <img src="{{ asset('images/' . $image->image_path) }}"
                                         alt="{{ $product->name }}"
                                         class="img-fluid rounded"
                                         style="width: 100%; height: 160px; object-fit: cover;">

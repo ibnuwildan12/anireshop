@@ -65,7 +65,7 @@
                             @if($product->images->count())
 
                                 <img
-                                    src="{{ asset('storage/' . $product->images->first()->image_path) }}"
+                                    src="{{ asset('images/' . $product->images->first()->image_path) }}"
                                     alt="{{ $product->name }}"
                                     class="w-100 h-100"
                                     style="object-fit:cover;"

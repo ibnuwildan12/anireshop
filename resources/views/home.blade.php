@@ -202,11 +202,12 @@
                                     <div class="carousel-item h-100 {{ $loop->first ? 'active' : '' }}">
 
                                     <img
-                                        src="{{ asset('storage/' . $image->image_path) }}"
+                                        src="{{ asset('images/' . $image->image_path) }}"
                                         class="d-block w-100 h-100"
                                         alt="{{ $product->name }}"
                                         loading="lazy"
                                         decoding="async"
+                                        style="object-fit: contain;"
                                     >
 
                                     </div>
