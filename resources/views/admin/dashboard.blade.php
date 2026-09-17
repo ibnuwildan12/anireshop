@@ -111,33 +111,32 @@
 
             {{-- ORDERS --}}
 
-            <div class="col-md-6 col-lg-3">
+                <div class="col-md-6 col-lg-3">
 
-                <a
-                    href="#"
-                    class="admin-menu-card"
-                >
+                    <a
+                        href="{{ route('admin.orders.index') }}"
+                        class="admin-menu-card"
+                    >
 
-                    <div class="admin-icon purple">
-                        ◎
-                    </div>
+                        <div class="admin-icon purple">
+                            ◎
+                        </div>
 
-                    <h4>
-                        Orders
-                    </h4>
+                        <h4>
+                            Orders
+                        </h4>
 
-                    <p>
-                        Kelola pesanan customer
-                    </p>
+                        <p>
+                            Kelola pesanan customer
+                        </p>
 
-                    <span class="admin-card-link">
-                        Kelola Pesanan →
-                    </span>
+                        <span class="admin-card-link">
+                            Kelola Pesanan →
+                        </span>
 
-                </a>
+                    </a>
 
-            </div>
-
+                </div>
 
             {{-- SHIPPING --}}
 

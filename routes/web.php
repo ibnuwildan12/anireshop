@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\ShippingRateController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 
 
 /*
@@ -115,6 +116,15 @@ Route::middleware(['auth', 'admin'])->group(function () {
     
     Route::delete('/admin/shipping-rates/{shippingRate}', [ShippingRateController::class, 'destroy'])
         ->name('admin.shipping-rates.destroy');
+
+    Route::get('/admin/orders', [AdminOrderController::class, 'index'])
+        ->name('admin.orders.index');
+    
+    Route::get('/admin/orders/{order}', [AdminOrderController::class, 'show'])
+        ->name('admin.orders.show');
+
+    Route::put('/admin/orders/{order}', [AdminOrderController::class, 'update'])
+        ->name('admin.orders.update');
         
 });
 
@@ -142,6 +152,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/orders/{order}', [OrderController::class, 'show'])
         ->name('orders.show');
 
+    Route::put('/orders/{order}/complete', [OrderController::class, 'complete'])
+        ->name('orders.complete');
+
 
     // Payment
     Route::get('/orders/{order}/payment', [PaymentController::class, 'show'])
@@ -149,6 +162,9 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/orders/{order}/payment', [PaymentController::class, 'store'])
         ->name('payments.store');
+
+    Route::put('/orders/{order}/payment-method', [PaymentController::class, 'updateMethod'])
+    ->name('payments.method.update');
 });
 
 

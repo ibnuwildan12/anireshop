@@ -46,6 +46,12 @@
             color: #ff4fd8;
             font-weight: 700;
         }
+
+        .tracking-number {
+            color: #ffffff;
+            font-weight: 700;
+            word-break: break-word;
+        }
     </style>
 </head>
 
@@ -74,16 +80,21 @@
 
 <div class="container py-5">
 
+    {{-- SUCCESS MESSAGE --}}
     @if (session('success'))
+
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
+
     @endif
 
 
+    {{-- HEADER --}}
     <div class="d-flex justify-content-between align-items-center mb-4">
 
         <div>
+
             <h1>
                 Detail Pesanan
             </h1>
@@ -91,6 +102,7 @@
             <p class="text-secondary mb-0">
                 {{ $order->order_number }}
             </p>
+
         </div>
 
         <span class="status">
@@ -107,8 +119,9 @@
             Informasi Pesanan
         </h4>
 
-        <div class="row g-3">
+        <div class="row g-4">
 
+            {{-- NOMOR PESANAN --}}
             <div class="col-md-6">
 
                 <strong>
@@ -122,6 +135,7 @@
             </div>
 
 
+            {{-- STATUS PESANAN --}}
             <div class="col-md-6">
 
                 <strong>
@@ -135,6 +149,7 @@
             </div>
 
 
+            {{-- STATUS PEMBAYARAN --}}
             <div class="col-md-6">
 
                 <strong>
@@ -148,6 +163,7 @@
             </div>
 
 
+            {{-- METODE PEMBAYARAN --}}
             <div class="col-md-6">
 
                 <strong>
@@ -161,6 +177,7 @@
             </div>
 
 
+            {{-- KURIR + TRACKING --}}
             <div class="col-md-6">
 
                 <strong>
@@ -171,26 +188,81 @@
                     {{ $order->courier ?? '-' }}
                 </div>
 
+
+                @if ($order->tracking_number)
+
+                    <div class="mt-3">
+
+                        <strong>
+                            Nomor Resi
+                        </strong>
+
+                        <div class="tracking-number">
+                            {{ $order->tracking_number }}
+                        </div>
+
+
+                        @php
+
+                            $trackingUrl = match ($order->courier) {
+
+                                'JNE' => 'https://www.jne.co.id/',
+
+                                'J&T' => 'https://jet.co.id/',
+
+                                default => null,
+
+                            };
+
+                        @endphp
+
+
+                        @if ($trackingUrl)
+
+                            <a
+                                href="{{ $trackingUrl }}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="btn btn-sm btn-outline-light mt-2"
+                            >
+                                🔎 Lacak Pengiriman
+                            </a>
+
+                        @endif
+
+                    </div>
+
+                @endif
+
             </div>
 
 
-            <div class="col-md-6">
+            {{-- BATAS PEMBAYARAN --}}
+            @if ($order->payment_status !== 'PAID')
 
-                <strong>
-                    Batas Pembayaran
-                </strong>
+                <div class="col-md-6">
 
-                <div class="text-secondary">
+                    <strong>
+                        Batas Pembayaran
+                    </strong>
 
-                    @if ($order->expires_at)
-                        {{ $order->expires_at->format('d M Y H:i') }}
-                    @else
-                        -
-                    @endif
+                    <div class="text-secondary">
+
+                        @if ($order->expires_at)
+
+                            {{ $order->expires_at->format('d M Y H:i') }}
+
+                        @else
+
+                            -
+
+                        @endif
+
+                    </div>
 
                 </div>
 
-            </div>
+            @endif
 
         </div>
 
@@ -209,9 +281,11 @@
         </p>
 
         <p class="text-secondary mb-0">
+
             {{ $order->shipping_district }},
             {{ $order->shipping_city }},
             {{ $order->shipping_postal_code }}
+
         </p>
 
     </div>
@@ -224,6 +298,7 @@
             Produk
         </h4>
 
+
         @foreach ($order->orderItems as $item)
 
             <div class="d-flex justify-content-between mb-3">
@@ -234,6 +309,7 @@
                         {{ $item->product_name }}
                     </strong>
 
+
                     <div class="text-secondary">
 
                         {{ $item->quantity }}
@@ -241,6 +317,7 @@
                         Rp {{ number_format($item->price, 0, ',', '.') }}
 
                     </div>
+
 
                     @if ($item->variation_note)
 
@@ -257,7 +334,9 @@
 
 
                 <strong>
+
                     Rp {{ number_format($item->subtotal, 0, ',', '.') }}
+
                 </strong>
 
             </div>
@@ -293,7 +372,9 @@
             </strong>
 
             <strong class="price">
+
                 Rp {{ number_format($order->total_amount, 0, ',', '.') }}
+
             </strong>
 
         </div>
@@ -301,45 +382,96 @@
     </div>
 
 
+    {{-- PAYMENT ACTION --}}
     <div class="mt-4">
 
-        <div class="d-flex gap-2 flex-wrap mt-4">
+        <div class="d-flex gap-2 flex-wrap">
 
-    @if($order->payment_status === 'PENDING')
-        <a href="{{ route('payments.show', $order) }}"
-           class="btn btn-primary">
-            💳 Bayar Sekarang
-        </a>
-    @endif
 
-    @if($order->payment_status === 'WAITING_VERIFICATION')
-        <span class="btn btn-warning disabled">
-            ⏳ Menunggu Verifikasi Admin
-        </span>
-    @endif
+            {{-- BELUM BAYAR --}}
+            @if ($order->payment_status === 'PENDING')
 
-    @if($order->payment_status === 'PAID')
-        <span class="btn btn-success disabled">
-            ✓ Pembayaran Terverifikasi
-        </span>
-    @endif
+                <a
+                    href="{{ route('payments.show', $order) }}"
+                    class="btn btn-primary"
+                >
+                    💳 Bayar Sekarang
+                </a>
 
-    @if($order->payment_status === 'REJECTED')
-        <a href="{{ route('payments.show', $order) }}"
-           class="btn btn-danger">
-            🔄 Upload Ulang Bukti Pembayaran
-        </a>
-    @endif
+            @endif
 
-    <a href="{{ url('/') }}" class="btn btn-secondary">
-        Kembali Belanja
-    </a>
 
-</div>
+            {{-- MENUNGGU VERIFIKASI --}}
+            @if ($order->payment_status === 'WAITING_VERIFICATION')
+
+                <span class="btn btn-warning disabled">
+                    ⏳ Menunggu Verifikasi Admin
+                </span>
+
+            @endif
+
+
+            {{-- SUDAH DIBAYAR --}}
+            @if ($order->payment_status === 'PAID')
+
+                <span class="btn btn-success disabled">
+                    ✓ Pembayaran Terverifikasi
+                </span>
+
+            @endif
+
+
+            {{-- PEMBAYARAN DITOLAK --}}
+            @if ($order->payment_status === 'REJECTED')
+
+                <a
+                    href="{{ route('payments.show', $order) }}"
+                    class="btn btn-danger"
+                >
+                    🔄 Upload Ulang Bukti Pembayaran
+                </a>
+
+            @endif
+
+            {{-- PESANAN DITERIMA --}}
+            @if ($order->order_status === 'SHIPPED')
+
+                <form
+                    action="{{ route('orders.complete', $order) }}"
+                    method="POST"
+                    class="d-inline"
+                    onsubmit="return confirm('Apakah kamu sudah menerima pesanan ini?');"
+                >
+
+                    @csrf
+                    @method('PUT')
+
+                    <button
+                        type="submit"
+                        class="btn btn-success"
+                    >
+                        ✓ Pesanan Diterima
+                    </button>
+
+                </form>
+
+            @endif
+
+            {{-- KEMBALI BELANJA --}}
+            <a
+                href="{{ url('/') }}"
+                class="btn btn-secondary"
+            >
+                Kembali Belanja
+            </a>
+
+
+        </div>
 
     </div>
 
 </div>
 
 </body>
+
 </html>

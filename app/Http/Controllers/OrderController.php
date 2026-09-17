@@ -25,4 +25,29 @@ class OrderController extends Controller
 
         return view('orders.show', compact('order'));
     }
+
+    public function complete(Order $order)
+    {
+        if ($order->user_id !== auth()->id()) {
+            abort(403);
+        }
+
+        if ($order->order_status !== 'SHIPPED') {
+            return back()->with(
+                'error',
+                'Pesanan hanya dapat dikonfirmasi setelah dikirim.'
+            );
+        }
+
+        $order->update([
+            'order_status' => 'COMPLETED',
+        ]);
+
+        return redirect()
+            ->route('orders.show', $order)
+            ->with(
+                'success',
+                'Pesanan berhasil dikonfirmasi sebagai diterima.'
+            );
+    }
 }

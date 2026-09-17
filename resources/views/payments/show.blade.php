@@ -129,67 +129,120 @@
 
                         {{-- QRIS IMAGE --}}
                         <div class="my-4">
-                            <img src="{{ asset('images/qris-anireshop.png') }}"
-                                 alt="QRIS Anireshop"
-                                 class="img-fluid"
-                                 style="max-width:300px; border-radius:12px;">
+                        <img
+                            src="{{ asset('images/qris-anireshop.jpeg') }}"
+                            alt="QRIS Anireshop"
+                            class="img-fluid rounded"
+                            style="max-width: 300px;"
+                        >
                         </div>
 
                     </div>
 
-                @elseif($order->payment_method === 'BANK_TRANSFER')
+                    @elseif($order->payment_method === 'BANK_TRANSFER')
 
-                    <div class="p-4 rounded"
-                         style="background:#211331; border:1px solid #3b2454;">
+                        <div class="p-4 rounded"
+                            style="background:#211331; border:1px solid #3b2454;">
 
-                        <h6 class="text-white fw-bold mb-3">
-                            Bank Transfer
-                        </h6>
+                            <h6 class="text-white fw-bold mb-3">
+                                Bank Transfer
+                            </h6>
 
-                        <p class="mb-1" style="color:#b8a9c9;">
-                            Silakan transfer sesuai total pembayaran.
-                        </p>
+                            <p class="mb-1" style="color:#b8a9c9;">
+                                Silakan transfer sesuai total pembayaran.
+                            </p>
 
-                        {{-- 
-                            Detail rekening sementara.
-                            Nanti sebaiknya dipindahkan ke config/.env
-                            agar tidak hardcode di source code.
-                        --}}
 
-                        <div class="mt-4">
+                            <div class="mt-4">
 
-                            <div style="color:#b8a9c9; font-size:13px;">
-                                Bank
-                            </div>
+                                {{-- BANK --}}
+                                <div style="color:#b8a9c9; font-size:13px;">
+                                    Bank
+                                </div>
 
-                            <div class="text-white fw-bold mb-3">
-                                BCA
-                            </div>
+                                <div class="text-white fw-bold mb-3">
+                                    {{ config('payment.bank.name') }}
+                                </div>
 
-                            <div style="color:#b8a9c9; font-size:13px;">
-                                Nomor Rekening
-                            </div>
 
-                            <div class="text-white fw-bold mb-3">
-                                XXXX XXXX XXXX
-                            </div>
+                                {{-- NOMOR REKENING --}}
+                                <div style="color:#b8a9c9; font-size:13px;">
+                                    Nomor Rekening
+                                </div>
 
-                            <div style="color:#b8a9c9; font-size:13px;">
-                                Atas Nama
-                            </div>
+                                <div class="text-white fw-bold fs-5 mb-3">
+                                    {{ config('payment.bank.account_number') }}
+                                </div>
 
-                            <div class="text-white fw-bold">
-                                Anireshop
+
+                                {{-- NAMA PEMILIK --}}
+                                <div style="color:#b8a9c9; font-size:13px;">
+                                    Atas Nama
+                                </div>
+
+                                <div class="text-white fw-bold">
+                                    {{ config('payment.bank.account_name') }}
+                                </div>
+
                             </div>
 
                         </div>
-
-                    </div>
 
                 @endif
 
             </div>
 
+            {{-- UBAH METODE PEMBAYARAN --}}
+            @if (in_array($order->payment_status, ['PENDING', 'REJECTED']))
+
+                <div class="ani-card p-4 mb-4">
+
+                    <h5 class="text-white fw-bold mb-3">
+                        Ubah Metode Pembayaran
+                    </h5>
+
+                    <p style="color:#b8a9c9;">
+                        Ingin menggunakan metode pembayaran lain?
+                        Silakan pilih metode pembayaran di bawah.
+                    </p>
+
+                    <form
+                        action="{{ route('payments.method.update', $order) }}"
+                        method="POST"
+                    >
+                        @csrf
+                        @method('PUT')
+
+                        <div class="mb-3">
+                            <select
+                                name="payment_method"
+                                class="form-select"
+                                required
+                            >
+                                <option value="QRIS"
+                                    {{ $order->payment_method === 'QRIS' ? 'selected' : '' }}>
+                                    📱 QRIS
+                                </option>
+
+                                <option value="BANK_TRANSFER"
+                                    {{ $order->payment_method === 'BANK_TRANSFER' ? 'selected' : '' }}>
+                                    🏦 Bank Transfer - BRI
+                                </option>
+                            </select>
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="btn btn-ani w-100"
+                        >
+                            Ubah Metode Pembayaran
+                        </button>
+
+                    </form>
+
+                </div>
+
+            @endif
 
             {{-- UPLOAD PAYMENT PROOF --}}
             @if($order->payment_status === 'PENDING')

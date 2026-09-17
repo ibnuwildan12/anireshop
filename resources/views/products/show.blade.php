@@ -3,7 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>{{ $product->name }} - Anireshop</title>
 
@@ -82,15 +86,20 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark">
+
     <div class="container">
 
-        <a class="navbar-brand" href="{{ route('home') }}">
+        <a
+            class="navbar-brand"
+            href="{{ route('home') }}"
+        >
             Anireshop
         </a>
 
         <div class="ms-auto">
 
             @auth
+
                 <span class="text-light me-3">
                     Hi, {{ auth()->user()->name }}
                 </span>
@@ -102,34 +111,44 @@
                 >
                     @csrf
 
-                    <button class="btn btn-sm btn-outline-light">
+                    <button
+                        class="btn btn-sm btn-outline-light"
+                    >
                         Logout
                     </button>
+
                 </form>
+
             @else
+
                 <a
                     href="{{ route('login') }}"
                     class="btn btn-sm btn-outline-light"
                 >
                     Login
                 </a>
+
             @endauth
 
         </div>
 
     </div>
+
 </nav>
 
 
 <div class="container py-5">
 
+    {{-- BACK TO HOME --}}
     <div class="mb-4">
+
         <a
             href="{{ route('home') }}"
             class="text-decoration-none text-light"
         >
             ← Kembali ke Home
         </a>
+
     </div>
 
 
@@ -147,7 +166,7 @@
                     class="product-main-image"
                 >
 
-                <div class="d-flex gap-2 mt-3">
+                <div class="d-flex gap-2 mt-3 flex-wrap">
 
                     @foreach ($product->images as $image)
 
@@ -167,9 +186,11 @@
                 <div
                     class="product-main-image d-flex align-items-center justify-content-center"
                 >
+
                     <span class="text-secondary">
                         No Image Available
                     </span>
+
                 </div>
 
             @endif
@@ -182,18 +203,25 @@
 
             <div class="product-info">
 
+                {{-- CATEGORY --}}
                 <span class="badge text-bg-secondary mb-3">
                     {{ $product->category->name }}
                 </span>
 
+
+                {{-- PRODUCT NAME --}}
                 <h1 class="fw-bold">
                     {{ $product->name }}
                 </h1>
 
+
+                {{-- PRICE --}}
                 <div class="product-price my-3">
                     Rp {{ number_format($product->price, 0, ',', '.') }}
                 </div>
 
+
+                {{-- STOCK --}}
                 <p class="stock">
                     Stok tersedia:
                     {{ $product->available_stock }}
@@ -201,6 +229,8 @@
 
                 <hr>
 
+
+                {{-- DESCRIPTION --}}
                 <h5>
                     Deskripsi
                 </h5>
@@ -210,97 +240,67 @@
                 </p>
 
 
-                {{-- VARIATION --}}
-                <div class="mt-4">
-
-                    <label class="form-label">
-                        Variasi / Catatan Produk
-                    </label>
-
-                    <textarea
-                        class="form-control bg-dark text-light border-secondary"
-                        rows="3"
-                        placeholder="Contoh: Pilih karakter Levi / warna hitam"
-                    ></textarea>
-
-                    <small class="text-secondary">
-                        Variasi dicatat sebagai catatan pesanan.
-                    </small>
-
-                </div>
-
-
-                {{-- QUANTITY --}}
-                <div class="mt-4">
-
-                    <label class="form-label">
-                        Jumlah
-                    </label>
-
-                    <input
-                        type="number"
-                        class="form-control bg-dark text-light border-secondary"
-                        value="1"
-                        min="1"
-                        max="{{ $product->available_stock }}"
-                    >
-
-                </div>
-
-
+                {{-- ADD TO CART FORM --}}
                 <form
-    method="POST"
-    action="{{ route('cart.add', $product) }}"
->
-    @csrf
+                    method="POST"
+                    action="{{ route('cart.add', $product) }}"
+                >
 
-    <div class="mt-4">
+                    @csrf
 
-        <label class="form-label">
-            Variasi / Catatan Produk
-        </label>
 
-        <textarea
-            name="variation_note"
-            class="form-control bg-dark text-light border-secondary"
-            rows="3"
-            maxlength="500"
-            placeholder="Contoh: Pilih karakter Levi / warna hitam"
-        ></textarea>
+                    {{-- VARIATION --}}
+                    <div class="mt-4">
 
-        <small class="text-secondary">
-            Maksimal 500 karakter.
-        </small>
+                        <label class="form-label">
+                            Variasi / Catatan Produk
+                        </label>
 
-    </div>
+                        <textarea
+                            name="variation_note"
+                            class="form-control bg-dark text-light border-secondary"
+                            rows="3"
+                            maxlength="500"
+                            placeholder="Contoh: Pilih karakter Levi / warna hitam"
+                        ></textarea>
 
-    <div class="mt-4">
+                        <small class="text-secondary">
+                            Maksimal 500 karakter.
+                        </small>
 
-        <label class="form-label">
-            Jumlah
-        </label>
+                    </div>
 
-        <input
-            type="number"
-            name="quantity"
-            class="form-control bg-dark text-light border-secondary"
-            value="1"
-            min="1"
-            max="{{ $product->available_stock }}"
-            required
-        >
 
-    </div>
+                    {{-- QUANTITY --}}
+                    <div class="mt-4">
 
-    <button
-        type="submit"
-        class="btn btn-light btn-lg w-100 mt-4"
-        {{ $product->available_stock <= 0 ? 'disabled' : '' }}
-    >
-        Tambah ke Keranjang
-    </button>
+                        <label class="form-label">
+                            Jumlah
+                        </label>
 
-</form>
+                        <input
+                            type="number"
+                            name="quantity"
+                            class="form-control bg-dark text-light border-secondary"
+                            value="1"
+                            min="1"
+                            max="{{ $product->available_stock }}"
+                            required
+                        >
+
+                    </div>
+
+
+                    {{-- ADD TO CART --}}
+                    <button
+                        type="submit"
+                        class="btn btn-light btn-lg w-100 mt-4"
+                        {{ $product->available_stock <= 0 ? 'disabled' : '' }}
+                    >
+                        Tambah ke Keranjang
+                    </button>
+
+                </form>
 
             </div>
 
@@ -315,7 +315,9 @@
 
     <div class="container text-center">
 
-        <h4>Anireshop</h4>
+        <h4>
+            Anireshop
+        </h4>
 
         <p class="text-secondary mb-0">
             Anime • K-Pop • Cute Accessories
@@ -329,10 +331,13 @@
 <script>
 
 function changeImage(image) {
+
     document.getElementById('mainImage').src = image;
+
 }
 
 </script>
 
 </body>
+
 </html>

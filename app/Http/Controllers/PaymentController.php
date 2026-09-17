@@ -110,4 +110,40 @@ class PaymentController extends Controller
                 'Bukti pembayaran berhasil dikirim dan menunggu verifikasi admin.'
             );
     }
+
+    public function updateMethod(Request $request, Order $order)
+    {
+        // Pastikan order milik customer yang sedang login
+        if ($order->user_id !== auth()->id()) {
+            abort(403);
+        }
+
+        // Metode pembayaran hanya boleh diubah
+        // ketika pembayaran belum dikirim atau ditolak
+        if (!in_array($order->payment_status, ['PENDING', 'REJECTED'])) {
+            return back()->with(
+                'error',
+                'Metode pembayaran tidak dapat diubah pada status pembayaran saat ini.'
+            );
+        }
+
+        $validated = $request->validate([
+            'payment_method' => ['required', 'in:QRIS,BANK_TRANSFER'],
+        ]);
+
+        $order->update([
+            'payment_method' => $validated['payment_method'],
+            'payment_proof' => null,
+            'payment_submitted_at' => null,
+            'payment_verified_at' => null,
+            'payment_status' => 'PENDING',
+        ]);
+
+        return redirect()
+            ->route('payments.show', $order)
+            ->with(
+                'success',
+                'Metode pembayaran berhasil diubah.'
+            );
+    }
 }
