@@ -144,9 +144,24 @@ class Phase2DatabaseTest extends TestCase
             'order_status' => 'PENDING',
         ]);
 
+        $category = Category::create([
+            'name' => 'Test Category',
+            'slug' => 'test-category',
+        ]);
+
+        $product = Product::create([
+            'category_id' => $category->id,
+            'name' => 'Test Product',
+            'slug' => 'test-product',
+            'description' => 'Test product',
+            'price' => 50000,
+            'stock' => 10,
+            'reserved_stock' => 0,
+        ]);
+
         $item = OrderItem::create([
             'order_id' => $order->id,
-            'product_id' => null,
+            'product_id' => $product->id,
             'product_name' => 'Test Product',
             'quantity' => 2,
             'price' => 50000,

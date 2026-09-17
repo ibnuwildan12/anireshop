@@ -13,108 +13,211 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         $products = [
+            // Plush
             [
                 'category' => 'Plush',
-                'name' => 'Levi Ackerman Plush',
-                'description' => 'Plush karakter anime dengan ukuran dan variasi sesuai deskripsi produk.',
-                'price' => 150000,
+                'name' => 'Plush Gojo Satoru',
+                'price' => 25000,
                 'stock' => 10,
-                'images' => [
-                    'products/levi-plush-1.jpg',
-                    'products/levi-plush-2.jpg',
-                ],
+                'image' => 'products/gojo-plush.jpg',
+            ],
+            [
+                'category' => 'Plush',
+                'name' => 'Plush Tanjiro',
+                'price' => 25000,
+                'stock' => 10,
+                'image' => 'products/tanjiro-plush.jpg',
+            ],
+            [
+                'category' => 'Plush',
+                'name' => 'Plush Umaru-chan',
+                'price' => 25000,
+                'stock' => 10,
+                'image' => 'products/umaru-plush.jpg',
+            ],
+
+            // Keychain
+            [
+                'category' => 'Keychain',
+                'name' => 'Anya Keychain',
+                'price' => 15000,
+                'stock' => 20,
+                'image' => 'products/anya-keychain.jpg',
             ],
             [
                 'category' => 'Keychain',
-                'name' => 'One Piece Acrylic Keychain',
-                'description' => 'Acrylic keychain bertema One Piece.',
-                'price' => 35000,
+                'name' => 'Elaina Keychain',
+                'price' => 15000,
                 'stock' => 20,
-                'images' => [
-                    'products/one-piece-keychain.jpg',
-                ],
+                'image' => 'products/elaina-keychain.jpg',
+            ],
+            [
+                'category' => 'Keychain',
+                'name' => 'Luffy Keychain',
+                'price' => 15000,
+                'stock' => 20,
+                'image' => 'products/luffy-keychain.jpg',
+            ],
+
+            // Poster
+            [
+                'category' => 'Poster',
+                'name' => 'One Piece Poster',
+                'price' => 10000,
+                'stock' => 15,
+                'image' => 'products/one-piece-poster.jpg',
             ],
             [
                 'category' => 'Poster',
-                'name' => 'Anime Wall Poster',
-                'description' => 'Poster anime untuk dekorasi kamar.',
-                'price' => 45000,
+                'name' => 'Frieren Poster',
+                'price' => 10000,
                 'stock' => 15,
-                'images' => [
-                    'products/anime-poster.jpg',
-                ],
+                'image' => 'products/frieren-poster.jpg',
+            ],
+            [
+                'category' => 'Poster',
+                'name' => 'Jujutsu Kaisen Poster',
+                'price' => 10000,
+                'stock' => 15,
+                'image' => 'products/jjk-poster.jpg',
+            ],
+
+            // Card Accessories
+            [
+                'category' => 'Card Accessories',
+                'name' => 'Hatsune Miku Hologram Card',
+                'price' => 12000,
+                'stock' => 25,
+                'image' => 'products/miku-hologram-card.jpg',
             ],
             [
                 'category' => 'Card Accessories',
-                'name' => 'Photocard Holder',
-                'description' => 'Holder untuk menyimpan dan melindungi photocard.',
-                'price' => 25000,
+                'name' => 'Kafka Hologram Card',
+                'price' => 12000,
                 'stock' => 25,
-                'images' => [
-                    'products/photocard-holder.jpg',
-                ],
+                'image' => 'products/kafka-hologram-card.jpg',
+            ],
+            [
+                'category' => 'Card Accessories',
+                'name' => 'Furina Hologram Card',
+                'price' => 12000,
+                'stock' => 25,
+                'image' => 'products/furina-hologram-card.jpg',
+            ],
+
+            // Pin
+            [
+                'category' => 'Pin',
+                'name' => 'Nailong Pin',
+                'price' => 6000,
+                'stock' => 30,
+                'image' => 'products/nailong-pin.jpg',
             ],
             [
                 'category' => 'Pin',
-                'name' => 'Anime Character Pin',
-                'description' => 'Pin karakter anime untuk koleksi dan dekorasi.',
-                'price' => 15000,
+                'name' => 'Zenitsu Pin',
+                'price' => 6000,
                 'stock' => 30,
-                'images' => [
-                    'products/anime-pin.jpg',
-                ],
+                'image' => 'products/zenitsu-pin.jpg',
+            ],
+            [
+                'category' => 'Pin',
+                'name' => 'Shinobu Pin',
+                'price' => 6000,
+                'stock' => 30,
+                'image' => 'products/shinobu-pin.jpg',
+            ],
+
+            // Uchiwa Fan
+            [
+                'category' => 'Uchiwa Fan',
+                'name' => 'Muichiro Uchiwa Fan',
+                'price' => 10000,
+                'stock' => 12,
+                'image' => 'products/muichiro-uchiwa.jpg',
             ],
             [
                 'category' => 'Uchiwa Fan',
-                'name' => 'K-Pop Uchiwa Fan',
-                'description' => 'Uchiwa fan untuk koleksi K-Pop.',
-                'price' => 50000,
+                'name' => 'Gojo Uchiwa Fan',
+                'price' => 10000,
                 'stock' => 12,
-                'images' => [
-                    'products/kpop-uchiwa.jpg',
-                ],
+                'image' => 'products/gojo-uchiwa.jpg',
+            ],
+            [
+                'category' => 'Uchiwa Fan',
+                'name' => 'Tanjiro Uchiwa Fan',
+                'price' => 10000,
+                'stock' => 12,
+                'image' => 'products/tanjiro-uchiwa.jpg',
+            ],
+
+            // K-Pop
+            [
+                'category' => 'K-Pop',
+                'name' => 'BLACKPINK A',
+                'price' => 15000,
+                'stock' => 20,
+                'image' => 'products/blackpink-a.jpg',
             ],
             [
                 'category' => 'K-Pop',
-                'name' => 'K-Pop Photocard',
-                'description' => 'Photocard K-Pop untuk koleksi.',
-                'price' => 30000,
+                'name' => 'aespa A',
+                'price' => 15000,
                 'stock' => 20,
-                'images' => [
-                    'products/kpop-photocard.jpg',
-                ],
+                'image' => 'products/aespa-a.jpg',
+            ],
+            [
+                'category' => 'K-Pop',
+                'name' => 'BOYNEXTDOOR A',
+                'price' => 15000,
+                'stock' => 20,
+                'image' => 'products/boynextdoor-a.jpg',
+            ],
+
+            // Tote Bag
+            [
+                'category' => 'Tote Bag',
+                'name' => 'One Piece Tote Bag',
+                'price' => 15000,
+                'stock' => 10,
+                'image' => 'products/one-piece-tote-bag.jpg',
             ],
             [
                 'category' => 'Tote Bag',
-                'name' => 'Anime Canvas Tote Bag',
-                'description' => 'Tote bag canvas dengan desain anime.',
-                'price' => 85000,
+                'name' => 'Gojo Tote Bag',
+                'price' => 15000,
                 'stock' => 10,
-                'images' => [
-                    'products/anime-tote-bag.jpg',
-                ],
+                'image' => 'products/gojo-tote-bag.jpg',
+            ],
+            [
+                'category' => 'Tote Bag',
+                'name' => 'Cute Girl Tote Bag',
+                'price' => 15000,
+                'stock' => 10,
+                'image' => 'products/cute-girl-tote-bag.jpg',
             ],
         ];
 
         foreach ($products as $item) {
             $category = Category::where('name', $item['category'])->firstOrFail();
 
-            $product = Product::create([
-                'category_id' => $category->id,
-                'name' => $item['name'],
-                'slug' => Str::slug($item['name']),
-                'description' => $item['description'],
-                'price' => $item['price'],
-                'stock' => $item['stock'],
-                'reserved_stock' => 0,
-            ]);
+            $product = Product::updateOrCreate(
+                [
+                    'slug' => Str::slug($item['name']),
+                ],
+                [
+                    'category_id' => $category->id,
+                    'name' => $item['name'],
+                    'description' => $item['name'] . ' untuk koleksi merchandise Anireshop.',
+                    'price' => $item['price'],
+                    'stock' => $item['stock'],
+                ]
+            );
 
-            foreach ($item['images'] as $image) {
-                ProductImage::create([
-                    'product_id' => $product->id,
-                    'image_path' => $image,
-                ]);
-            }
+            ProductImage::firstOrCreate([
+                'product_id' => $product->id,
+                'image_path' => $item['image'],
+            ]);
         }
     }
 }

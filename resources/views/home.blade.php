@@ -141,13 +141,18 @@
 
             <div class="col-6 col-md-4 col-lg-3">
 
-                <div class="category-card">
+                <a href="{{ route('products.index', ['category' => $category->slug]) }}"
+                class="text-decoration-none">
 
-                    <h5 class="mb-0">
-                        {{ $category->name }}
-                    </h5>
+                    <div class="category-card">
 
-                </div>
+                        <h5 class="mb-0">
+                            {{ $category->name }}
+                        </h5>
+
+                    </div>
+
+                </a>
 
             </div>
 
