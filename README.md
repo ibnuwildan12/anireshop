@@ -340,7 +340,7 @@ http://localhost:8000
 ### Admin
 
 ```text
-Email    : admin@anireshop.com
+Email    : ibnuwildan12@gmail.com
 Password : ***REMOVED***
 ```
 
