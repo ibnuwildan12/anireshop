@@ -15,7 +15,7 @@ class AdminUserSeeder extends Seeder
             [
                 'name' => 'Anireshop Admin',
                 'whatsapp' => '081328971435',
-                'password' => Hash::make('***REMOVED***'),
+                'password' => Hash::make(env('DEMO_ADMIN_PASSWORD')),
                 'role' => 'admin',
             ]
         );
@@ -25,7 +25,7 @@ class AdminUserSeeder extends Seeder
             [
                 'name' => 'Anireshop Customer',
                 'whatsapp' => '085600635251',
-                'password' => Hash::make('***REMOVED***'),
+                'password' => Hash::make(env('DEMO_ADMIN_PASSWORD')),
                 'role' => 'customer',
             ]
         );

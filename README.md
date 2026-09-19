@@ -339,16 +339,16 @@ http://localhost:8000
 
 ### Admin
 
+### Admin
+
 ```text
 Email    : ibnuwildan12@gmail.com
-Password : ***REMOVED***
 ```
 
 ### Customer
 
 ```text
 Email    : customer@anireshop.com
-Password : ***REMOVED***
 ```
 
 > Credential tersebut digunakan untuk development/assessment.
