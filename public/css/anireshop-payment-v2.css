@@ -1,0 +1,907 @@
+/* =========================================================
+   ANIRESHOP PAYMENT V2
+   ========================================================= */
+
+   .ani-payment-page {
+    min-height: 70vh;
+    padding-bottom: 30px;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+.ani-payment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.ani-payment-eyebrow {
+    display: block;
+    margin-bottom: 8px;
+    color: #ec4899;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.ani-payment-header h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 800;
+}
+
+.ani-payment-header p {
+    margin: 8px 0 0;
+    color: #8f8298;
+    font-size: 13px;
+}
+
+.ani-payment-back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 18px;
+    border: 1px solid #392743;
+    border-radius: 10px;
+    background: #17131c;
+    color: #cfc2d6;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: .2s ease;
+}
+
+.ani-payment-back:hover {
+    border-color: #ec4899;
+    background: #211827;
+    color: #ffffff;
+}
+
+
+/* =========================
+   ALERT
+   ========================= */
+
+.ani-payment-alert {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 13px 15px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.ani-payment-alert > span {
+    width: 23px;
+    height: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 23px;
+    border-radius: 50%;
+    color: #ffffff;
+    font-weight: 800;
+}
+
+.ani-payment-alert.success {
+    border: 1px solid #28523d;
+    background: #101d17;
+    color: #b8e7ce;
+}
+
+.ani-payment-alert.success > span {
+    background: #2c8b5c;
+}
+
+.ani-payment-alert.error {
+    border: 1px solid #5c2935;
+    background: #211216;
+    color: #efb8c2;
+}
+
+.ani-payment-alert.error > span {
+    background: #b83d55;
+}
+
+
+/* =========================
+   CARD
+   ========================= */
+
+.ani-payment-card {
+    margin-bottom: 18px;
+    padding: 24px;
+    border: 1px solid #2d2431;
+    border-radius: 15px;
+    background: #151219;
+}
+
+.ani-payment-section-heading {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 24px;
+}
+
+.ani-payment-number {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 36px;
+    border: 1px solid #513052;
+    border-radius: 10px;
+    background: #241829;
+    color: #ec4899;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.ani-payment-section-heading span {
+    display: block;
+    color: #ec4899;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 1.7px;
+}
+
+.ani-payment-section-heading h2 {
+    margin: 3px 0 0;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+
+/* =========================
+   PRODUCTS
+   ========================= */
+
+.ani-payment-products {
+    display: flex;
+    flex-direction: column;
+}
+
+.ani-payment-product {
+    display: grid;
+    grid-template-columns: 45px minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    padding: 13px 0;
+    border-bottom: 1px solid #29222e;
+}
+
+.ani-payment-product:first-child {
+    padding-top: 0;
+}
+
+.ani-payment-product:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.ani-payment-product-icon {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #33293a;
+    border-radius: 9px;
+    background: #201a25;
+    font-size: 17px;
+}
+
+.ani-payment-product-info {
+    min-width: 0;
+}
+
+.ani-payment-product-info strong {
+    display: block;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.ani-payment-product-info span {
+    display: block;
+    margin-top: 4px;
+    color: #817486;
+    font-size: 10px;
+}
+
+.ani-payment-product-info small {
+    display: block;
+    margin-top: 4px;
+    color: #8f73ad;
+    font-size: 9px;
+}
+
+.ani-payment-product-total {
+    color: #d8cddd;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+
+/* =========================
+   TOTAL
+   ========================= */
+
+.ani-payment-divider {
+    height: 1px;
+    margin: 20px 0;
+    background: #2d2431;
+}
+
+.ani-payment-total-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    color: #a99cad;
+    font-size: 11px;
+}
+
+.ani-payment-total-line strong {
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.ani-payment-grand-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 17px;
+}
+
+.ani-payment-grand-total span {
+    color: #c9bdcf;
+    font-size: 12px;
+}
+
+.ani-payment-grand-total strong {
+    color: #ec4899;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+
+/* =========================
+   PAYMENT METHOD
+   ========================= */
+
+.ani-payment-method-box {
+    padding: 20px;
+    border: 1px solid #3b2a48;
+    border-radius: 13px;
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(124,58,237,.10),
+            transparent 45%
+        ),
+        #19141f;
+}
+
+.ani-payment-method-box.qris {
+    text-align: center;
+}
+
+.ani-payment-method-icon {
+    width: 42px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: linear-gradient(135deg,#7c3aed,#ec4899);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.ani-payment-method-icon.bank {
+    background: #5c2d91;
+}
+
+.ani-payment-method-title {
+    margin-top: 13px;
+}
+
+.ani-payment-method-title strong {
+    display: block;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.ani-payment-method-title span {
+    display: block;
+    margin-top: 4px;
+    color: #817486;
+    font-size: 10px;
+}
+
+
+/* QRIS */
+
+.ani-qris-wrapper {
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid #30263a;
+}
+
+.ani-qris-label {
+    color: #756a7d;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+}
+
+.ani-qris-total {
+    margin-top: 4px;
+    color: #ec4899;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.ani-qris-image {
+    width: 300px;
+    max-width: 100%;
+    margin: 18px auto;
+    padding: 10px;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 10px 35px rgba(0,0,0,.25);
+}
+
+.ani-qris-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.ani-qris-wrapper p {
+    max-width: 420px;
+    margin: 0 auto;
+    color: #817486;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+
+/* BANK */
+
+.ani-bank-detail {
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid #30263a;
+}
+
+.ani-bank-row {
+    margin-bottom: 16px;
+}
+
+.ani-bank-row span {
+    display: block;
+    margin-bottom: 5px;
+    color: #756a7d;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: .7px;
+}
+
+.ani-bank-row strong {
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.ani-account-number {
+    font-size: 17px !important;
+    letter-spacing: .5px;
+}
+
+.ani-transfer-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 13px;
+    border: 1px solid #4a3155;
+    border-radius: 9px;
+    background: rgba(236,72,153,.05);
+}
+
+.ani-transfer-total span {
+    color: #b9adbf;
+    font-size: 10px;
+}
+
+.ani-transfer-total strong {
+    color: #ec4899;
+    font-size: 14px;
+}
+
+
+/* =========================
+   CHANGE METHOD
+   ========================= */
+
+.ani-payment-description {
+    margin: -7px 0 18px;
+    color: #817486;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.ani-method-select select {
+    width: 100%;
+    height: 43px;
+    padding: 0 12px;
+    border: 1px solid #3a3040;
+    border-radius: 9px;
+    outline: none;
+    background: #100d13;
+    color: #ffffff;
+    font-size: 11px;
+}
+
+.ani-method-select select:focus {
+    border-color: #ec4899;
+}
+
+.ani-method-select option {
+    background: #151219;
+    color: #ffffff;
+}
+
+.ani-payment-outline-btn {
+    width: 100%;
+    min-height: 43px;
+    margin-top: 10px;
+    border: 1px solid #49364f;
+    border-radius: 9px;
+    background: transparent;
+    color: #c9b9d0;
+    font-size: 10px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.ani-payment-outline-btn:hover {
+    border-color: #ec4899;
+    background: rgba(236,72,153,.07);
+    color: #ffffff;
+}
+
+
+/* =========================
+   UPLOAD
+   ========================= */
+
+.ani-upload-area {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 175px;
+    padding: 25px;
+    border: 1px dashed #49364f;
+    border-radius: 12px;
+    background: #100d13;
+    text-align: center;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.ani-upload-area:hover {
+    border-color: #ec4899;
+    background: rgba(236,72,153,.04);
+}
+
+.ani-upload-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    background: #241829;
+    font-size: 21px;
+}
+
+.ani-upload-area strong {
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.ani-upload-area > span {
+    margin-top: 5px;
+    color: #716576;
+    font-size: 9px;
+}
+
+.ani-upload-area input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.ani-file-name {
+    min-height: 17px;
+    margin-top: 9px;
+    color: #c4b5fd;
+    font-size: 10px;
+    text-align: center;
+}
+
+.ani-payment-field-error {
+    margin-top: 7px;
+    color: #ef7186;
+    font-size: 10px;
+}
+
+.ani-payment-submit-btn {
+    width: 100%;
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 15px;
+    padding: 0 17px;
+    border: 0;
+    border-radius: 10px;
+    background: linear-gradient(135deg,#7c3aed,#ec4899);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(124,58,237,.20);
+    transition: .2s ease;
+}
+
+.ani-payment-submit-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 13px 30px rgba(236,72,153,.25);
+}
+
+.ani-payment-submit-btn b {
+    font-size: 16px;
+}
+
+.ani-payment-submit-btn.rejected {
+    background: linear-gradient(135deg,#9f1239,#ec4899);
+}
+
+
+/* =========================
+   STATUS
+   ========================= */
+
+.ani-payment-status-card {
+    margin-bottom: 18px;
+    padding: 35px 25px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.ani-payment-status-card.waiting {
+    border: 1px solid #5b4a29;
+    background: #211c12;
+}
+
+.ani-payment-status-card.paid {
+    border: 1px solid #28523d;
+    background: #101d17;
+}
+
+.ani-payment-status-icon {
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: #2c2230;
+    color: #ec4899;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.waiting .ani-payment-status-icon {
+    background: #44371d;
+    color: #d4b45f;
+}
+
+.paid .ani-payment-status-icon {
+    background: #1d4934;
+    color: #6ed09b;
+}
+
+.ani-payment-status-card h2 {
+    margin: 15px 0 7px;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.ani-payment-status-card p {
+    max-width: 400px;
+    margin: 0 auto;
+    color: #8b7e91;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.ani-payment-status-card > span {
+    display: block;
+    margin-top: 12px;
+    color: #716576;
+    font-size: 9px;
+}
+
+
+/* REJECTED */
+
+.ani-payment-rejected {
+    margin-bottom: 22px;
+    text-align: center;
+}
+
+.ani-payment-rejected .ani-payment-status-icon {
+    background: #4a202b;
+    color: #ef7186;
+}
+
+.ani-payment-rejected h2 {
+    margin: 14px 0 7px;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.ani-payment-rejected p {
+    max-width: 440px;
+    margin: auto;
+    color: #8b7e91;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   SIDE CARD
+   ========================= */
+
+.ani-payment-side {
+    position: sticky;
+    top: 90px;
+    padding: 24px;
+    border: 1px solid #33253a;
+    border-radius: 16px;
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(124,58,237,.12),
+            transparent 45%
+        ),
+        #151219;
+    box-shadow: 0 15px 45px rgba(0,0,0,.18);
+}
+
+.ani-payment-side-label {
+    color: #ec4899;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+}
+
+.ani-payment-side h2 {
+    margin: 6px 0 20px;
+    color: #ffffff;
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.ani-payment-deadline {
+    padding: 13px;
+    border: 1px solid #5b4a29;
+    border-radius: 10px;
+    background: #211c12;
+}
+
+.ani-payment-deadline span {
+    display: block;
+    margin-bottom: 5px;
+    color: #b39a58;
+    font-size: 9px;
+}
+
+.ani-payment-deadline strong {
+    color: #dfc578;
+    font-size: 12px;
+}
+
+.ani-payment-side-divider {
+    height: 1px;
+    margin: 20px 0;
+    background: #2d2431;
+}
+
+.ani-payment-side-total span {
+    display: block;
+    color: #756a7d;
+    font-size: 10px;
+}
+
+.ani-payment-side-total strong {
+    display: block;
+    margin-top: 5px;
+    color: #ec4899;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.ani-payment-side-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.ani-payment-side-info > div {
+    padding: 12px;
+    border: 1px solid #29222e;
+    border-radius: 9px;
+    background: #100d13;
+}
+
+.ani-payment-side-info span {
+    display: block;
+    margin-bottom: 5px;
+    color: #716576;
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+}
+
+.ani-payment-side-info strong {
+    display: block;
+    color: #d8cddd;
+    font-size: 10px;
+    word-break: break-word;
+}
+
+.ani-payment-side-note {
+    margin-top: 15px;
+    color: #665c6c;
+    font-size: 9px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+
+/* =========================
+   FOOTER ACTIONS
+   ========================= */
+
+.ani-payment-footer-actions {
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+.ani-payment-secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 15px;
+    border: 1px solid #3b3041;
+    border-radius: 9px;
+    background: #17131c;
+    color: #aaa0b0;
+    font-size: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: .2s ease;
+}
+
+.ani-payment-secondary-btn:hover {
+    border-color: #ec4899;
+    color: #ffffff;
+    background: #1d1621;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 991.98px) {
+
+    .ani-payment-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .ani-payment-side {
+        position: static;
+    }
+
+}
+
+
+@media (max-width: 575.98px) {
+
+    .ani-payment-page .container {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .ani-payment-header h1 {
+        font-size: 27px;
+    }
+
+    .ani-payment-card,
+    .ani-payment-side {
+        padding: 18px;
+        border-radius: 13px;
+    }
+
+    .ani-payment-product {
+        grid-template-columns: 42px minmax(0, 1fr);
+    }
+
+    .ani-payment-product-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .ani-payment-product-total {
+        grid-column: 2;
+        text-align: left;
+        margin-top: -5px;
+    }
+
+    .ani-payment-grand-total strong {
+        font-size: 17px;
+    }
+
+    .ani-qris-image {
+        width: 260px;
+    }
+
+    .ani-payment-side-info {
+        grid-template-columns: 1fr;
+    }
+
+    .ani-payment-footer-actions {
+        flex-direction: column;
+    }
+
+    .ani-payment-secondary-btn {
+        width: 100%;
+    }
+
+}

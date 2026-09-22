@@ -11,16 +11,28 @@
         @yield('title', 'Anireshop')
     </title>
 
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link
-        rel="stylesheet"
-        href="{{ asset('css/anireshop.css') }}"
-    >
+    <link rel="stylesheet" href="{{ asset('css/anireshop.css') }}" >
 
+    <link rel="stylesheet" href="{{ asset('css/anireshop-navbar-v2.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/anireshop-catalog-v2.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/anireshop-product-v2.css') }}" >
+
+    <link rel="stylesheet" href="{{ asset('css/anireshop-home-search.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/anireshop-cart-v2.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/anireshop-checkout-v2.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/anireshop-order-v2.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/anireshop-payment-v2.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/anireshop-global-v2.css') }}">
+    
     @stack('styles')
 
 </head>
@@ -39,6 +51,8 @@
                 Ani<span>re</span>shop
             </a>
 
+            
+
             <button
                 class="navbar-toggler"
                 type="button"
@@ -53,8 +67,41 @@
                 id="aniNavbar"
             >
 
+
                 <ul class="navbar-nav ms-auto align-items-lg-center">
 
+                    {{-- SEARCH --}}
+                    <li class="nav-item ani-search-item">
+
+                        <form
+                            action="{{ route('products.index') }}"
+                            method="GET"
+                            class="ani-navbar-search"
+                        >
+
+                            <span class="ani-search-icon">
+                                🔎
+                            </span>
+
+                            <input
+                                type="text"
+                                name="search"
+                                value="{{ request('search') }}"
+                                placeholder="Cari merchandise..."
+                                autocomplete="off"
+                            >
+
+                            <button
+                                type="submit"
+                                class="ani-search-button"
+                                title="Cari produk"
+                            >
+                                🔍
+                            </button>
+
+                        </form>
+
+                    </li>
                     {{-- HOME --}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('home') }}">
@@ -196,45 +243,48 @@
 
     <footer class="ani-footer">
 
-        <div class="container">
+    <div class="container text-center">
 
-            <div class="row">
+        <div class="ani-footer-brand">
 
-                <div class="col-md-6">
+            <h5>
+                Anireshop
+            </h5>
 
-                    <h5>Anireshop</h5>
-
-                    <p>
-                        Merchandise Anime, K-Pop & Cute Accessories.
-                    </p>
-
-                </div>
-
-                <div class="col-md-6">
-
-                    <h5>Quick Links</h5>
-
-                    <a href="{{ route('home') }}" class="d-block">
-                        Home
-                    </a>
-
-                    <a href="{{ route('cart.index') }}" class="d-block">
-                        Cart
-                    </a>
-
-                </div>
-
-            </div>
-
-            <hr>
-
-            <div class="text-center small">
-                © {{ date('Y') }} Anireshop. All rights reserved.
-            </div>
+            <p>
+                Merchandise Anime, K-Pop & Cute Accessories.
+            </p>
 
         </div>
 
-    </footer>
+
+        <div class="ani-footer-links">
+
+            <a href="{{ route('home') }}">
+                Home
+            </a>
+
+            <a href="{{ route('cart.index') }}">
+                Cart
+            </a>
+
+            <a href="{{ route('products.index') }}">
+                Produk
+            </a>
+
+        </div>
+
+
+        <div class="ani-footer-divider"></div>
+
+
+        <div class="ani-footer-copyright">
+            © {{ date('Y') }} Anireshop. All rights reserved.
+        </div>
+
+    </div>
+
+</footer>
 
 
     <script

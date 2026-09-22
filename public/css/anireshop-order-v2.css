@@ -1,0 +1,611 @@
+/* =========================================================
+   ANIRESHOP ORDER DETAIL V2
+   ========================================================= */
+
+   .ani-order-page {
+    min-height: 70vh;
+    padding-bottom: 30px;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+.ani-order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.ani-order-eyebrow {
+    display: block;
+    margin-bottom: 8px;
+    color: #ec4899;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.ani-order-header h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 800;
+}
+
+.ani-order-header p {
+    margin: 8px 0 0;
+    color: #897d90;
+    font-size: 13px;
+}
+
+.ani-order-status {
+    text-align: right;
+}
+
+.ani-status-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #716576;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.ani-order-status strong {
+    color: #ec4899;
+    font-size: 13px;
+}
+
+
+/* =========================
+   ALERT
+   ========================= */
+
+.ani-order-alert {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.ani-order-alert.success {
+    border: 1px solid #28523d;
+    background: #101d17;
+    color: #b8e7ce;
+}
+
+.ani-order-alert-icon {
+    width: 23px;
+    height: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 23px;
+    border-radius: 50%;
+    background: #2c8b5c;
+    color: #ffffff;
+    font-weight: 800;
+}
+
+
+/* =========================
+   CARD
+   ========================= */
+
+.ani-order-card {
+    margin-bottom: 18px;
+    padding: 24px;
+    border: 1px solid #2d2431;
+    border-radius: 15px;
+    background: #151219;
+}
+
+.ani-order-card-heading {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 24px;
+}
+
+.ani-order-heading-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 36px;
+    border: 1px solid #513052;
+    border-radius: 10px;
+    background: #241829;
+    color: #ec4899;
+    font-size: 14px;
+}
+
+.ani-order-card-heading span {
+    display: block;
+    color: #ec4899;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 1.7px;
+}
+
+.ani-order-card-heading h2 {
+    margin: 3px 0 0;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+
+/* =========================
+   INFO GRID
+   ========================= */
+
+.ani-order-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.ani-order-info-item {
+    padding: 13px;
+    border: 1px solid #29222e;
+    border-radius: 10px;
+    background: #100d13;
+}
+
+.ani-order-info-item > span {
+    display: block;
+    margin-bottom: 6px;
+    color: #716676;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+}
+
+.ani-order-info-item strong {
+    display: block;
+    color: #d9cfdd;
+    font-size: 12px;
+    word-break: break-word;
+}
+
+.ani-order-status-text {
+    color: #ec4899 !important;
+}
+
+.ani-tracking-number {
+    color: #ffffff !important;
+}
+
+.ani-track-btn {
+    display: inline-flex;
+    margin-top: 9px;
+    padding: 6px 9px;
+    border: 1px solid #44354a;
+    border-radius: 7px;
+    color: #bcaec4;
+    font-size: 9px;
+    text-decoration: none;
+    transition: .2s ease;
+}
+
+.ani-track-btn:hover {
+    border-color: #ec4899;
+    color: #ffffff;
+    background: rgba(236,72,153,.06);
+}
+
+
+/* =========================
+   ADDRESS
+   ========================= */
+
+.ani-address-box {
+    padding: 17px;
+    border: 1px solid #29222e;
+    border-radius: 10px;
+    background: #100d13;
+}
+
+.ani-address-box strong {
+    display: block;
+    margin-bottom: 9px;
+    color: #ffffff;
+    font-size: 11px;
+}
+
+.ani-address-box p {
+    margin: 0 0 7px;
+    color: #d2c7d7;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.ani-address-box > span {
+    color: #766b7d;
+    font-size: 10px;
+}
+
+
+/* =========================
+   PRODUCTS
+   ========================= */
+
+.ani-order-products {
+    display: flex;
+    flex-direction: column;
+}
+
+.ani-order-product {
+    display: grid;
+    grid-template-columns: 45px minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    padding: 13px 0;
+    border-bottom: 1px solid #29222e;
+}
+
+.ani-order-product:first-child {
+    padding-top: 0;
+}
+
+.ani-order-product:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.ani-order-product-icon {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #33293a;
+    border-radius: 9px;
+    background: #201a25;
+    font-size: 17px;
+}
+
+.ani-order-product-info {
+    min-width: 0;
+}
+
+.ani-order-product-info strong {
+    display: block;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.ani-order-product-info span {
+    display: block;
+    margin-top: 4px;
+    color: #817486;
+    font-size: 10px;
+}
+
+.ani-order-product-info small {
+    display: block;
+    margin-top: 4px;
+    color: #655b6b;
+    font-size: 9px;
+}
+
+.ani-order-product-total {
+    color: #d8cddd;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+
+/* =========================
+   SUMMARY
+   ========================= */
+
+.ani-order-summary {
+    position: sticky;
+    top: 90px;
+    padding: 24px;
+    border: 1px solid #33253a;
+    border-radius: 16px;
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(124,58,237,.11),
+            transparent 42%
+        ),
+        #151219;
+    box-shadow: 0 15px 45px rgba(0,0,0,.18);
+}
+
+.ani-order-summary-heading span {
+    color: #ec4899;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+}
+
+.ani-order-summary-heading h2 {
+    margin: 5px 0 22px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.ani-order-total-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    color: #a99cad;
+    font-size: 11px;
+}
+
+.ani-order-total-line + .ani-order-total-line {
+    margin-top: 11px;
+}
+
+.ani-order-total-line strong {
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.ani-order-summary-divider {
+    height: 1px;
+    margin: 20px 0;
+    background: #2d2431;
+}
+
+.ani-order-grand-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.ani-order-grand-total span {
+    color: #c9bdcf;
+    font-size: 12px;
+}
+
+.ani-order-grand-total strong {
+    color: #ec4899;
+    font-size: 19px;
+    font-weight: 800;
+}
+
+
+/* =========================
+   PAYMENT STATUS
+   ========================= */
+
+.ani-payment-status-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    margin-top: 20px;
+    padding: 13px;
+    border: 1px solid #30263a;
+    border-radius: 10px;
+    background: #100d13;
+}
+
+.status-icon {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 25px;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.status-icon.pending {
+    background: #9a6b27;
+}
+
+.status-icon.waiting {
+    background: #705a23;
+}
+
+.status-icon.paid {
+    background: #2c8b5c;
+}
+
+.status-icon.rejected {
+    background: #b83d55;
+}
+
+.ani-payment-status-box strong {
+    display: block;
+    margin-bottom: 3px;
+    color: #ddd3e1;
+    font-size: 11px;
+}
+
+.ani-payment-status-box small {
+    display: block;
+    color: #716576;
+    font-size: 9px;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   ACTIONS
+   ========================= */
+
+.ani-order-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-top: 18px;
+}
+
+.ani-order-primary-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 46px;
+    padding: 0 16px;
+    border-radius: 10px;
+    background: linear-gradient(135deg,#7c3aed,#ec4899);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(124,58,237,.20);
+    transition: .2s ease;
+}
+
+.ani-order-primary-btn:hover {
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 13px 30px rgba(236,72,153,.25);
+}
+
+.ani-order-primary-btn b {
+    font-size: 16px;
+}
+
+.ani-order-disabled-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 43px;
+    border-radius: 9px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.ani-order-disabled-btn.waiting {
+    border: 1px solid #5b4a29;
+    background: #211c12;
+    color: #c5a75d;
+}
+
+.ani-order-disabled-btn.paid {
+    border: 1px solid #28523d;
+    background: #101d17;
+    color: #75c69b;
+}
+
+.ani-order-primary-btn.rejected-btn {
+    background: linear-gradient(135deg,#9f1239,#ec4899);
+}
+
+.ani-order-received-btn {
+    width: 100%;
+    min-height: 43px;
+    border: 1px solid #28523d;
+    border-radius: 9px;
+    background: #101d17;
+    color: #75c69b;
+    font-size: 10px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.ani-order-received-btn:hover {
+    border-color: #43a875;
+    background: #14251c;
+}
+
+.ani-order-shop-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    border: 1px solid #3b3041;
+    border-radius: 9px;
+    color: #afa2b6;
+    font-size: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: .2s ease;
+}
+
+.ani-order-shop-btn:hover {
+    border-color: #ec4899;
+    color: #ffffff;
+    background: #1b151f;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 991.98px) {
+
+    .ani-order-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .ani-order-status {
+        text-align: left;
+    }
+
+    .ani-order-summary {
+        position: static;
+    }
+
+}
+
+
+@media (max-width: 575.98px) {
+
+    .ani-order-page .container {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .ani-order-header h1 {
+        font-size: 27px;
+    }
+
+    .ani-order-card,
+    .ani-order-summary {
+        padding: 18px;
+        border-radius: 13px;
+    }
+
+    .ani-order-info-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .ani-order-product {
+        grid-template-columns: 42px minmax(0,1fr);
+    }
+
+    .ani-order-product-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .ani-order-product-total {
+        grid-column: 2;
+        margin-top: -5px;
+        text-align: left;
+    }
+
+    .ani-order-grand-total strong {
+        font-size: 17px;
+    }
+
+}

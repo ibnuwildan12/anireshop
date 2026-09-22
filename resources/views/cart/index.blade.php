@@ -1,326 +1,299 @@
-<!DOCTYPE html>
-<html lang="id">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
+@section('title', 'Keranjang - Anireshop')
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+@section('content')
 
-    <title>Keranjang - Anireshop</title>
+<div class="ani-cart-page">
 
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
+    <div class="container py-5">
 
-    <style>
-        body {
-            background: #0f0f13;
-            color: #ffffff;
-        }
+        {{-- Header --}}
+        <div class="ani-cart-header">
+            <div>
+                <span class="ani-cart-eyebrow">YOUR SHOPPING CART</span>
+                <h1>Keranjang Saya <span>🛒</span></h1>
+                <p>Periksa kembali merchandise pilihanmu sebelum checkout.</p>
+            </div>
 
-        .navbar {
-            background: #111116;
-        }
-
-        .navbar-brand {
-            color: #ff4fd8 !important;
-            font-weight: 700;
-        }
-
-        .cart-card {
-            background: #18181f;
-            border: 1px solid #292936;
-            border-radius: 15px;
-        }
-
-        .product-image {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 10px;
-            background: #252530;
-        }
-
-        .price {
-            color: #ff4fd8;
-            font-weight: 700;
-        }
-    </style>
-</head>
-
-<body>
-
-<nav class="navbar navbar-dark">
-    <div class="container">
-
-        <a
-            href="{{ route('home') }}"
-            class="navbar-brand"
-        >
-            Anireshop
-        </a>
-
-        <a
-            href="{{ route('home') }}"
-            class="btn btn-outline-light btn-sm"
-        >
-            ← Belanja Lagi
-        </a>
-
-    </div>
-</nav>
-
-
-<div class="container py-5">
-
-    <h1 class="mb-4">
-        Keranjang Saya 🛒
-    </h1>
-
-
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-
-
-    @if ($errors->any())
-        <div class="alert alert-danger">
-
-            @foreach ($errors->all() as $error)
-                <div>{{ $error }}</div>
-            @endforeach
-
-        </div>
-    @endif
-
-
-    @if ($products->isEmpty())
-
-        <div class="text-center py-5">
-
-            <h3>
-                Keranjang masih kosong
-            </h3>
-
-            <p class="text-secondary">
-                Yuk cari merchandise favoritmu.
-            </p>
-
-            <a
-                href="{{ route('home') }}"
-                class="btn btn-light"
-            >
-                Mulai Belanja
+            <a href="{{ route('products.index') }}" class="ani-cart-continue">
+                ← Lanjut Belanja
             </a>
-
         </div>
 
-    @else
 
-        <div class="row g-4">
-
-            <div class="col-lg-8">
-
-                @foreach ($products as $product)
-
-                    @php
-                        $quantity = $cart[$product->id]['quantity'];
-                        $variation = $cart[$product->id]['variation_note'] ?? null;
-                        $subtotal = $product->price * $quantity;
-                    @endphp
-
-                    <div class="cart-card p-3 mb-3">
-
-                        <div class="row align-items-center g-3">
-
-                            <div class="col-auto">
-
-                                @if ($product->images->first())
-
-                                    <img
-                                        src="{{ asset('images/' . $product->images->first()->image_path) }}"
-                                        class="product-image"
-                                        alt="{{ $product->name }}"
-                                    >
-
-                                @else
-
-                                    <div
-                                        class="product-image d-flex align-items-center justify-content-center"
-                                    >
-                                        <span class="text-secondary">
-                                            No Image
-                                        </span>
-                                    </div>
-
-                                @endif
-
-                            </div>
+        {{-- Flash Message --}}
+        @if (session('success'))
+            <div class="ani-cart-alert success">
+                <span>✓</span>
+                <div>{{ session('success') }}</div>
+            </div>
+        @endif
 
 
-                            <div class="col">
-
-                                <h5>
-                                    {{ $product->name }}
-                                </h5>
-
-                                <p class="text-secondary mb-1">
-                                    {{ $product->category->name }}
-                                </p>
-
-                                @if ($variation)
-
-                                    <small class="text-secondary">
-                                        Catatan:
-                                        {{ $variation }}
-                                    </small>
-
-                                @endif
-
-                                <p class="price mb-0 mt-2">
-                                    Rp {{ number_format($product->price, 0, ',', '.') }}
-                                </p>
-
-                            </div>
+        {{-- Validation Error --}}
+        @if ($errors->any())
+            <div class="ani-cart-alert error">
+                <span>!</span>
+                <div>
+                    @foreach ($errors->all() as $error)
+                        <div>{{ $error }}</div>
+                    @endforeach
+                </div>
+            </div>
+        @endif
 
 
-                            <div class="col-md-3">
+        @if ($products->isEmpty())
 
-                                <form
-                                    method="POST"
-                                    action="{{ route('cart.update', $product) }}"
-                                >
-                                    @csrf
-                                    @method('PUT')
+            {{-- Empty Cart --}}
+            <div class="ani-cart-empty">
 
-                                    <label class="form-label">
-                                        Qty
-                                    </label>
+                <div class="ani-cart-empty-icon">
+                    🛒
+                </div>
 
-                                    <input
-                                        type="number"
-                                        name="quantity"
-                                        value="{{ $quantity }}"
-                                        min="1"
-                                        max="{{ $product->available_stock }}"
-                                        class="form-control mb-2"
-                                    >
+                <h2>Keranjang masih kosong</h2>
 
-                                    <input
-                                        type="hidden"
-                                        name="variation_note"
-                                        value="{{ $variation }}"
-                                    >
+                <p>
+                    Belum ada merchandise yang kamu pilih.
+                    Yuk cari koleksi favoritmu!
+                </p>
 
-                                    <button
-                                        class="btn btn-sm btn-outline-light w-100"
-                                    >
-                                        Update
-                                    </button>
-
-                                </form>
-
-                            </div>
-
-
-                            <div class="col-auto">
-
-                                <form
-                                    method="POST"
-                                    action="{{ route('cart.remove', $product) }}"
-                                >
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <button
-                                        class="btn btn-sm btn-outline-danger"
-                                    >
-                                        Hapus
-                                    </button>
-
-                                </form>
-
-                            </div>
-
-                        </div>
-
-                        <div class="text-end mt-3">
-
-                            <strong>
-                                Subtotal:
-                                Rp {{ number_format($subtotal, 0, ',', '.') }}
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-                @endforeach
+                <a href="{{ route('products.index') }}" class="ani-cart-primary-btn">
+                    Mulai Belanja
+                </a>
 
             </div>
 
+        @else
 
-            <div class="col-lg-4">
+            <div class="row g-4 align-items-start">
 
-                <div class="cart-card p-4">
+                {{-- PRODUCT LIST --}}
+                <div class="col-lg-8">
 
-                    <h4>
-                        Ringkasan
-                    </h4>
+                    <div class="ani-cart-list">
 
-                    <hr>
+                        @foreach ($products as $product)
 
-                    <div class="d-flex justify-content-between">
+                            @php
+                                $quantity = $cart[$product->id]['quantity'];
+                                $variation = $cart[$product->id]['variation_note'] ?? null;
+                                $subtotal = $product->price * $quantity;
+                            @endphp
 
-                        <span>
-                            Subtotal
-                        </span>
+                            <div class="ani-cart-item">
 
-                        <strong>
-                            Rp {{ number_format($total, 0, ',', '.') }}
-                        </strong>
+                                {{-- Product Image --}}
+                                <div class="ani-cart-image-wrap">
+
+                                    @if ($product->images->first())
+
+                                        <img
+                                            src="{{ asset('images/' . $product->images->first()->image_path) }}"
+                                            class="ani-cart-image"
+                                            alt="{{ $product->name }}"
+                                        >
+
+                                    @else
+
+                                        <div class="ani-cart-no-image">
+                                            No Image
+                                        </div>
+
+                                    @endif
+
+                                </div>
+
+
+                                {{-- Product Information --}}
+                                <div class="ani-cart-product">
+
+                                    <a
+                                        href="{{ route('products.show', $product) }}"
+                                        class="ani-cart-product-name"
+                                    >
+                                        {{ $product->name }}
+                                    </a>
+
+                                    <div class="ani-cart-category">
+                                        {{ $product->category->name }}
+                                    </div>
+
+                                    @if ($variation)
+
+                                        <div class="ani-cart-variation">
+                                            <span>Catatan:</span>
+                                            {{ $variation }}
+                                        </div>
+
+                                    @endif
+
+                                    <div class="ani-cart-price">
+                                        Rp {{ number_format($product->price, 0, ',', '.') }}
+                                    </div>
+
+                                </div>
+
+
+                                {{-- Quantity --}}
+                                <div class="ani-cart-quantity">
+
+                                    <span class="ani-cart-label">
+                                        Jumlah
+                                    </span>
+
+                                    <form
+                                        method="POST"
+                                        action="{{ route('cart.update', $product) }}"
+                                    >
+                                        @csrf
+                                        @method('PUT')
+
+                                        <div class="ani-quantity-control">
+
+                                            <input
+                                                type="number"
+                                                name="quantity"
+                                                value="{{ $quantity }}"
+                                                min="1"
+                                                max="{{ $product->available_stock }}"
+                                                aria-label="Jumlah {{ $product->name }}"
+                                            >
+
+                                        </div>
+
+                                        <input
+                                            type="hidden"
+                                            name="variation_note"
+                                            value="{{ $variation }}"
+                                        >
+
+                                        <button
+                                            type="submit"
+                                            class="ani-cart-update"
+                                        >
+                                            Update
+                                        </button>
+
+                                    </form>
+
+                                </div>
+
+
+                                {{-- Subtotal + Remove --}}
+                                <div class="ani-cart-item-right">
+
+                                    <div class="ani-cart-subtotal-label">
+                                        Subtotal
+                                    </div>
+
+                                    <div class="ani-cart-subtotal">
+                                        Rp {{ number_format($subtotal, 0, ',', '.') }}
+                                    </div>
+
+                                    <form
+                                        method="POST"
+                                        action="{{ route('cart.remove', $product) }}"
+                                    >
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button
+                                            type="submit"
+                                            class="ani-cart-remove"
+                                        >
+                                            Hapus
+                                        </button>
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+
+                        @endforeach
 
                     </div>
 
-                    <p class="text-secondary mt-2">
-                        Ongkir dihitung saat checkout.
-                    </p>
+                </div>
 
-                    @auth
 
-                        <a
-                            href="{{ route('checkout.index') }}"
-                            class="btn btn-light w-100 mt-3"
-                        >
-                            Lanjut Checkout
-                        </a>
+                {{-- ORDER SUMMARY --}}
+                <div class="col-lg-4">
 
-                    @else
+                    <div class="ani-cart-summary">
 
-                        <a
-                            href="{{ route('login') }}"
-                            class="btn btn-light w-100 mt-3"
-                        >
-                            Login untuk Checkout
-                        </a>
+                        <div class="ani-summary-heading">
+                            <span>ORDER SUMMARY</span>
+                            <h2>Ringkasan Pesanan</h2>
+                        </div>
 
-                    @endauth
+                        <div class="ani-summary-line">
+                            <span>Subtotal</span>
+
+                            <strong>
+                                Rp {{ number_format($total, 0, ',', '.') }}
+                            </strong>
+                        </div>
+
+                        <div class="ani-summary-line muted">
+                            <span>Ongkir</span>
+
+                            <span>
+                                Dihitung saat checkout
+                            </span>
+                        </div>
+
+                        <div class="ani-summary-divider"></div>
+
+                        <div class="ani-summary-total">
+                            <span>Total sementara</span>
+
+                            <strong>
+                                Rp {{ number_format($total, 0, ',', '.') }}
+                            </strong>
+                        </div>
+
+
+                        @auth
+
+                            <a
+                                href="{{ route('checkout.index') }}"
+                                class="ani-checkout-btn"
+                            >
+                                Lanjut Checkout
+                                <span>→</span>
+                            </a>
+
+                        @else
+
+                            <a
+                                href="{{ route('login') }}"
+                                class="ani-checkout-btn"
+                            >
+                                Login untuk Checkout
+                                <span>→</span>
+                            </a>
+
+                        @endauth
+
+
+                        <div class="ani-summary-note">
+                            🔒 Checkout aman dan stok akan diproses sesuai pesanan.
+                        </div>
+
+                    </div>
 
                 </div>
 
             </div>
 
-        </div>
+        @endif
 
-    @endif
+    </div>
 
 </div>
 
-</body>
-</html>
+@endsection

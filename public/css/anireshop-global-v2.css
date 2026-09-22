@@ -1,0 +1,846 @@
+/* =========================================================
+   ANIRESHOP GLOBAL V2
+   Global brighter purple theme
+   ========================================================= */
+
+
+/* =========================================================
+   ROOT COLORS
+   ========================================================= */
+
+   :root {
+    --ani-bg: #17121f;
+    --ani-bg-soft: #1b1525;
+    --ani-bg-card: #211a2b;
+    --ani-bg-card-soft: #261e31;
+
+    --ani-border: #40334d;
+    --ani-border-soft: #493957;
+
+    --ani-text: #ffffff;
+    --ani-text-soft: #e3dbea;
+    --ani-text-muted: #b9acc5;
+    --ani-text-faint: #9688a3;
+
+    --ani-purple: #9b5cff;
+    --ani-purple-light: #b47aff;
+    --ani-pink: #ec4899;
+    --ani-pink-light: #f472b6;
+
+    --ani-input: #17121f;
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+html {
+    background: var(--ani-bg);
+}
+
+body {
+    background:
+        radial-gradient(
+            circle at 15% 0%,
+            rgba(124, 58, 237, .10),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(236, 72, 153, .06),
+            transparent 28%
+        ),
+        var(--ani-bg) !important;
+
+    color: var(--ani-text) !important;
+}
+
+
+/* =========================================================
+   GENERAL TEXT
+   ========================================================= */
+
+body,
+p,
+span,
+label,
+small,
+li {
+    color: var(--ani-text-soft);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+.fw-bold,
+.fw-semibold {
+    color: #ffffff !important;
+}
+
+
+/* Bootstrap muted text */
+
+.text-muted,
+.text-secondary {
+    color: var(--ani-text-muted) !important;
+}
+
+
+/* Links */
+
+a {
+    transition:
+        color .2s ease,
+        background .2s ease,
+        border-color .2s ease;
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar,
+.ani-navbar {
+    background:
+        linear-gradient(
+            180deg,
+            #1c1626,
+            #181320
+        ) !important;
+
+    border-bottom: 1px solid #382c45 !important;
+}
+
+.navbar-brand,
+.ani-brand {
+    color: var(--ani-pink) !important;
+    font-weight: 800 !important;
+}
+
+.navbar .nav-link {
+    color: #eee7f2 !important;
+    font-weight: 600;
+}
+
+.navbar .nav-link:hover {
+    color: var(--ani-pink-light) !important;
+}
+
+.navbar-toggler {
+    border-color: #554362 !important;
+}
+
+
+/* =========================================================
+   PAGE BACKGROUNDS
+   ========================================================= */
+
+.ani-cart-page,
+.ani-checkout-page,
+.ani-order-page,
+.ani-payment-page,
+.ani-product-detail {
+    background: transparent !important;
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.ani-card,
+.ani-cart-card,
+.checkout-card,
+.order-card,
+.cart-card,
+.ani-checkout-card,
+.ani-order-card,
+.ani-payment-card,
+.ani-product-card,
+.card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(39, 30, 51, .96),
+            rgba(30, 24, 40, .98)
+        ) !important;
+
+    border-color: var(--ani-border) !important;
+    color: var(--ani-text-soft) !important;
+}
+
+
+/* Generic Bootstrap card */
+
+.card-header,
+.card-footer {
+    background: rgba(255,255,255,.025) !important;
+    border-color: var(--ani-border) !important;
+}
+
+
+/* =========================================================
+   COMMON SECTIONS
+   ========================================================= */
+
+.ani-section {
+    color: var(--ani-text-soft);
+}
+
+.ani-section-title {
+    color: #ffffff !important;
+}
+
+.ani-section-title span {
+    color: var(--ani-pink) !important;
+}
+
+
+/* =========================================================
+   FORM CONTROLS
+   ========================================================= */
+
+.form-control,
+.form-select,
+.ani-form-control,
+input.form-control,
+textarea.form-control,
+select.form-select {
+    background-color: var(--ani-input) !important;
+    border-color: #4a3b55 !important;
+    color: #ffffff !important;
+    font-weight: 500;
+}
+
+.form-control::placeholder,
+textarea::placeholder {
+    color: #9e91aa !important;
+    opacity: 1;
+}
+
+.form-control:focus,
+.form-select:focus,
+.ani-form-control:focus {
+    background-color: #191321 !important;
+    border-color: var(--ani-pink) !important;
+    color: #ffffff !important;
+
+    box-shadow:
+        0 0 0 2px rgba(236, 72, 153, .12) !important;
+}
+
+.form-select option {
+    background: #211a2b;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.table {
+    --bs-table-bg: transparent;
+    --bs-table-color: #eee7f2;
+
+    color: #eee7f2 !important;
+    border-color: var(--ani-border) !important;
+}
+
+.table thead th {
+    background: #2a2135 !important;
+    color: #ffffff !important;
+    border-color: var(--ani-border) !important;
+    font-weight: 800;
+}
+
+.table tbody td {
+    background: rgba(33, 26, 43, .72) !important;
+    color: #e4dce9 !important;
+    border-color: #3a2e47 !important;
+}
+
+.table tbody tr:hover td {
+    background: rgba(71, 50, 91, .55) !important;
+}
+
+
+/* =========================================================
+   DASHBOARD / ADMIN CARDS
+   ========================================================= */
+
+.dashboard-card,
+.admin-card,
+.stat-card,
+.summary-card,
+.info-card,
+.admin-dashboard-card {
+    background:
+        linear-gradient(
+            145deg,
+            #271e33,
+            #1f1829
+        ) !important;
+
+    border: 1px solid #453650 !important;
+    color: #ffffff !important;
+}
+
+
+/* Numbers in dashboard */
+
+.stat-card h2,
+.stat-card h3,
+.stat-card .value,
+.summary-card .value {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+
+/* Dashboard labels */
+
+.stat-card p,
+.stat-card .label,
+.summary-card p,
+.summary-card .label {
+    color: #c1b4cc !important;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.btn {
+    font-weight: 700;
+}
+
+
+/* Primary */
+
+.btn-primary,
+.btn-ani {
+    border-color: var(--ani-pink) !important;
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #ec4899
+    ) !important;
+
+    color: #ffffff !important;
+}
+
+.btn-primary:hover,
+.btn-ani:hover {
+    border-color: #f472b6 !important;
+    background: linear-gradient(
+        135deg,
+        #8b5cf6,
+        #f472b6
+    ) !important;
+
+    color: #ffffff !important;
+}
+
+
+/* Light button */
+
+.btn-light {
+    background: #eee7f2 !important;
+    border-color: #eee7f2 !important;
+    color: #211a2b !important;
+    font-weight: 800 !important;
+}
+
+.btn-light:hover {
+    background: #ffffff !important;
+    color: #17121f !important;
+}
+
+
+/* Outline */
+
+.btn-outline-light {
+    border-color: #665574 !important;
+    color: #eee7f2 !important;
+}
+
+.btn-outline-light:hover {
+    background: #342640 !important;
+    border-color: var(--ani-pink) !important;
+    color: #ffffff !important;
+}
+
+
+/* Secondary */
+
+.btn-secondary {
+    background: #393047 !important;
+    border-color: #51425e !important;
+    color: #ffffff !important;
+}
+
+.btn-secondary:hover {
+    background: #4a3b58 !important;
+    border-color: #665375 !important;
+}
+
+
+/* Danger */
+
+.btn-danger {
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   ALERTS
+   ========================================================= */
+
+.alert {
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.alert-success {
+    background: #172c23 !important;
+    border-color: #35674d !important;
+    color: #bde8d0 !important;
+}
+
+.alert-danger {
+    background: #321b23 !important;
+    border-color: #70404e !important;
+    color: #f0bdc8 !important;
+}
+
+.alert-warning {
+    background: #302817 !important;
+    border-color: #6a572a !important;
+    color: #eed58a !important;
+}
+
+.alert-info {
+    background: #1b2935 !important;
+    border-color: #385a70 !important;
+    color: #bcdff3 !important;
+}
+
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+
+.badge {
+    font-weight: 700 !important;
+}
+
+.bg-dark {
+    background: #30263b !important;
+}
+
+.bg-secondary {
+    background: #4a3c55 !important;
+}
+
+
+/* =========================================================
+   HR
+   ========================================================= */
+
+hr {
+    border-color: #493957 !important;
+    opacity: 1 !important;
+}
+
+
+/* =========================================================
+   PRODUCT PRICE
+   ========================================================= */
+
+.price,
+.ani-cart-price,
+.product-detail-price,
+.ani-summary-total strong,
+.ani-checkout-grand-total strong,
+.ani-order-grand-total strong,
+.ani-payment-grand-total strong {
+    color: var(--ani-pink) !important;
+    font-weight: 800 !important;
+}
+
+
+/* =========================================================
+   PRODUCT / CATALOG
+   ========================================================= */
+
+.product-card,
+.ani-product-card {
+    background:
+        linear-gradient(
+            145deg,
+            #261d31,
+            #201927
+        ) !important;
+
+    border-color: #453650 !important;
+}
+
+.product-card:hover,
+.ani-product-card:hover {
+    border-color: #694a78 !important;
+}
+
+
+/* Product names */
+
+.product-card h5,
+.product-card h4,
+.ani-product-card h5,
+.ani-product-card h4 {
+    color: #ffffff !important;
+    font-weight: 750 !important;
+}
+
+
+/* Product descriptions */
+
+.product-card p,
+.ani-product-card p {
+    color: #bcaec6 !important;
+}
+
+
+/* =========================================================
+   NAVBAR SEARCH
+   ========================================================= */
+
+.ani-navbar .ani-navbar-search {
+    background: #251c30 !important;
+    border-color: #594565 !important;
+}
+
+.ani-navbar .ani-navbar-search input {
+    color: #ffffff !important;
+    font-weight: 500;
+}
+
+.ani-navbar .ani-navbar-search input::placeholder {
+    color: #c5b8cf !important;
+}
+
+
+/* =========================================================
+   CART
+   ========================================================= */
+
+.ani-cart-item {
+    background:
+        linear-gradient(
+            145deg,
+            #271e33,
+            #211a2b
+        ) !important;
+
+    border-color: #453650 !important;
+}
+
+.ani-cart-product-name {
+    color: #ffffff !important;
+    font-weight: 750 !important;
+}
+
+.ani-cart-category {
+    color: #b8a9c4 !important;
+}
+
+.ani-cart-variation {
+    color: #a99ab4 !important;
+}
+
+.ani-cart-subtotal {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+
+/* Cart summary */
+
+.ani-cart-summary {
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(139, 92, 246, .14),
+            transparent 42%
+        ),
+        #251d30 !important;
+
+    border-color: #493957 !important;
+}
+
+
+/* =========================================================
+   CHECKOUT
+   ========================================================= */
+
+.ani-checkout-card,
+.ani-checkout-summary {
+    background:
+        linear-gradient(
+            145deg,
+            #271e33,
+            #211a2b
+        ) !important;
+
+    border-color: #453650 !important;
+}
+
+.ani-checkout-section-heading h2 {
+    color: #ffffff !important;
+}
+
+.ani-form-group label {
+    color: #d0c3d8 !important;
+    font-weight: 700 !important;
+}
+
+
+/* =========================================================
+   ORDER
+   ========================================================= */
+
+.ani-order-card,
+.ani-order-summary {
+    background:
+        linear-gradient(
+            145deg,
+            #271e33,
+            #211a2b
+        ) !important;
+
+    border-color: #453650 !important;
+}
+
+.ani-order-info-item,
+.ani-address-box {
+    background: #191421 !important;
+    border-color: #41334d !important;
+}
+
+.ani-order-info-item > span {
+    color: #a99ab5 !important;
+}
+
+.ani-order-info-item strong {
+    color: #f0eaf3 !important;
+}
+
+
+/* =========================================================
+   PAYMENT
+   ========================================================= */
+
+.ani-payment-card,
+.ani-payment-side {
+    background:
+        linear-gradient(
+            145deg,
+            #271e33,
+            #211a2b
+        ) !important;
+
+    border-color: #453650 !important;
+}
+
+.ani-payment-method-box {
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(139, 92, 246, .13),
+            transparent 45%
+        ),
+        #241b30 !important;
+
+    border-color: #4a3957 !important;
+}
+
+.ani-upload-area {
+    background: #191421 !important;
+    border-color: #62506d !important;
+}
+
+.ani-upload-area strong {
+    color: #ffffff !important;
+}
+
+.ani-upload-area > span {
+    color: #a99bb4 !important;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.ani-footer {
+    background:
+        linear-gradient(
+            180deg,
+            #15101c,
+            #100c15
+        ) !important;
+
+    border-top-color: #392c45 !important;
+}
+
+.ani-footer-brand p {
+    color: #a99caf !important;
+}
+
+.ani-footer-links a {
+    color: #c2b5ca !important;
+}
+
+.ani-footer-links a:hover {
+    color: var(--ani-pink) !important;
+}
+
+.ani-footer-copyright {
+    color: #887b91 !important;
+}
+
+
+/* =========================================================
+   PAGINATION
+   ========================================================= */
+
+.pagination .page-link {
+    background: #211a2b !important;
+    border-color: #493957 !important;
+    color: #d9cde1 !important;
+}
+
+.pagination .page-link:hover {
+    background: #352844 !important;
+    color: #ffffff !important;
+}
+
+.pagination .active .page-link {
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #ec4899
+    ) !important;
+
+    border-color: #ec4899 !important;
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   DROPDOWN
+   ========================================================= */
+
+.dropdown-menu {
+    background: #251d30 !important;
+    border-color: #493957 !important;
+}
+
+.dropdown-item {
+    color: #ddd4e3 !important;
+    font-weight: 600;
+}
+
+.dropdown-item:hover {
+    background: #382944 !important;
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.modal-content {
+    background: #211a2b !important;
+    border: 1px solid #493957 !important;
+    color: #ffffff !important;
+}
+
+.modal-header,
+.modal-footer {
+    border-color: #493957 !important;
+}
+
+.modal-title {
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   ADMIN / DASHBOARD FORMS
+   ========================================================= */
+
+.admin-content,
+.dashboard-content,
+.admin-main,
+.dashboard-main {
+    color: #eee7f2;
+}
+
+.admin-content label,
+.dashboard-content label,
+.admin-main label,
+.dashboard-main label {
+    color: #d2c5da !important;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #15101c;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #493957;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #69517a;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+
+    body {
+        background:
+            radial-gradient(
+                circle at top center,
+                rgba(124,58,237,.10),
+                transparent 35%
+            ),
+            var(--ani-bg) !important;
+    }
+
+}

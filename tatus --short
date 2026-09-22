@@ -1,0 +1,13 @@
+warning: in the working copy of 'resources/views/checkout/index.blade.php', CRLF will be replaced by LF the next time Git touches it
+ app/Http/Controllers/ProductController.php |  19 [32m+[m[31m-[m
+ public/css/anireshop.css                   |  37 [32m+[m[31m-[m
+ resources/css/app.css                      |   2 [32m+[m[31m-[m
+ resources/views/cart/index.blade.php       | 445 [32m+++++++[m[31m--------[m
+ resources/views/checkout/index.blade.php   | 726 [32m++++++++++++++[m[31m----------[m
+ resources/views/home.blade.php             |  24 [32m+[m[31m-[m
+ resources/views/layouts/app.blade.php      | 112 [32m++[m[31m--[m
+ resources/views/orders/show.blade.php      | 706 [32m+++++++++++++[m[31m-----------[m
+ resources/views/payments/show.blade.php    | 857 [32m++++++++++++++++++++[m[31m---------[m
+ resources/views/products/index.blade.php   | 324 [32m++++++++[m[31m---[m
+ resources/views/products/show.blade.php    | 536 [32m+++++++++[m[31m---------[m
+ 11 files changed, 2277 insertions(+), 1511 deletions(-)

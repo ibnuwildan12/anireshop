@@ -1,258 +1,276 @@
-<!DOCTYPE html>
-<html lang="id">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
+@section('title', 'Checkout - Anireshop')
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+@section('content')
 
-    <title>Checkout - Anireshop</title>
+<div class="ani-checkout-page">
 
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
+    <div class="container py-5">
 
-    <style>
-        body {
-            background: #0f0f13;
-            color: #ffffff;
-        }
+        {{-- HEADER --}}
+        <div class="ani-checkout-header">
 
-        .navbar {
-            background: #111116;
-        }
+            <div>
+                <span class="ani-checkout-eyebrow">
+                    SECURE CHECKOUT
+                </span>
 
-        .navbar-brand {
-            color: #ff4fd8 !important;
-            font-weight: 700;
-        }
+                <h1>
+                    Checkout
+                </h1>
 
-        .checkout-card {
-            background: #18181f;
-            border: 1px solid #292936;
-            border-radius: 15px;
-        }
+                <p>
+                    Lengkapi detail pengiriman dan pembayaran untuk menyelesaikan pesananmu.
+                </p>
+            </div>
 
-        .form-control,
-        .form-select {
-            background: #101015;
-            color: #ffffff;
-            border-color: #3a3a45;
-        }
-
-        .form-control:focus,
-        .form-select:focus {
-            background: #101015;
-            color: #ffffff;
-        }
-
-        .price {
-            color: #ff4fd8;
-            font-weight: 700;
-        }
-    </style>
-</head>
-
-<body>
-
-<nav class="navbar navbar-dark">
-    <div class="container">
-
-        <a
-            href="{{ route('home') }}"
-            class="navbar-brand"
-        >
-            Anireshop
-        </a>
-
-        <a
-            href="{{ route('cart.index') }}"
-            class="btn btn-outline-light btn-sm"
-        >
-            ← Keranjang
-        </a>
-
-    </div>
-</nav>
-
-
-<div class="container py-5">
-
-    <h1 class="mb-4">
-        Checkout
-    </h1>
-
-    @if ($errors->any())
-        <div class="alert alert-danger">
-
-            @foreach ($errors->all() as $error)
-                <div>{{ $error }}</div>
-            @endforeach
+            <a
+                href="{{ route('cart.index') }}"
+                class="ani-checkout-back"
+            >
+                ← Kembali ke Keranjang
+            </a>
 
         </div>
-    @endif
 
 
-    <form
-        method="POST"
-        action="{{ route('checkout.store') }}"
-    >
-        @csrf
+        {{-- ERRORS --}}
+        @if ($errors->any())
 
-        <div class="row g-4">
+            <div class="ani-checkout-alert">
 
-            {{-- SHIPPING --}}
-            <div class="col-lg-7">
-
-                <div class="checkout-card p-4">
-
-                    <h4 class="mb-4">
-                        Alamat Pengiriman
-                    </h4>
-
-                    <div class="mb-3">
-
-                        <label class="form-label">
-                            Alamat Lengkap
-                        </label>
-
-                        <textarea
-                            name="shipping_address"
-                            class="form-control"
-                            rows="4"
-                            required
-                        >{{ old('shipping_address') }}</textarea>
-
-                    </div>
-
-
-                    <div class="mb-3">
-
-                        <label class="form-label">
-                            Kabupaten / Kota
-                        </label>
-
-                        <select
-                            name="shipping_city"
-                            id="shipping_city"
-                            class="form-select"
-                            required
-                        >
-
-                            <option value="">
-                                Pilih Kabupaten / Kota
-                            </option>
-
-                            @foreach (
-                                $shippingRates->pluck('city')->unique()
-                                as $city
-                            )
-
-                                <option
-                                    value="{{ $city }}"
-                                    {{ old('shipping_city') === $city ? 'selected' : '' }}
-                                >
-                                    {{ $city }}
-                                </option>
-
-                            @endforeach
-
-                        </select>
-
-                    </div>
-
-
-                    <div class="mb-3">
-
-                        <label class="form-label">
-                            Kecamatan
-                        </label>
-
-                        <input
-                            type="text"
-                            name="shipping_district"
-                            class="form-control"
-                            value="{{ old('shipping_district') }}"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="mb-3">
-
-                        <label class="form-label">
-                            Kode Pos
-                        </label>
-
-                        <input
-                            type="text"
-                            name="shipping_postal_code"
-                            class="form-control"
-                            value="{{ old('shipping_postal_code') }}"
-                            maxlength="5"
-                            required
-                        >
-
-                    </div>
-
+                <div class="ani-checkout-alert-icon">
+                    !
                 </div>
 
+                <div>
+                    <strong>Periksa kembali data pesanan</strong>
 
-                {{-- COURIER --}}
-                <div class="checkout-card p-4 mt-4">
+                    @foreach ($errors->all() as $error)
+                        <div>{{ $error }}</div>
+                    @endforeach
+                </div>
 
-                    <h4 class="mb-4">
-                        Kurir
-                    </h4>
+            </div>
 
-                    <div class="mb-3">
+        @endif
 
-                        <label class="form-label">
-                            Pilih Kurir
-                        </label>
 
-                        <select
-                            name="courier"
-                            id="courier"
-                            class="form-select"
-                            required
-                        >
+        <form
+            method="POST"
+            action="{{ route('checkout.store') }}"
+        >
 
-                            <option value="">
-                                Pilih Kurir
-                            </option>
+            @csrf
 
-                            <option value="JNE">
-                                JNE
-                            </option>
+            <div class="row g-4 align-items-start">
 
-                            <option value="J&T">
-                                J&T
-                            </option>
+                {{-- LEFT --}}
+                <div class="col-lg-7">
 
-                        </select>
+
+                    {{-- SHIPPING ADDRESS --}}
+                    <div class="ani-checkout-card">
+
+                        <div class="ani-checkout-section-heading">
+
+                            <div class="ani-checkout-number">
+                                01
+                            </div>
+
+                            <div>
+                                <span>SHIPPING</span>
+                                <h2>Alamat Pengiriman</h2>
+                            </div>
+
+                        </div>
+
+
+                        <div class="ani-form-group">
+
+                            <label for="shipping_address">
+                                Alamat Lengkap
+                            </label>
+
+                            <textarea
+                                id="shipping_address"
+                                name="shipping_address"
+                                class="ani-form-control"
+                                rows="4"
+                                placeholder="Contoh: Jl. Merpati No. 10, RT 02/RW 03"
+                                required
+                            >{{ old('shipping_address') }}</textarea>
+
+                        </div>
+
+
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+
+                                <div class="ani-form-group">
+
+                                    <label for="shipping_city">
+                                        Kabupaten / Kota
+                                    </label>
+
+                                    <select
+                                        name="shipping_city"
+                                        id="shipping_city"
+                                        class="ani-form-control"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Pilih Kabupaten / Kota
+                                        </option>
+
+                                        @foreach (
+                                            $shippingRates->pluck('city')->unique()
+                                            as $city
+                                        )
+
+                                            <option
+                                                value="{{ $city }}"
+                                                {{ old('shipping_city') === $city ? 'selected' : '' }}
+                                            >
+                                                {{ $city }}
+                                            </option>
+
+                                        @endforeach
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <div class="ani-form-group">
+
+                                    <label for="shipping_district">
+                                        Kecamatan
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="shipping_district"
+                                        name="shipping_district"
+                                        class="ani-form-control"
+                                        value="{{ old('shipping_district') }}"
+                                        placeholder="Nama Kecamatan"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <div class="ani-form-group mb-0">
+
+                                    <label for="shipping_postal_code">
+                                        Kode Pos
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="shipping_postal_code"
+                                        name="shipping_postal_code"
+                                        class="ani-form-control"
+                                        value="{{ old('shipping_postal_code') }}"
+                                        maxlength="5"
+                                        placeholder="573xx"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
 
                     </div>
 
 
-                    <div class="mb-0">
 
-                        <label class="form-label">
-                            Ongkir
-                        </label>
+                    {{-- COURIER --}}
+                    <div class="ani-checkout-card">
 
-                        <input
-                            type="text"
-                            id="shipping_cost_display"
-                            class="form-control"
-                            value="Rp 0"
-                            readonly
-                        >
+                        <div class="ani-checkout-section-heading">
+
+                            <div class="ani-checkout-number">
+                                02
+                            </div>
+
+                            <div>
+                                <span>DELIVERY</span>
+                                <h2>Kurir Pengiriman</h2>
+                            </div>
+
+                        </div>
+
+
+                        <div class="ani-form-group">
+
+                            <label for="courier">
+                                Pilih Kurir
+                            </label>
+
+                            <select
+                                name="courier"
+                                id="courier"
+                                class="ani-form-control"
+                                required
+                            >
+
+                                <option value="">
+                                    Pilih Kurir
+                                </option>
+
+                                <option
+                                    value="JNE"
+                                    {{ old('courier') === 'JNE' ? 'selected' : '' }}
+                                >
+                                    JNE
+                                </option>
+
+                                <option
+                                    value="J&T"
+                                    {{ old('courier') === 'J&T' ? 'selected' : '' }}
+                                >
+                                    J&T
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="ani-shipping-cost">
+
+                            <div>
+
+                                <span>
+                                    Ongkos Kirim
+                                </span>
+
+                                <strong id="shipping_cost_display">
+                                    Rp 0
+                                </strong>
+
+                            </div>
+
+                            <div class="ani-shipping-icon">
+                                🚚
+                            </div>
+
+                        </div>
 
                         <input
                             type="hidden"
@@ -263,150 +281,273 @@
 
                     </div>
 
-                </div>
 
 
-                {{-- PAYMENT --}}
-                <div class="checkout-card p-4 mt-4">
+                    {{-- PAYMENT --}}
+                    <div class="ani-checkout-card">
 
-                    <h4 class="mb-4">
-                        Metode Pembayaran
-                    </h4>
+                        <div class="ani-checkout-section-heading">
 
-                    <div class="mb-3">
+                            <div class="ani-checkout-number">
+                                03
+                            </div>
 
-                        <select
-                            name="payment_method"
-                            class="form-select"
-                            required
-                        >
+                            <div>
+                                <span>PAYMENT</span>
+                                <h2>Metode Pembayaran</h2>
+                            </div>
 
-                            <option value="">
-                                Pilih Pembayaran
-                            </option>
+                        </div>
 
-                            <option value="QRIS">
-                                QRIS
-                            </option>
 
-                            <option value="BANK_TRANSFER">
-                                Bank Transfer
-                            </option>
+                        <div class="ani-payment-options">
 
-                        </select>
+                            <label class="ani-payment-option">
+
+                                <input
+                                    type="radio"
+                                    name="payment_method"
+                                    value="QRIS"
+                                    {{ old('payment_method') === 'QRIS' ? 'checked' : '' }}
+                                    required
+                                >
+
+                                <div class="ani-payment-content">
+
+                                    <div class="ani-payment-icon">
+                                        QR
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            QRIS
+                                        </strong>
+
+                                        <span>
+                                            Bayar menggunakan QRIS
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                                <span class="ani-payment-check">
+                                    ✓
+                                </span>
+
+                            </label>
+
+
+                            <label class="ani-payment-option">
+
+                                <input
+                                    type="radio"
+                                    name="payment_method"
+                                    value="BANK_TRANSFER"
+                                    {{ old('payment_method') === 'BANK_TRANSFER' ? 'checked' : '' }}
+                                >
+
+                                <div class="ani-payment-content">
+
+                                    <div class="ani-payment-icon bank">
+                                        BRI
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Bank Transfer
+                                        </strong>
+
+                                        <span>
+                                            Transfer melalui rekening BRI
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                                <span class="ani-payment-check">
+                                    ✓
+                                </span>
+
+                            </label>
+
+                        </div>
 
                     </div>
 
                 </div>
 
-            </div>
 
 
-            {{-- SUMMARY --}}
-            <div class="col-lg-5">
+                {{-- RIGHT SUMMARY --}}
+                <div class="col-lg-5">
 
-                <div class="checkout-card p-4">
+                    <div class="ani-checkout-summary">
 
-                    <h4>
-                        Ringkasan Pesanan
-                    </h4>
+                        <div class="ani-summary-heading">
 
-                    <hr>
+                            <span>
+                                ORDER SUMMARY
+                            </span>
 
-                    @foreach ($products as $product)
+                            <h2>
+                                Ringkasan Pesanan
+                            </h2>
 
-                        @php
-                            $quantity =
-                                $cart[$product->id]['quantity'];
+                        </div>
 
-                            $itemTotal =
-                                $product->price * $quantity;
-                        @endphp
 
-                        <div class="d-flex justify-content-between mb-3">
+                        {{-- PRODUCTS --}}
+                        <div class="ani-checkout-products">
 
-                            <div>
-                                <div>
-                                    {{ $product->name }}
+                            @foreach ($products as $product)
+
+                                @php
+                                    $quantity = $cart[$product->id]['quantity'];
+                                    $variation = $cart[$product->id]['variation_note'] ?? null;
+                                    $itemTotal = $product->price * $quantity;
+                                @endphp
+
+                                <div class="ani-checkout-product">
+
+                                    <div class="ani-checkout-product-image">
+
+                                        @if ($product->images->first())
+
+                                            <img
+                                                src="{{ asset('images/' . $product->images->first()->image_path) }}"
+                                                alt="{{ $product->name }}"
+                                            >
+
+                                        @else
+
+                                            <span>
+                                                —
+                                            </span>
+
+                                        @endif
+
+                                    </div>
+
+
+                                    <div class="ani-checkout-product-info">
+
+                                        <strong>
+                                            {{ $product->name }}
+                                        </strong>
+
+                                        <span>
+                                            {{ $quantity }} ×
+                                            Rp {{ number_format($product->price, 0, ',', '.') }}
+                                        </span>
+
+                                        @if ($variation)
+                                            <small>
+                                                {{ $variation }}
+                                            </small>
+                                        @endif
+
+                                    </div>
+
+
+                                    <div class="ani-checkout-product-total">
+
+                                        Rp {{ number_format($itemTotal, 0, ',', '.') }}
+
+                                    </div>
+
                                 </div>
 
-                                <small class="text-secondary">
-                                    {{ $quantity }} ×
-                                    Rp {{ number_format($product->price, 0, ',', '.') }}
-                                </small>
-                            </div>
+                            @endforeach
+
+                        </div>
+
+
+                        <div class="ani-summary-divider"></div>
+
+
+                        <div class="ani-checkout-total-line">
+
+                            <span>
+                                Subtotal
+                            </span>
 
                             <strong>
-                                Rp {{ number_format($itemTotal, 0, ',', '.') }}
+                                Rp {{ number_format($subtotal, 0, ',', '.') }}
                             </strong>
 
                         </div>
 
-                    @endforeach
 
-                    <hr>
+                        <div class="ani-checkout-total-line muted">
 
-                    <div class="d-flex justify-content-between">
+                            <span>
+                                Ongkir
+                            </span>
 
-                        <span>
-                            Subtotal
-                        </span>
+                            <strong id="summaryShipping">
+                                Rp 0
+                            </strong>
 
-                        <strong>
-                            Rp {{ number_format($subtotal, 0, ',', '.') }}
-                        </strong>
+                        </div>
 
-                    </div>
 
-                    <div class="d-flex justify-content-between mt-2">
+                        <div class="ani-summary-divider"></div>
 
-                        <span>
-                            Ongkir
-                        </span>
 
-                        <strong id="summaryShipping">
-                            Rp 0
-                        </strong>
+                        <div class="ani-checkout-grand-total">
 
-                    </div>
+                            <span>
+                                Total Pembayaran
+                            </span>
 
-                    <hr>
+                            <strong id="summaryTotal">
+                                Rp {{ number_format($subtotal, 0, ',', '.') }}
+                            </strong>
 
-                    <div class="d-flex justify-content-between fs-5">
+                        </div>
 
-                        <strong>
-                            Total
-                        </strong>
 
-                        <strong
-                            class="price"
-                            id="summaryTotal"
+                        <button
+                            type="submit"
+                            class="ani-place-order-btn"
                         >
-                            Rp {{ number_format($subtotal, 0, ',', '.') }}
-                        </strong>
+                            <span>
+                                Buat Pesanan
+                            </span>
+
+                            <span>
+                                →
+                            </span>
+                        </button>
+
+
+                        <div class="ani-checkout-security">
+                            🔒 Data pesanan diproses secara aman.
+                        </div>
 
                     </div>
-
-
-                    <button
-                        type="submit"
-                        class="btn btn-light w-100 mt-4"
-                    >
-                        Buat Pesanan
-                    </button>
 
                 </div>
 
             </div>
 
-        </div>
+        </form>
 
-    </form>
+    </div>
 
 </div>
 
+@endsection
+
+
+@push('scripts')
 
 <script>
+
     const shippingRates = @json($shippingRates);
 
     const citySelect =
@@ -427,7 +568,8 @@
     const summaryTotal =
         document.getElementById('summaryTotal');
 
-    const subtotal = {{ $subtotal }};
+    const subtotal =
+        {{ $subtotal }};
 
 
     function updateShipping() {
@@ -444,20 +586,24 @@
             ? Number(rate.cost)
             : 0;
 
+
         shippingCost.value = cost;
 
-        shippingCostDisplay.value =
+
+        shippingCostDisplay.textContent =
             'Rp ' +
             cost.toLocaleString('id-ID');
+
 
         summaryShipping.textContent =
             'Rp ' +
             cost.toLocaleString('id-ID');
 
+
         summaryTotal.textContent =
             'Rp ' +
-            (subtotal + cost)
-                .toLocaleString('id-ID');
+            (subtotal + cost).toLocaleString('id-ID');
+
     }
 
 
@@ -466,11 +612,15 @@
         updateShipping
     );
 
+
     courierSelect.addEventListener(
         'change',
         updateShipping
     );
+
+
+    updateShipping();
+
 </script>
 
-</body>
-</html>
+@endpush

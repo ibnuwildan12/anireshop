@@ -124,6 +124,8 @@
     </div>
 </section>
 
+
+
 {{-- CATEGORY --}}
 <section class="container ani-section">
 
@@ -270,21 +272,17 @@
 {{-- ABOUT --}}
 <section class="container ani-section">
 
-    <div class="row">
+    <div class="ani-about">
 
-        <div class="col-lg-8">
+        <h2 class="ani-section-title">
+            Tentang <span>Anireshop</span>
+        </h2>
 
-            <h2 class="ani-section-title">
-                Tentang <span>Anireshop</span>
-            </h2>
-
-            <p class="about-text">
-                Anireshop adalah toko merchandise yang menyediakan
-                berbagai koleksi anime, K-Pop, dan accessories
-                untuk para penggemar.
-            </p>
-
-        </div>
+        <p class="about-text">
+            Anireshop adalah toko merchandise yang menyediakan
+            berbagai koleksi anime, K-Pop, dan accessories
+            untuk para penggemar.
+        </p>
 
     </div>
 

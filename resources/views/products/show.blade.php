@@ -1,306 +1,297 @@
-<!DOCTYPE html>
-<html lang="id">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
+@section('title', $product->name . ' - Anireshop')
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+@section('content')
 
-    <title>{{ $product->name }} - Anireshop</title>
+<div class="ani-product-detail">
 
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
+    <div class="container py-5">
 
-    <style>
-        body {
-            background: #0f0f13;
-            color: #ffffff;
-        }
+        {{-- BREADCRUMB --}}
+        <div class="product-breadcrumb mb-4">
 
-        .navbar {
-            background: #111116;
-        }
+            <a href="{{ route('home') }}">
+                Home
+            </a>
 
-        .navbar-brand {
-            color: #ff4fd8 !important;
-            font-weight: 700;
-        }
+            <span>/</span>
 
-        .nav-link {
-            color: #ffffff !important;
-        }
+            <a href="{{ route('products.index') }}">
+                Produk
+            </a>
 
-        .product-main-image {
-            width: 100%;
-            height: 450px;
-            object-fit: cover;
-            border-radius: 18px;
-            background: #1c1c24;
-        }
+            <span>/</span>
 
-        .product-info {
-            padding: 20px;
-        }
+            <span>
+                {{ $product->name }}
+            </span>
 
-        .product-price {
-            color: #ff4fd8;
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
+        </div>
 
-        .stock {
-            color: #8be28b;
-        }
 
-        .description {
-            color: #b5b5bd;
-            line-height: 1.8;
-        }
+        <div class="row g-4 g-lg-5">
 
-        .thumbnail {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 10px;
-            cursor: pointer;
-            border: 2px solid transparent;
-        }
 
-        .thumbnail:hover {
-            border-color: #ff4fd8;
-        }
+            {{-- =====================================================
+                 PRODUCT IMAGE
+            ====================================================== --}}
 
-        footer {
-            background: #111116;
-            margin-top: 80px;
-            padding: 40px 0;
-        }
-    </style>
-</head>
+            <div class="col-lg-6">
 
-<body>
+                <div class="product-gallery">
 
-<nav class="navbar navbar-expand-lg navbar-dark">
+                    @if($product->images->count())
 
-    <div class="container">
+                        {{-- MAIN IMAGE --}}
 
-        <a
-            class="navbar-brand"
-            href="{{ route('home') }}"
-        >
-            Anireshop
-        </a>
+                        <div class="product-main-image">
 
-        <div class="ms-auto">
+                            <img
+                                id="mainImage"
+                                src="{{ asset('images/' . $product->images->first()->image_path) }}"
+                                alt="{{ $product->name }}"
+                            >
 
-            @auth
+                        </div>
 
-                <span class="text-light me-3">
-                    Hi, {{ auth()->user()->name }}
-                </span>
 
-                <form
-                    method="POST"
-                    action="{{ route('logout') }}"
-                    class="d-inline"
-                >
-                    @csrf
+                        {{-- THUMBNAILS --}}
 
-                    <button
-                        class="btn btn-sm btn-outline-light"
+                        @if($product->images->count() > 1)
+
+                            <div class="product-thumbnails">
+
+                                @foreach($product->images as $image)
+
+                                    <button
+                                        type="button"
+                                        class="product-thumbnail {{ $loop->first ? 'active' : '' }}"
+                                        onclick="changeImage(
+                                            '{{ asset('images/' . $image->image_path) }}',
+                                            this
+                                        )"
+                                    >
+
+                                        <img
+                                            src="{{ asset('images/' . $image->image_path) }}"
+                                            alt="{{ $product->name }}"
+                                        >
+
+                                    </button>
+
+                                @endforeach
+
+                            </div>
+
+                        @endif
+
+                    @else
+
+                        <div class="product-main-image no-image">
+
+                            <span>
+                                No Image Available
+                            </span>
+
+                        </div>
+
+                    @endif
+
+                </div>
+
+            </div>
+
+
+            {{-- =====================================================
+                 PRODUCT INFORMATION
+            ====================================================== --}}
+
+            <div class="col-lg-6">
+
+                <div class="product-detail-info">
+
+
+                    {{-- CATEGORY --}}
+
+                    <a
+                        href="{{ route('products.index', [
+                            'category' => $product->category->slug
+                        ]) }}"
+                        class="product-detail-category"
                     >
-                        Logout
-                    </button>
-
-                </form>
-
-            @else
-
-                <a
-                    href="{{ route('login') }}"
-                    class="btn btn-sm btn-outline-light"
-                >
-                    Login
-                </a>
-
-            @endauth
-
-        </div>
-
-    </div>
-
-</nav>
+                        {{ $product->category->name }}
+                    </a>
 
 
-<div class="container py-5">
+                    {{-- NAME --}}
 
-    {{-- BACK TO HOME --}}
-    <div class="mb-4">
-
-        <a
-            href="{{ route('home') }}"
-            class="text-decoration-none text-light"
-        >
-            ← Kembali ke Home
-        </a>
-
-    </div>
+                    <h1 class="product-detail-title">
+                        {{ $product->name }}
+                    </h1>
 
 
-    <div class="row g-5">
+                    {{-- PRICE --}}
 
-        {{-- IMAGE --}}
-        <div class="col-lg-6">
-
-            @if ($product->images->first())
-
-                <img
-                    id="mainImage"
-                    src="{{ asset('images/' . $product->images->first()->image_path) }}"
-                    alt="{{ $product->name }}"
-                    class="product-main-image"
-                >
-
-                <div class="d-flex gap-2 mt-3 flex-wrap">
-
-                    @foreach ($product->images as $image)
-
-                        <img
-                            src="{{ asset('images/' . $image->image_path) }}"
-                            class="thumbnail"
-                            onclick="changeImage('{{ asset('images/' . $image->image_path) }}')"
-                            alt="{{ $product->name }}"
-                        >
-
-                    @endforeach
-
-                </div>
-
-            @else
-
-                <div
-                    class="product-main-image d-flex align-items-center justify-content-center"
-                >
-
-                    <span class="text-secondary">
-                        No Image Available
-                    </span>
-
-                </div>
-
-            @endif
-
-        </div>
-
-
-        {{-- INFORMATION --}}
-        <div class="col-lg-6">
-
-            <div class="product-info">
-
-                {{-- CATEGORY --}}
-                <span class="badge text-bg-secondary mb-3">
-                    {{ $product->category->name }}
-                </span>
-
-
-                {{-- PRODUCT NAME --}}
-                <h1 class="fw-bold">
-                    {{ $product->name }}
-                </h1>
-
-
-                {{-- PRICE --}}
-                <div class="product-price my-3">
-                    Rp {{ number_format($product->price, 0, ',', '.') }}
-                </div>
-
-
-                {{-- STOCK --}}
-                <p class="stock">
-                    Stok tersedia:
-                    {{ $product->available_stock }}
-                </p>
-
-                <hr>
-
-
-                {{-- DESCRIPTION --}}
-                <h5>
-                    Deskripsi
-                </h5>
-
-                <p class="description">
-                    {{ $product->description ?? 'Tidak ada deskripsi produk.' }}
-                </p>
-
-
-                {{-- ADD TO CART FORM --}}
-                <form
-                    method="POST"
-                    action="{{ route('cart.add', $product) }}"
-                >
-
-                    @csrf
-
-
-                    {{-- VARIATION --}}
-                    <div class="mt-4">
-
-                        <label class="form-label">
-                            Variasi / Catatan Produk
-                        </label>
-
-                        <textarea
-                            name="variation_note"
-                            class="form-control bg-dark text-light border-secondary"
-                            rows="3"
-                            maxlength="500"
-                            placeholder="Contoh: Pilih karakter Levi / warna hitam"
-                        ></textarea>
-
-                        <small class="text-secondary">
-                            Maksimal 500 karakter.
-                        </small>
-
+                    <div class="product-detail-price">
+                        Rp {{ number_format($product->price, 0, ',', '.') }}
                     </div>
 
 
-                    {{-- QUANTITY --}}
-                    <div class="mt-4">
+                    {{-- STOCK --}}
 
-                        <label class="form-label">
-                            Jumlah
-                        </label>
+                    @if($product->available_stock > 5)
 
-                        <input
-                            type="number"
-                            name="quantity"
-                            class="form-control bg-dark text-light border-secondary"
-                            value="1"
-                            min="1"
-                            max="{{ $product->available_stock }}"
-                            required
-                        >
+                        <div class="product-stock available">
+                            <span></span>
+                            Stok tersedia: {{ $product->available_stock }}
+                        </div>
+
+                    @elseif($product->available_stock > 0)
+
+                        <div class="product-stock low">
+                            <span></span>
+                            Stok terbatas: {{ $product->available_stock }}
+                        </div>
+
+                    @else
+
+                        <div class="product-stock sold">
+                            <span></span>
+                            Produk sedang habis
+                        </div>
+
+                    @endif
+
+
+                    <div class="product-detail-divider"></div>
+
+
+                    {{-- DESCRIPTION --}}
+
+                    <div class="product-description-section">
+
+                        <h5>
+                            Deskripsi Produk
+                        </h5>
+
+                        <p>
+                            {{ $product->description ?? 'Tidak ada deskripsi produk.' }}
+                        </p>
 
                     </div>
 
 
                     {{-- ADD TO CART --}}
-                    <button
-                        type="submit"
-                        class="btn btn-light btn-lg w-100 mt-4"
-                        {{ $product->available_stock <= 0 ? 'disabled' : '' }}
-                    >
-                        Tambah ke Keranjang
-                    </button>
 
-                </form>
+                    @if($product->available_stock > 0)
+
+                        <form
+                            method="POST"
+                            action="{{ route('cart.add', $product) }}"
+                            class="product-cart-form"
+                        >
+
+                            @csrf
+
+
+                            {{-- VARIATION --}}
+
+                            <div class="product-form-group">
+
+                                <label for="variation_note">
+                                    Variasi / Catatan Produk
+                                </label>
+
+                                <textarea
+                                    id="variation_note"
+                                    name="variation_note"
+                                    rows="3"
+                                    maxlength="500"
+                                    placeholder="Contoh: Pilih karakter Levi / warna hitam"
+                                ></textarea>
+
+                                <small>
+                                    Maksimal 500 karakter.
+                                </small>
+
+                            </div>
+
+
+                            {{-- QUANTITY --}}
+
+                            <div class="product-form-group">
+
+                                <label for="quantity">
+                                    Jumlah
+                                </label>
+
+                                <div class="quantity-wrapper">
+
+                                    <button
+                                        type="button"
+                                        onclick="decreaseQuantity()"
+                                    >
+                                        −
+                                    </button>
+
+                                    <input
+                                        id="quantity"
+                                        type="number"
+                                        name="quantity"
+                                        value="1"
+                                        min="1"
+                                        max="{{ $product->available_stock }}"
+                                        required
+                                    >
+
+                                    <button
+                                        type="button"
+                                        onclick="increaseQuantity()"
+                                    >
+                                        +
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            {{-- ADD CART BUTTON --}}
+
+                            <button
+                                type="submit"
+                                class="product-add-cart"
+                            >
+                                <span>🛒</span>
+                                Tambah ke Keranjang
+                            </button>
+
+                        </form>
+
+                    @else
+
+                        <button
+                            type="button"
+                            class="product-add-cart disabled"
+                            disabled
+                        >
+                            Stok Habis
+                        </button>
+
+                    @endif
+
+
+                    {{-- BACK TO PRODUCTS --}}
+
+                    <a
+                        href="{{ route('products.index') }}"
+                        class="product-back-link"
+                    >
+                        ← Kembali ke Produk
+                    </a>
+
+                </div>
 
             </div>
 
@@ -310,34 +301,69 @@
 
 </div>
 
+@endsection
 
-<footer>
 
-    <div class="container text-center">
+@push('styles')
 
-        <h4>
-            Anireshop
-        </h4>
+<link
+    rel="stylesheet"
+    href="{{ asset('css/anireshop-product-v2.css') }}"
+>
 
-        <p class="text-secondary mb-0">
-            Anime • K-Pop • Cute Accessories
-        </p>
+@endpush
 
-    </div>
 
-</footer>
-
+@push('scripts')
 
 <script>
 
-function changeImage(image) {
+function changeImage(image, button) {
 
-    document.getElementById('mainImage').src = image;
+    const mainImage = document.getElementById('mainImage');
 
+    if (mainImage) {
+        mainImage.src = image;
+    }
+
+    document
+        .querySelectorAll('.product-thumbnail')
+        .forEach(function (item) {
+            item.classList.remove('active');
+        });
+
+    button.classList.add('active');
+}
+
+
+function decreaseQuantity() {
+
+    const input = document.getElementById('quantity');
+
+    if (!input) return;
+
+    const current = parseInt(input.value) || 1;
+
+    if (current > 1) {
+        input.value = current - 1;
+    }
+}
+
+
+function increaseQuantity() {
+
+    const input = document.getElementById('quantity');
+
+    if (!input) return;
+
+    const current = parseInt(input.value) || 1;
+    const maximum = parseInt(input.max);
+
+    if (current < maximum) {
+        input.value = current + 1;
+    }
 }
 
 </script>
 
-</body>
-
-</html>
+@endpush

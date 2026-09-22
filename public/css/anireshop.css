@@ -509,37 +509,30 @@ body {
     color: #ec4899 !important;
 }
 
-/* =========================
+/* =========================================================
    ABOUT
-========================= */
+   ========================================================= */
 
-.about-text {
-    color: #e9dff2 !important;
-    font-size: 1.05rem;
+   .ani-about {
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+.ani-about .ani-section-title {
+    margin-bottom: 12px;
+}
+
+.ani-about .about-text {
+    margin: 0 auto;
+
+    max-width: 680px;
+
+    color: #a99cad;
+
     line-height: 1.8;
-}
-
-.ani-section h2,
-.ani-section h3,
-.ani-section h4,
-.ani-section h5 {
-    color: #ffffff !important;
-}
-
-.text-muted {
-    color: #b8a9c9 !important;
-}
-
-.text-secondary {
-    color: #c8bbd6 !important;
-}
-
-/* =====================================
-   ANIRESHOP HERO V2
-===================================== */
-
-.ani-hero-wrapper {
-    padding-top: 24px;
 }
 
 

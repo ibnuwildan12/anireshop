@@ -1,0 +1,200 @@
+/* =========================================================
+   ANIRESHOP NAVBAR SEARCH
+   ========================================================= */
+
+   .ani-navbar .ani-search-item {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+}
+
+
+/* SEARCH BOX */
+
+.ani-navbar .ani-navbar-search {
+    width: 310px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+
+    padding-left: 12px;
+
+    border: 1px solid #4b315c;
+    border-radius: 10px;
+
+    background: #21182b;
+
+    overflow: hidden;
+
+    transition: all 0.2s ease;
+}
+
+
+/* SAAT INPUT AKTIF */
+
+.ani-navbar .ani-navbar-search:focus-within {
+    border-color: #ec4899;
+
+    box-shadow:
+        0 0 0 2px rgba(236, 72, 153, 0.15);
+}
+
+
+/* ICON SEARCH */
+
+.ani-navbar .ani-search-icon {
+    flex-shrink: 0;
+
+    color: #ec4899 !important;
+
+    font-size: 15px;
+
+    opacity: 1;
+}
+
+
+/* INPUT */
+
+.ani-navbar .ani-navbar-search input {
+    flex: 1;
+
+    min-width: 0;
+
+    height: 40px;
+
+    padding: 0 10px;
+
+    border: 0 !important;
+    outline: 0 !important;
+
+    background: transparent !important;
+
+    color: #ffffff !important;
+
+    font-size: 13px;
+}
+
+
+/* PLACEHOLDER */
+
+.ani-navbar .ani-navbar-search input::placeholder {
+    color: #c7b8d2 !important;
+
+    opacity: 1;
+}
+
+
+/* TEXT YANG DIKETIK */
+
+.ani-navbar .ani-navbar-search input:focus {
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   PINK SEARCH BUTTON
+   ========================================================= */
+
+.ani-navbar .ani-navbar-search .ani-search-button {
+    width: 36px !important;
+    height: 36px !important;
+
+    flex-shrink: 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    margin: 0 3px 0 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+    border-radius: 8px !important;
+
+    background: #ec4899 !important;
+    background-image: none !important;
+
+    color: #ffffff !important;
+
+    font-size: 15px !important;
+    line-height: 1 !important;
+
+    opacity: 1 !important;
+
+    cursor: pointer;
+
+    box-shadow: none !important;
+
+    transition: all 0.2s ease;
+}
+
+
+/* HOVER */
+
+.ani-navbar .ani-navbar-search .ani-search-button:hover {
+    background: #f472b6 !important;
+    background-image: none !important;
+
+    color: #ffffff !important;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 5px 15px rgba(236, 72, 153, 0.35) !important;
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 992px) {
+
+    .ani-navbar .ani-search-item {
+        margin-right: 8px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1199px) {
+
+    .ani-navbar .ani-navbar-search {
+        width: 250px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+
+    .ani-navbar .ani-search-item {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .ani-navbar .ani-navbar-search {
+        width: 100%;
+        height: 44px;
+    }
+
+    .ani-navbar .ani-navbar-search input {
+        height: 42px;
+        font-size: 13px;
+    }
+
+    .ani-navbar .ani-navbar-search .ani-search-button {
+        width: 36px !important;
+        height: 36px !important;
+    }
+
+}

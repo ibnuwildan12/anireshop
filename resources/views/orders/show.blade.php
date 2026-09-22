@@ -1,470 +1,558 @@
-<!DOCTYPE html>
-<html lang="id">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
+@section('title', 'Detail Pesanan - Anireshop')
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+@section('content')
 
-    <title>Detail Pesanan - Anireshop</title>
+<div class="ani-order-page">
 
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
+    <div class="container py-5">
 
-    <style>
-        body {
-            background: #0f0f13;
-            color: #ffffff;
-        }
+        {{-- SUCCESS --}}
+        @if (session('success'))
 
-        .navbar {
-            background: #111116;
-        }
+            <div class="ani-order-alert success">
+                <div class="ani-order-alert-icon">✓</div>
+                <div>{{ session('success') }}</div>
+            </div>
 
-        .navbar-brand {
-            color: #ff4fd8 !important;
-            font-weight: 700;
-        }
-
-        .order-card {
-            background: #18181f;
-            border: 1px solid #292936;
-            border-radius: 15px;
-        }
-
-        .price {
-            color: #ff4fd8;
-            font-weight: 700;
-        }
-
-        .status {
-            color: #ff4fd8;
-            font-weight: 700;
-        }
-
-        .tracking-number {
-            color: #ffffff;
-            font-weight: 700;
-            word-break: break-word;
-        }
-    </style>
-</head>
-
-<body>
-
-<nav class="navbar navbar-dark">
-    <div class="container">
-
-        <a
-            href="{{ route('home') }}"
-            class="navbar-brand"
-        >
-            Anireshop
-        </a>
-
-        <a
-            href="{{ route('home') }}"
-            class="btn btn-outline-light btn-sm"
-        >
-            Home
-        </a>
-
-    </div>
-</nav>
+        @endif
 
 
-<div class="container py-5">
+        {{-- HEADER --}}
+        <div class="ani-order-header">
 
-    {{-- SUCCESS MESSAGE --}}
-    @if (session('success'))
+            <div>
 
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
+                <span class="ani-order-eyebrow">
+                    ORDER DETAILS
+                </span>
 
-    @endif
+                <h1>
+                    Detail Pesanan
+                </h1>
 
-
-    {{-- HEADER --}}
-    <div class="d-flex justify-content-between align-items-center mb-4">
-
-        <div>
-
-            <h1>
-                Detail Pesanan
-            </h1>
-
-            <p class="text-secondary mb-0">
-                {{ $order->order_number }}
-            </p>
-
-        </div>
-
-        <span class="status">
-            {{ $order->order_status }}
-        </span>
-
-    </div>
-
-
-    {{-- ORDER INFORMATION --}}
-    <div class="order-card p-4 mb-4">
-
-        <h4 class="mb-4">
-            Informasi Pesanan
-        </h4>
-
-        <div class="row g-4">
-
-            {{-- NOMOR PESANAN --}}
-            <div class="col-md-6">
-
-                <strong>
-                    Nomor Pesanan
-                </strong>
-
-                <div class="text-secondary">
+                <p>
                     {{ $order->order_number }}
-                </div>
+                </p>
 
             </div>
 
 
-            {{-- STATUS PESANAN --}}
-            <div class="col-md-6">
+            <div class="ani-order-status">
+
+                <span class="ani-status-label">
+                    STATUS PESANAN
+                </span>
 
                 <strong>
-                    Status Pesanan
-                </strong>
-
-                <div class="status">
                     {{ $order->order_status }}
-                </div>
+                </strong>
 
             </div>
 
-
-            {{-- STATUS PEMBAYARAN --}}
-            <div class="col-md-6">
-
-                <strong>
-                    Status Pembayaran
-                </strong>
-
-                <div class="status">
-                    {{ $order->payment_status }}
-                </div>
-
-            </div>
+        </div>
 
 
-            {{-- METODE PEMBAYARAN --}}
-            <div class="col-md-6">
+        <div class="row g-4 align-items-start">
 
-                <strong>
-                    Metode Pembayaran
-                </strong>
-
-                <div class="text-secondary">
-                    {{ $order->payment_method }}
-                </div>
-
-            </div>
+            {{-- LEFT --}}
+            <div class="col-lg-8">
 
 
-            {{-- KURIR + TRACKING --}}
-            <div class="col-md-6">
+                {{-- ORDER INFORMATION --}}
+                <div class="ani-order-card">
 
-                <strong>
-                    Kurir
-                </strong>
+                    <div class="ani-order-card-heading">
 
-                <div class="text-secondary">
-                    {{ $order->courier ?? '-' }}
-                </div>
+                        <div class="ani-order-heading-icon">
+                            #
+                        </div>
+
+                        <div>
+                            <span>ORDER</span>
+                            <h2>Informasi Pesanan</h2>
+                        </div>
+
+                    </div>
 
 
-                @if ($order->tracking_number)
+                    <div class="ani-order-info-grid">
 
-                    <div class="mt-3">
 
-                        <strong>
-                            Nomor Resi
-                        </strong>
+                        <div class="ani-order-info-item">
 
-                        <div class="tracking-number">
-                            {{ $order->tracking_number }}
+                            <span>
+                                Nomor Pesanan
+                            </span>
+
+                            <strong>
+                                {{ $order->order_number }}
+                            </strong>
+
                         </div>
 
 
-                        @php
+                        <div class="ani-order-info-item">
 
-                            $trackingUrl = match ($order->courier) {
+                            <span>
+                                Status Pesanan
+                            </span>
 
-                                'JNE' => 'https://www.jne.co.id/',
+                            <strong class="ani-order-status-text">
+                                {{ $order->order_status }}
+                            </strong>
 
-                                'J&T' => 'https://jet.co.id/',
-
-                                default => null,
-
-                            };
-
-                        @endphp
+                        </div>
 
 
-                        @if ($trackingUrl)
+                        <div class="ani-order-info-item">
+
+                            <span>
+                                Status Pembayaran
+                            </span>
+
+                            <strong class="ani-order-status-text">
+                                {{ $order->payment_status }}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="ani-order-info-item">
+
+                            <span>
+                                Metode Pembayaran
+                            </span>
+
+                            <strong>
+                                {{ $order->payment_method }}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="ani-order-info-item">
+
+                            <span>
+                                Kurir
+                            </span>
+
+                            <strong>
+                                {{ $order->courier ?? '-' }}
+                            </strong>
+
+                        </div>
+
+
+                        @if ($order->tracking_number)
+
+                            <div class="ani-order-info-item">
+
+                                <span>
+                                    Nomor Resi
+                                </span>
+
+                                <strong class="ani-tracking-number">
+                                    {{ $order->tracking_number }}
+                                </strong>
+
+
+                                @php
+
+                                    $trackingUrl = match ($order->courier) {
+
+                                        'JNE' => 'https://www.jne.co.id/',
+
+                                        'J&T' => 'https://jet.co.id/',
+
+                                        default => null,
+
+                                    };
+
+                                @endphp
+
+
+                                @if ($trackingUrl)
+
+                                    <a
+                                        href="{{ $trackingUrl }}"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="ani-track-btn"
+                                    >
+                                        🔎 Lacak Pengiriman
+                                    </a>
+
+                                @endif
+
+                            </div>
+
+                        @endif
+
+
+                        @if ($order->payment_status !== 'PAID')
+
+                            <div class="ani-order-info-item">
+
+                                <span>
+                                    Batas Pembayaran
+                                </span>
+
+                                <strong>
+                                    @if ($order->expires_at)
+
+                                        {{ $order->expires_at->format('d M Y H:i') }}
+
+                                    @else
+
+                                        -
+
+                                    @endif
+                                </strong>
+
+                            </div>
+
+                        @endif
+
+                    </div>
+
+                </div>
+
+
+
+                {{-- SHIPPING --}}
+                <div class="ani-order-card">
+
+                    <div class="ani-order-card-heading">
+
+                        <div class="ani-order-heading-icon">
+                            📍
+                        </div>
+
+                        <div>
+                            <span>DELIVERY</span>
+                            <h2>Alamat Pengiriman</h2>
+                        </div>
+
+                    </div>
+
+
+                    <div class="ani-address-box">
+
+                        <strong>
+                            Alamat Tujuan
+                        </strong>
+
+                        <p>
+                            {{ $order->shipping_address }}
+                        </p>
+
+                        <span>
+                            {{ $order->shipping_district }},
+                            {{ $order->shipping_city }},
+                            {{ $order->shipping_postal_code }}
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                {{-- PRODUCTS --}}
+                <div class="ani-order-card">
+
+                    <div class="ani-order-card-heading">
+
+                        <div class="ani-order-heading-icon">
+                            🛍
+                        </div>
+
+                        <div>
+                            <span>ITEMS</span>
+                            <h2>Produk Pesanan</h2>
+                        </div>
+
+                    </div>
+
+
+                    <div class="ani-order-products">
+
+                        @foreach ($order->orderItems as $item)
+
+                            <div class="ani-order-product">
+
+                                <div class="ani-order-product-icon">
+                                    🛍
+                                </div>
+
+
+                                <div class="ani-order-product-info">
+
+                                    <strong>
+                                        {{ $item->product_name }}
+                                    </strong>
+
+                                    <span>
+                                        {{ $item->quantity }}
+                                        ×
+                                        Rp {{ number_format($item->price, 0, ',', '.') }}
+                                    </span>
+
+                                    @if ($item->variation_note)
+
+                                        <small>
+                                            Catatan: {{ $item->variation_note }}
+                                        </small>
+
+                                    @endif
+
+                                </div>
+
+
+                                <strong class="ani-order-product-total">
+
+                                    Rp {{ number_format($item->subtotal, 0, ',', '.') }}
+
+                                </strong>
+
+                            </div>
+
+                        @endforeach
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            {{-- RIGHT --}}
+            <div class="col-lg-4">
+
+
+                {{-- TOTAL --}}
+                <div class="ani-order-summary">
+
+                    <div class="ani-order-summary-heading">
+
+                        <span>
+                            PAYMENT SUMMARY
+                        </span>
+
+                        <h2>
+                            Ringkasan Pembayaran
+                        </h2>
+
+                    </div>
+
+
+                    <div class="ani-order-total-line">
+
+                        <span>
+                            Subtotal Produk
+                        </span>
+
+                        <strong>
+                            Rp {{ number_format(
+                                $order->total_amount - $order->shipping_cost,
+                                0,
+                                ',',
+                                '.'
+                            ) }}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="ani-order-total-line">
+
+                        <span>
+                            Ongkir
+                        </span>
+
+                        <strong>
+                            Rp {{ number_format($order->shipping_cost, 0, ',', '.') }}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="ani-order-summary-divider"></div>
+
+
+                    <div class="ani-order-grand-total">
+
+                        <span>
+                            Total
+                        </span>
+
+                        <strong>
+                            Rp {{ number_format($order->total_amount, 0, ',', '.') }}
+                        </strong>
+
+                    </div>
+
+
+                    {{-- PAYMENT STATUS --}}
+                    <div class="ani-payment-status-box">
+
+                        @if ($order->payment_status === 'PENDING')
+
+                            <span class="status-icon pending">
+                                !
+                            </span>
+
+                            <div>
+                                <strong>
+                                    Pembayaran diperlukan
+                                </strong>
+
+                                <small>
+                                    Silakan selesaikan pembayaran untuk melanjutkan pesanan.
+                                </small>
+                            </div>
+
+                        @elseif ($order->payment_status === 'WAITING_VERIFICATION')
+
+                            <span class="status-icon waiting">
+                                ⏳
+                            </span>
+
+                            <div>
+                                <strong>
+                                    Menunggu verifikasi
+                                </strong>
+
+                                <small>
+                                    Bukti pembayaran sedang diperiksa admin.
+                                </small>
+                            </div>
+
+                        @elseif ($order->payment_status === 'PAID')
+
+                            <span class="status-icon paid">
+                                ✓
+                            </span>
+
+                            <div>
+                                <strong>
+                                    Pembayaran terverifikasi
+                                </strong>
+
+                                <small>
+                                    Pembayaran pesanan ini sudah dikonfirmasi.
+                                </small>
+                            </div>
+
+                        @elseif ($order->payment_status === 'REJECTED')
+
+                            <span class="status-icon rejected">
+                                !
+                            </span>
+
+                            <div>
+                                <strong>
+                                    Pembayaran ditolak
+                                </strong>
+
+                                <small>
+                                    Silakan upload ulang bukti pembayaran.
+                                </small>
+                            </div>
+
+                        @endif
+
+                    </div>
+
+
+                    {{-- ACTION --}}
+                    <div class="ani-order-actions">
+
+
+                        @if ($order->payment_status === 'PENDING')
 
                             <a
-                                href="{{ $trackingUrl }}"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="btn btn-sm btn-outline-light mt-2"
+                                href="{{ route('payments.show', $order) }}"
+                                class="ani-order-primary-btn"
                             >
-                                🔎 Lacak Pengiriman
+                                <span>💳</span>
+                                Bayar Sekarang
+                                <b>→</b>
                             </a>
 
                         @endif
 
-                    </div>
 
-                @endif
+                        @if ($order->payment_status === 'WAITING_VERIFICATION')
 
-            </div>
-
-
-            {{-- BATAS PEMBAYARAN --}}
-            @if ($order->payment_status !== 'PAID')
-
-                <div class="col-md-6">
-
-                    <strong>
-                        Batas Pembayaran
-                    </strong>
-
-                    <div class="text-secondary">
-
-                        @if ($order->expires_at)
-
-                            {{ $order->expires_at->format('d M Y H:i') }}
-
-                        @else
-
-                            -
+                            <div class="ani-order-disabled-btn waiting">
+                                ⏳ Menunggu Verifikasi Admin
+                            </div>
 
                         @endif
 
-                    </div>
 
-                </div>
+                        @if ($order->payment_status === 'PAID')
 
-            @endif
+                            <div class="ani-order-disabled-btn paid">
+                                ✓ Pembayaran Terverifikasi
+                            </div>
 
-        </div>
-
-    </div>
-
-
-    {{-- SHIPPING --}}
-    <div class="order-card p-4 mb-4">
-
-        <h4 class="mb-4">
-            Alamat Pengiriman
-        </h4>
-
-        <p class="mb-1">
-            {{ $order->shipping_address }}
-        </p>
-
-        <p class="text-secondary mb-0">
-
-            {{ $order->shipping_district }},
-            {{ $order->shipping_city }},
-            {{ $order->shipping_postal_code }}
-
-        </p>
-
-    </div>
+                        @endif
 
 
-    {{-- ITEMS --}}
-    <div class="order-card p-4 mb-4">
+                        @if ($order->payment_status === 'REJECTED')
 
-        <h4 class="mb-4">
-            Produk
-        </h4>
+                            <a
+                                href="{{ route('payments.show', $order) }}"
+                                class="ani-order-primary-btn rejected-btn"
+                            >
+                                <span>🔄</span>
+                                Upload Ulang Bukti
+                                <b>→</b>
+                            </a>
 
-
-        @foreach ($order->orderItems as $item)
-
-            <div class="d-flex justify-content-between mb-3">
-
-                <div>
-
-                    <strong>
-                        {{ $item->product_name }}
-                    </strong>
+                        @endif
 
 
-                    <div class="text-secondary">
+                        @if ($order->order_status === 'SHIPPED')
 
-                        {{ $item->quantity }}
-                        ×
-                        Rp {{ number_format($item->price, 0, ',', '.') }}
+                            <form
+                                action="{{ route('orders.complete', $order) }}"
+                                method="POST"
+                                onsubmit="return confirm('Apakah kamu sudah menerima pesanan ini?');"
+                            >
+
+                                @csrf
+                                @method('PUT')
+
+                                <button
+                                    type="submit"
+                                    class="ani-order-received-btn"
+                                >
+                                    ✓ Pesanan Diterima
+                                </button>
+
+                            </form>
+
+                        @endif
+
+
+                        <a
+                            href="{{ route('products.index') }}"
+                            class="ani-order-shop-btn"
+                        >
+                            ← Kembali Belanja
+                        </a>
 
                     </div>
 
-
-                    @if ($item->variation_note)
-
-                        <small class="text-secondary">
-
-                            Catatan:
-                            {{ $item->variation_note }}
-
-                        </small>
-
-                    @endif
-
                 </div>
-
-
-                <strong>
-
-                    Rp {{ number_format($item->subtotal, 0, ',', '.') }}
-
-                </strong>
 
             </div>
-
-        @endforeach
-
-    </div>
-
-
-    {{-- TOTAL --}}
-    <div class="order-card p-4">
-
-        <div class="d-flex justify-content-between mb-2">
-
-            <span>
-                Ongkir
-            </span>
-
-            <strong>
-                Rp {{ number_format($order->shipping_cost, 0, ',', '.') }}
-            </strong>
-
-        </div>
-
-
-        <hr>
-
-
-        <div class="d-flex justify-content-between fs-4">
-
-            <strong>
-                Total
-            </strong>
-
-            <strong class="price">
-
-                Rp {{ number_format($order->total_amount, 0, ',', '.') }}
-
-            </strong>
-
-        </div>
-
-    </div>
-
-
-    {{-- PAYMENT ACTION --}}
-    <div class="mt-4">
-
-        <div class="d-flex gap-2 flex-wrap">
-
-
-            {{-- BELUM BAYAR --}}
-            @if ($order->payment_status === 'PENDING')
-
-                <a
-                    href="{{ route('payments.show', $order) }}"
-                    class="btn btn-primary"
-                >
-                    💳 Bayar Sekarang
-                </a>
-
-            @endif
-
-
-            {{-- MENUNGGU VERIFIKASI --}}
-            @if ($order->payment_status === 'WAITING_VERIFICATION')
-
-                <span class="btn btn-warning disabled">
-                    ⏳ Menunggu Verifikasi Admin
-                </span>
-
-            @endif
-
-
-            {{-- SUDAH DIBAYAR --}}
-            @if ($order->payment_status === 'PAID')
-
-                <span class="btn btn-success disabled">
-                    ✓ Pembayaran Terverifikasi
-                </span>
-
-            @endif
-
-
-            {{-- PEMBAYARAN DITOLAK --}}
-            @if ($order->payment_status === 'REJECTED')
-
-                <a
-                    href="{{ route('payments.show', $order) }}"
-                    class="btn btn-danger"
-                >
-                    🔄 Upload Ulang Bukti Pembayaran
-                </a>
-
-            @endif
-
-            {{-- PESANAN DITERIMA --}}
-            @if ($order->order_status === 'SHIPPED')
-
-                <form
-                    action="{{ route('orders.complete', $order) }}"
-                    method="POST"
-                    class="d-inline"
-                    onsubmit="return confirm('Apakah kamu sudah menerima pesanan ini?');"
-                >
-
-                    @csrf
-                    @method('PUT')
-
-                    <button
-                        type="submit"
-                        class="btn btn-success"
-                    >
-                        ✓ Pesanan Diterima
-                    </button>
-
-                </form>
-
-            @endif
-
-            {{-- KEMBALI BELANJA --}}
-            <a
-                href="{{ url('/') }}"
-                class="btn btn-secondary"
-            >
-                Kembali Belanja
-            </a>
-
 
         </div>
 
@@ -472,6 +560,4 @@
 
 </div>
 
-</body>
-
-</html>
+@endsection

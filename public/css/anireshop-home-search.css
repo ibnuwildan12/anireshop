@@ -1,0 +1,222 @@
+/* =========================================================
+   ANIRESHOP - HOME SEARCH V2
+   ========================================================= */
+
+   .ani-home-search {
+    width: 100%;
+
+    /* jarak dari hero */
+    margin-top: 38px;
+
+    /* jarak ke kategori */
+    margin-bottom: 45px;
+
+    display: flex;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   SEARCH FORM
+   ========================================================= */
+
+.home-search-form {
+    width: 100%;
+    max-width: 850px;
+}
+
+
+/* =========================================================
+   SEARCH BAR
+   ========================================================= */
+
+.home-search {
+    width: 100%;
+    min-height: 62px;
+
+    display: flex;
+    align-items: center;
+
+    border: 1px solid #3d294b;
+    border-radius: 16px;
+
+    background: #17121d;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.22);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* ketika input aktif */
+
+.home-search:focus-within {
+    border-color: #9b5de5;
+
+    box-shadow:
+        0 0 0 3px rgba(168, 85, 247, 0.12),
+        0 12px 35px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.home-search-icon {
+    flex-shrink: 0;
+
+    margin-left: 22px;
+
+    color: #c084fc;
+
+    font-size: 19px;
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.home-search input {
+    flex: 1;
+
+    width: 100%;
+    min-width: 0;
+
+    height: 62px;
+
+    padding: 0 18px;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-size: 15px;
+}
+
+.home-search input::placeholder {
+    color: #82758e;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.home-search button {
+    flex-shrink: 0;
+
+    height: 62px;
+
+    margin: 6px;
+    padding: 0 28px;
+
+    border: none;
+    border-radius: 11px;
+
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #ec4899
+    );
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.home-search button:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 20px rgba(236, 72, 153, 0.25);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .ani-home-search {
+        margin-top: 28px;
+        margin-bottom: 35px;
+    }
+
+    .home-search-form {
+        max-width: 100%;
+    }
+
+    .home-search {
+        min-height: 56px;
+        border-radius: 14px;
+    }
+
+    .home-search input {
+        height: 56px;
+
+        padding: 0 10px;
+
+        font-size: 13px;
+    }
+
+    .home-search-icon {
+        margin-left: 16px;
+
+        font-size: 16px;
+    }
+
+    .home-search button {
+        height: 48px;
+
+        margin: 4px;
+        padding: 0 18px;
+
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .ani-home-search {
+        margin-top: 24px;
+        margin-bottom: 30px;
+    }
+
+    .home-search {
+        min-height: 52px;
+    }
+
+    .home-search input {
+        height: 52px;
+
+        font-size: 12px;
+    }
+
+    .home-search button {
+        padding: 0 14px;
+    }
+}
