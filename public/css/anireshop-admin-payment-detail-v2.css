@@ -1,0 +1,886 @@
+/* =========================================================
+   ANIRESHOP ADMIN PAYMENT DETAIL V2
+   ========================================================= */
+
+   .ani-admin-payment-detail-page {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(124, 58, 237, .10),
+            transparent 30%
+        ),
+        #110d16;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+.ani-admin-payment-detail-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 30px;
+    margin-bottom: 28px;
+}
+
+.ani-admin-payment-detail-header h1 {
+    margin: 4px 0 7px;
+
+    color: #ffffff;
+
+    font-size: 34px;
+    font-weight: 900;
+}
+
+.ani-admin-payment-detail-header p {
+    margin: 0;
+
+    color: #d0c3da;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.ani-admin-payment-detail-header p strong {
+    color: #ffffff;
+    font-weight: 900;
+}
+
+.ani-admin-payment-detail-page .ani-admin-eyebrow {
+    color: #f05aa7;
+
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   BACK
+   ========================= */
+
+.ani-admin-payment-back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 40px;
+
+    padding: 0 14px;
+
+    border: 1px solid #493653;
+    border-radius: 8px;
+
+    background: #1d1525;
+
+    color: #d9cde2;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    text-decoration: none;
+
+    transition: .2s ease;
+}
+
+.ani-admin-payment-back-btn:hover {
+    border-color: #ec4899;
+
+    background: #281a32;
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   MAIN CARD
+   ========================= */
+
+.ani-admin-payment-detail-card,
+.ani-admin-payment-proof-card {
+    overflow: hidden;
+
+    border: 1px solid #352941;
+    border-radius: 14px;
+
+    background: #18121f;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, .16);
+}
+
+
+/* =========================
+   CARD HEADER
+   ========================= */
+
+.ani-admin-payment-detail-card-header {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #30243a;
+
+    background: #1b1423;
+}
+
+.ani-admin-payment-detail-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    border: 1px solid #7544a0;
+    border-radius: 9px;
+
+    background: #29183a;
+
+    color: #c084fc;
+
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.ani-admin-payment-detail-card-header span,
+.ani-admin-payment-proof-header span,
+.ani-admin-payment-products-heading span,
+.ani-admin-payment-verification-heading span {
+    display: block;
+    margin-bottom: 4px;
+
+    color: #f05aa7;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1.8px;
+}
+
+.ani-admin-payment-detail-card-header h2,
+.ani-admin-payment-proof-header h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 19px;
+    font-weight: 900;
+}
+
+
+/* =========================
+   BODY
+   ========================= */
+
+.ani-admin-payment-detail-body {
+    padding: 22px;
+}
+
+
+/* =========================
+   INFO ROW
+   ========================= */
+
+.ani-admin-payment-info-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    padding: 13px 0;
+
+    border-bottom: 1px solid #2f2438;
+}
+
+.ani-admin-payment-info-row:first-child {
+    padding-top: 0;
+}
+
+.ani-admin-payment-info-row > span {
+    color: #aaa0b2;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.ani-admin-payment-info-row > strong {
+    max-width: 65%;
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    text-align: right;
+}
+
+.ani-admin-payment-detail-status {
+    display: inline-flex;
+
+    padding: 6px 9px;
+
+    border: 1px solid #704b35;
+    border-radius: 7px;
+
+    background: #2b2119;
+
+    color: #f5c26b !important;
+
+    font-size: 9px !important;
+    font-weight: 900 !important;
+}
+
+
+/* =========================
+   PRODUCTS
+   ========================= */
+
+.ani-admin-payment-products-section {
+    margin-top: 25px;
+    padding-top: 22px;
+
+    border-top: 1px solid #3b2d45;
+}
+
+.ani-admin-payment-products-heading {
+    margin-bottom: 13px;
+}
+
+.ani-admin-payment-products-heading h3 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 17px;
+    font-weight: 900;
+}
+
+.ani-admin-payment-items {
+    border-top: 1px solid #2f2438;
+}
+
+.ani-admin-payment-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #2f2438;
+}
+
+.ani-admin-payment-item-info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+
+    min-width: 0;
+}
+
+.ani-admin-payment-item-info > strong {
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.ani-admin-payment-item-info small {
+    color: #b19fb9;
+
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.ani-admin-payment-item-info > span {
+    color: #a99bb4;
+
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.ani-admin-payment-item-price {
+    flex-shrink: 0;
+
+    color: #f05aa7;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+
+/* =========================
+   SUMMARY
+   ========================= */
+
+.ani-admin-payment-summary-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-top: 17px;
+}
+
+.ani-admin-payment-summary-row span {
+    color: #b7a9c1;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.ani-admin-payment-summary-row strong {
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.ani-admin-payment-total-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 12px;
+    padding-top: 15px;
+
+    border-top: 1px solid #3b2d45;
+}
+
+.ani-admin-payment-total-row span {
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.ani-admin-payment-total-row strong {
+    color: #f05aa7;
+
+    font-size: 17px;
+    font-weight: 900;
+}
+
+
+/* =========================
+   PROOF HEADER
+   ========================= */
+
+.ani-admin-payment-proof-header {
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #30243a;
+
+    background: #1b1423;
+}
+
+.ani-admin-payment-proof-body {
+    padding: 20px;
+}
+
+
+/* =========================
+   PAYMENT PROOF IMAGE
+   ========================= */
+
+.ani-admin-payment-proof-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 250px;
+
+    padding: 10px;
+
+    border: 1px solid #403149;
+    border-radius: 10px;
+
+    background: #0f0b13;
+
+    overflow: hidden;
+}
+
+.ani-admin-payment-proof-image a {
+    display: block;
+
+    width: 100%;
+
+    text-align: center;
+}
+
+.ani-admin-payment-proof-image img {
+    display: block;
+
+    width: 100%;
+    max-height: 500px;
+
+    object-fit: contain;
+
+    border-radius: 7px;
+
+    transition: .2s ease;
+}
+
+.ani-admin-payment-proof-image img:hover {
+    opacity: .88;
+
+    transform: scale(1.01);
+}
+
+.ani-admin-payment-proof-help {
+    margin: 9px 0 0;
+
+    color: #958899;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    text-align: center;
+}
+
+
+/* =========================
+   NO PROOF
+   ========================= */
+
+.ani-admin-payment-proof-empty {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    min-height: 250px;
+
+    padding: 30px;
+
+    border: 1px dashed #55425f;
+    border-radius: 10px;
+
+    background: #15101b;
+
+    text-align: center;
+}
+
+.ani-admin-payment-proof-empty > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+
+    margin-bottom: 13px;
+
+    border-radius: 50%;
+
+    background: #2b2119;
+
+    color: #f5c26b;
+
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.ani-admin-payment-proof-empty strong {
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+
+/* =========================
+   VERIFICATION
+   ========================= */
+
+.ani-admin-payment-verification {
+    margin-top: 22px;
+    padding-top: 20px;
+
+    border-top: 1px solid #3b2d45;
+}
+
+.ani-admin-payment-verification-heading {
+    margin-bottom: 15px;
+}
+
+.ani-admin-payment-verification-heading h3 {
+    margin: 0 0 6px;
+
+    color: #ffffff;
+
+    font-size: 17px;
+    font-weight: 900;
+}
+
+.ani-admin-payment-verification-heading p {
+    margin: 0;
+
+    color: #b9aabe;
+
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   APPROVE
+   ========================= */
+
+.ani-admin-payment-approve-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width: 100%;
+    min-height: 43px;
+
+    margin-bottom: 9px;
+
+    border: 0;
+    border-radius: 8px;
+
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #ec4899
+    );
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(124, 58, 237, .18);
+
+    transition: .2s ease;
+}
+
+.ani-admin-payment-approve-btn span {
+    font-size: 15px;
+    font-weight: 900;
+}
+
+.ani-admin-payment-approve-btn:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 11px 24px rgba(236, 72, 153, .25);
+}
+
+
+/* =========================
+   REJECT
+   ========================= */
+
+.ani-admin-payment-reject-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width: 100%;
+    min-height: 42px;
+
+    border: 1px solid #70404e;
+    border-radius: 8px;
+
+    background: #321b23;
+
+    color: #ef9aaa;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.ani-admin-payment-reject-btn span {
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.ani-admin-payment-reject-btn:hover {
+    border-color: #ef7186;
+
+    background: #48212d;
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   PROCESSED
+   ========================= */
+
+.ani-admin-payment-processed {
+    margin-top: 20px;
+    padding: 17px;
+
+    border: 1px solid #3d4d5c;
+    border-radius: 9px;
+
+    background: #18232c;
+}
+
+.ani-admin-payment-processed > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    margin-bottom: 10px;
+
+    border-radius: 50%;
+
+    background: #213746;
+
+    color: #7bc7eb;
+
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.ani-admin-payment-processed > strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.ani-admin-payment-processed p {
+    margin: 5px 0 0;
+
+    color: #aebdc7;
+
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.ani-admin-payment-processed p strong {
+    color: #ffffff;
+}
+
+
+/* =========================
+   TYPOGRAPHY BOOST
+   ========================= */
+
+.ani-admin-payment-detail-header h1 {
+    color: #ffffff !important;
+    font-size: 36px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-payment-detail-header p {
+    color: #d8ccdf !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+}
+
+.ani-admin-payment-detail-header p strong {
+    color: #ffffff !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-payment-detail-page .ani-admin-eyebrow {
+    color: #f05aa7 !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-payment-back-btn {
+    color: #e1d6e7 !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+}
+
+
+/* Info */
+.ani-admin-payment-detail-card-header span,
+.ani-admin-payment-proof-header span,
+.ani-admin-payment-products-heading span,
+.ani-admin-payment-verification-heading span {
+    font-size: 10px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-payment-detail-card-header h2,
+.ani-admin-payment-proof-header h2 {
+    color: #ffffff !important;
+    font-size: 21px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-payment-info-row > span {
+    color: #bfb2c8 !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+}
+
+.ani-admin-payment-info-row > strong {
+    color: #ffffff !important;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+}
+
+
+/* Products */
+.ani-admin-payment-products-heading h3 {
+    font-size: 18px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-payment-item-info > strong {
+    color: #ffffff !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-payment-item-info small {
+    color: #b9aabe !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+}
+
+.ani-admin-payment-item-info > span {
+    color: #aaa0b2 !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+}
+
+.ani-admin-payment-item-price {
+    color: #f05aa7 !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+
+/* Summary */
+.ani-admin-payment-summary-row span {
+    color: #c0b3c8 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+}
+
+.ani-admin-payment-summary-row strong {
+    color: #ffffff !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-payment-total-row span {
+    font-size: 14px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-payment-total-row strong {
+    color: #f05aa7 !important;
+    font-size: 18px !important;
+    font-weight: 900 !important;
+}
+
+
+/* Verification */
+.ani-admin-payment-verification-heading h3 {
+    color: #ffffff !important;
+    font-size: 18px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-payment-verification-heading p {
+    color: #c5b8ce !important;
+    font-size: 11px !important;
+    font-weight: 650 !important;
+}
+
+.ani-admin-payment-approve-btn,
+.ani-admin-payment-reject-btn {
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+
+/* Processed */
+.ani-admin-payment-processed > strong {
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-payment-processed p {
+    font-size: 10px !important;
+    font-weight: 700 !important;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 991.98px) {
+
+    .ani-admin-payment-detail-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .ani-admin-payment-back-btn {
+        align-self: flex-start;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .ani-admin-payment-detail-header h1 {
+        font-size: 30px !important;
+    }
+
+    .ani-admin-payment-info-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .ani-admin-payment-info-row > strong {
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .ani-admin-payment-item {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .ani-admin-payment-total-row strong {
+        font-size: 16px !important;
+    }
+
+}

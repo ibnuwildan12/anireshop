@@ -4,29 +4,34 @@
 
 @section('content')
 
-<div class="auth-page">
+<div class="ani-auth-page">
 
-    <div class="container py-5">
+    <div class="container">
 
         <div class="row justify-content-center">
 
             <div class="col-md-7 col-lg-5">
 
-                <div class="auth-card">
+                <div class="ani-auth-card">
 
-                    {{-- HEADER --}}
-                    <div class="text-center mb-4">
+                    {{-- BRAND --}}
+                    <div class="ani-auth-header">
 
-                        <div class="auth-brand">
+                        <div class="ani-auth-brand">
                             Ani<span>re</span>shop
                         </div>
 
-                        <h2 class="fw-bold mt-3">
-                            Daftar Anireshop
-                        </h2>
+                        <span class="ani-auth-eyebrow">
+                            CREATE ACCOUNT
+                        </span>
 
-                        <p class="auth-subtitle">
-                            Buat akun untuk mulai belanja di Anireshop.
+                        <h1>
+                            Daftar di Anireshop
+                        </h1>
+
+                        <p>
+                            Buat akun untuk mulai belanja
+                            merchandise favoritmu.
                         </p>
 
                     </div>
@@ -35,17 +40,25 @@
                     {{-- ERROR --}}
                     @if ($errors->any())
 
-                        <div class="alert alert-danger">
+                        <div class="ani-auth-alert">
 
-                            <ul class="mb-0">
+                            <div class="ani-auth-alert-icon">
+                                !
+                            </div>
 
-                                @foreach ($errors->all() as $error)
+                            <div>
 
-                                    <li>{{ $error }}</li>
+                                <strong>
+                                    Periksa kembali data kamu
+                                </strong>
 
-                                @endforeach
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
 
-                            </ul>
+                            </div>
 
                         </div>
 
@@ -56,28 +69,27 @@
                     <form
                         method="POST"
                         action="{{ route('register') }}"
+                        class="ani-auth-form"
                     >
 
                         @csrf
 
 
                         {{-- NAMA --}}
-                        <div class="mb-3">
+                        <div class="ani-auth-field">
 
-                            <label
-                                for="name"
-                                class="form-label"
-                            >
+                            <label for="name">
                                 Nama
+                                <span>*</span>
                             </label>
 
                             <input
                                 type="text"
                                 id="name"
                                 name="name"
-                                class="form-control"
                                 value="{{ old('name') }}"
                                 placeholder="Masukkan nama kamu"
+                                autocomplete="name"
                                 required
                             >
 
@@ -85,45 +97,45 @@
 
 
                         {{-- WHATSAPP --}}
-                        <div class="mb-3">
+                        <div class="ani-auth-field">
 
-                            <label
-                                for="whatsapp"
-                                class="form-label"
-                            >
+                            <label for="whatsapp">
                                 WhatsApp
+                                <span>*</span>
                             </label>
 
                             <input
                                 type="text"
                                 id="whatsapp"
                                 name="whatsapp"
-                                class="form-control"
                                 value="{{ old('whatsapp') }}"
                                 placeholder="081234567890"
+                                autocomplete="tel"
                                 required
                             >
+
+                            <small>
+                                Gunakan nomor WhatsApp yang aktif.
+                            </small>
 
                         </div>
 
 
                         {{-- EMAIL --}}
-                        <div class="mb-3">
+                        <div class="ani-auth-field">
 
-                            <label
-                                for="email"
-                                class="form-label"
-                            >
+                            <label for="email">
                                 Email
+                                <span>*</span>
                             </label>
 
                             <input
                                 type="email"
                                 id="email"
                                 name="email"
-                                class="form-control"
                                 value="{{ old('email') }}"
                                 placeholder="nama@email.com"
+                                autocomplete="email"
                                 required
                             >
 
@@ -131,43 +143,39 @@
 
 
                         {{-- PASSWORD --}}
-                        <div class="mb-3">
+                        <div class="ani-auth-field">
 
-                            <label
-                                for="password"
-                                class="form-label"
-                            >
+                            <label for="password">
                                 Password
+                                <span>*</span>
                             </label>
 
                             <input
                                 type="password"
                                 id="password"
                                 name="password"
-                                class="form-control"
                                 placeholder="Minimal 8 karakter"
+                                autocomplete="new-password"
                                 required
                             >
 
                         </div>
 
 
-                        {{-- KONFIRMASI PASSWORD --}}
-                        <div class="mb-4">
+                        {{-- CONFIRM PASSWORD --}}
+                        <div class="ani-auth-field last">
 
-                            <label
-                                for="password_confirmation"
-                                class="form-label"
-                            >
+                            <label for="password_confirmation">
                                 Konfirmasi Password
+                                <span>*</span>
                             </label>
 
                             <input
                                 type="password"
                                 id="password_confirmation"
                                 name="password_confirmation"
-                                class="form-control"
                                 placeholder="Ulangi password"
+                                autocomplete="new-password"
                                 required
                             >
 
@@ -177,28 +185,39 @@
                         {{-- BUTTON --}}
                         <button
                             type="submit"
-                            class="btn btn-ani w-100"
+                            class="ani-auth-submit"
                         >
-                            Daftar
+                            <span>
+                                Buat Akun
+                            </span>
+
+                            <strong>
+                                →
+                            </strong>
                         </button>
 
                     </form>
 
 
                     {{-- LOGIN --}}
-                    <div class="text-center mt-4">
+                    <div class="ani-auth-login">
 
-                        <span style="color:#999;">
+                        <span>
                             Sudah punya akun?
                         </span>
 
-                        <a
-                            href="{{ route('login') }}"
-                            style="color:#ec4899; font-weight:700;"
-                        >
+                        <a href="{{ route('login') }}">
                             Login
                         </a>
 
+                    </div>
+
+
+                    {{-- FOOTNOTE --}}
+                    <div class="ani-auth-footnote">
+                        Dengan membuat akun, kamu dapat
+                        melanjutkan proses checkout dan melihat
+                        pesanan Anireshop.
                     </div>
 
                 </div>

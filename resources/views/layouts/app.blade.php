@@ -32,6 +32,27 @@
     <link rel="stylesheet" href="{{ asset('css/anireshop-payment-v2.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/anireshop-global-v2.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/anireshop-admin-v2.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/anireshop-admin-products-v2.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/anireshop-admin-product-form-v2.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/anireshop-admin-categories-v2.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/anireshop-admin-orders-v2.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/anireshop-admin-order-detail-v2.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/anireshop-admin-shipping-v2.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/anireshop-admin-payments-v2.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/anireshop-admin-payment-detail-v2.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/anireshop-auth-v2.css') }}">
+
     
     @stack('styles')
 

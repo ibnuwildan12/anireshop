@@ -3,164 +3,441 @@
 @section('title', 'Products - Anireshop')
 
 @section('content')
-<div class="container py-5">
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <h2 class="fw-bold mb-1">Products</h2>
-            <p class="text-secondary mb-0">
-                Kelola produk Anireshop
-            </p>
+<div class="ani-admin-products-page">
+
+    <div class="container py-5">
+
+        {{-- HEADER --}}
+        <div class="ani-admin-products-header">
+
+            <div>
+                <span class="ani-admin-eyebrow">
+                    PRODUCT MANAGEMENT
+                </span>
+
+                <h1>
+                    Products
+                </h1>
+
+                <p>
+                    Kelola produk, harga, gambar, dan persediaan Anireshop.
+                </p>
+            </div>
+
+            <a
+                href="{{ route('admin.products.create') }}"
+                class="ani-admin-primary-btn"
+            >
+                <span>＋</span>
+                Tambah Produk
+            </a>
+
         </div>
 
-        <a href="{{ route('admin.products.create') }}" class="btn btn-ani">
-            + Tambah Produk
-        </a>
-    </div>
 
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+        {{-- FLASH MESSAGE --}}
+        @if(session('success'))
 
-    @if(session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
+            <div class="ani-admin-products-alert success">
+                <span>✓</span>
+                <div>{{ session('success') }}</div>
+            </div>
 
-    <div class="card bg-dark border-secondary shadow">
-        <div class="card-body">
+        @endif
+
+
+        @if(session('error'))
+
+            <div class="ani-admin-products-alert error">
+                <span>!</span>
+                <div>{{ session('error') }}</div>
+            </div>
+
+        @endif
+
+
+        {{-- PRODUCT TABLE --}}
+        <div class="ani-admin-products-card">
+
+            <div class="ani-admin-products-card-header">
+
+                <div>
+                    <span class="ani-admin-card-eyebrow">
+                        INVENTORY
+                    </span>
+
+                    <h2>
+                        Daftar Produk
+                    </h2>
+                </div>
+
+                <div class="ani-admin-product-count">
+                    {{ $products->total() }} Produk
+                </div>
+
+            </div>
+
 
             <div class="table-responsive">
-                <table class="table table-dark table-hover align-middle mb-0">
+
+                <table class="ani-admin-products-table">
 
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Produk</th>
-                            <th>Kategori</th>
-                            <th>Harga</th>
-                            <th>Stock</th>
-                            <th>Reserved</th>
-                            <th>Available</th>
-                            <th>Aksi</th>
+
+                            <th class="col-number">
+                                #
+                            </th>
+
+                            <th>
+                                Produk
+                            </th>
+
+                            <th>
+                                Kategori
+                            </th>
+
+                            <th>
+                                Harga
+                            </th>
+
+                            <th class="text-center">
+                                Stock
+                            </th>
+
+                            <th class="text-center">
+                                Reserved
+                            </th>
+
+                            <th class="text-center">
+                                Available
+                            </th>
+
+                            <th class="text-end">
+                                Aksi
+                            </th>
+
                         </tr>
                     </thead>
 
+
                     <tbody>
+
                         @forelse($products as $product)
+
                             <tr>
-                                <td>
+
+                                {{-- NUMBER --}}
+                                <td class="product-number">
+
                                     {{ $products->firstItem() + $loop->index }}
+
                                 </td>
 
+
+                                {{-- PRODUCT --}}
                                 <td>
-                                    <strong>{{ $product->name }}</strong>
+
+                                    <div class="ani-admin-product-info">
+
+                                        <div class="ani-admin-product-image">
+
+                                            @if($product->images->first())
+
+                                                <img
+                                                    src="{{ asset('images/' . $product->images->first()->image_path) }}"
+                                                    alt="{{ $product->name }}"
+                                                >
+
+                                            @else
+
+                                                <span>
+                                                    —
+                                                </span>
+
+                                            @endif
+
+                                        </div>
+
+
+                                        <div class="ani-admin-product-name">
+
+                                            <strong>
+                                                {{ $product->name }}
+                                            </strong>
+
+                                            <small>
+                                                ID #{{ $product->id }}
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
                                 </td>
 
+
+                                {{-- CATEGORY --}}
                                 <td>
-                                    {{ $product->category->name ?? '-' }}
+
+                                    <span class="ani-admin-category-badge">
+                                        {{ $product->category->name ?? '-' }}
+                                    </span>
+
                                 </td>
 
+
+                                {{-- PRICE --}}
                                 <td>
-                                    Rp {{ number_format($product->price, 0, ',', '.') }}
+
+                                    <strong class="ani-admin-product-price">
+                                        Rp {{ number_format($product->price, 0, ',', '.') }}
+                                    </strong>
+
                                 </td>
 
-                                <td>
-                                    {{ $product->stock }}
+
+                                {{-- STOCK --}}
+                                <td class="text-center">
+
+                                    <span class="ani-stock-number">
+                                        {{ $product->stock }}
+                                    </span>
+
                                 </td>
 
-                                <td>
-                                    {{ $product->reserved_stock }}
+
+                                {{-- RESERVED --}}
+                                <td class="text-center">
+
+                                    @if($product->reserved_stock > 0)
+
+                                        <span class="ani-stock-badge reserved">
+                                            {{ $product->reserved_stock }}
+                                        </span>
+
+                                    @else
+
+                                        <span class="ani-stock-badge neutral">
+                                            0
+                                        </span>
+
+                                    @endif
+
                                 </td>
 
-                                <td>
-                                    {{ $product->available_stock }}
+
+                                {{-- AVAILABLE --}}
+                                <td class="text-center">
+
+                                    @if($product->available_stock > 5)
+
+                                        <span class="ani-stock-badge available">
+                                            {{ $product->available_stock }}
+                                        </span>
+
+                                    @elseif($product->available_stock > 0)
+
+                                        <span class="ani-stock-badge low">
+                                            {{ $product->available_stock }}
+                                        </span>
+
+                                    @else
+
+                                        <span class="ani-stock-badge sold">
+                                            Habis
+                                        </span>
+
+                                    @endif
+
                                 </td>
 
+
+                                {{-- ACTION --}}
                                 <td>
-                                    <a href="{{ route('admin.products.edit', $product) }}"
-                                       class="btn btn-sm btn-secondary">
-                                        Edit
+
+                                    <div class="ani-admin-product-actions">
+
+                                        <a
+                                            href="{{ route('admin.products.edit', $product) }}"
+                                            class="ani-admin-edit-btn"
+                                        >
+                                            Edit
+                                        </a>
+
+
+                                        <form
+                                            action="{{ route('admin.products.destroy', $product) }}"
+                                            method="POST"
+                                            onsubmit="return confirm('Yakin ingin menghapus produk ini?');"
+                                        >
+
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button
+                                                type="submit"
+                                                class="ani-admin-delete-btn"
+                                            >
+                                                Hapus
+                                            </button>
+
+                                        </form>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                        @empty
+
+                            <tr>
+
+                                <td
+                                    colspan="8"
+                                    class="ani-admin-empty"
+                                >
+
+                                    <div class="ani-admin-empty-icon">
+                                        ◈
+                                    </div>
+
+                                    <strong>
+                                        Belum ada produk
+                                    </strong>
+
+                                    <span>
+                                        Tambahkan produk pertama Anireshop.
+                                    </span>
+
+                                    <a
+                                        href="{{ route('admin.products.create') }}"
+                                        class="ani-admin-empty-btn"
+                                    >
+                                        ＋ Tambah Produk
                                     </a>
 
-                                    <form action="{{ route('admin.products.destroy', $product) }}"
-                                        method="POST"
-                                        class="d-inline"
-                                        onsubmit="return confirm('Yakin ingin menghapus produk ini?');">
-
-                                        @csrf
-                                        @method('DELETE')
-
-                                        <button type="submit" class="btn btn-sm btn-danger">
-                                            Hapus
-                                        </button>
-                                    </form>
                                 </td>
+
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="8" class="text-center py-4">
-                                    Belum ada produk.
-                                </td>
-                            </tr>
+
                         @endforelse
+
                     </tbody>
 
                 </table>
+
             </div>
 
-            @if($products->hasPages())
-                <div class="mt-4 d-flex justify-content-center">
-                    <nav>
-                        <ul class="pagination pagination-sm mb-0">
 
-                            {{-- Previous --}}
-                            @if ($products->onFirstPage())
+            {{-- PAGINATION --}}
+            @if($products->hasPages())
+
+                <div class="ani-admin-products-pagination">
+
+                    <div class="ani-pagination-info">
+
+                        Menampilkan
+                        <strong>{{ $products->firstItem() }}</strong>
+                        –
+                        <strong>{{ $products->lastItem() }}</strong>
+                        dari
+                        <strong>{{ $products->total() }}</strong>
+                        produk
+
+                    </div>
+
+
+                    <nav>
+
+                        <ul class="pagination mb-0">
+
+                            {{-- PREVIOUS --}}
+                            @if($products->onFirstPage())
+
                                 <li class="page-item disabled">
-                                    <span class="page-link">‹</span>
+
+                                    <span class="page-link">
+                                        ‹
+                                    </span>
+
                                 </li>
+
                             @else
+
                                 <li class="page-item">
-                                    <a class="page-link"
-                                    href="{{ $products->previousPageUrl() }}">
+
+                                    <a
+                                        class="page-link"
+                                        href="{{ $products->previousPageUrl() }}"
+                                    >
                                         ‹
                                     </a>
+
                                 </li>
+
                             @endif
 
-                            {{-- Page Numbers --}}
-                            @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
-                                <li class="page-item {{ $page == $products->currentPage() ? 'active' : '' }}">
-                                    <a class="page-link" href="{{ $url }}">
+
+                            {{-- PAGES --}}
+                            @foreach($products->getUrlRange(1, $products->lastPage()) as $page => $url)
+
+                                <li
+                                    class="page-item {{ $page == $products->currentPage() ? 'active' : '' }}"
+                                >
+
+                                    <a
+                                        class="page-link"
+                                        href="{{ $url }}"
+                                    >
                                         {{ $page }}
                                     </a>
+
                                 </li>
+
                             @endforeach
 
-                            {{-- Next --}}
-                            @if ($products->hasMorePages())
+
+                            {{-- NEXT --}}
+                            @if($products->hasMorePages())
+
                                 <li class="page-item">
-                                    <a class="page-link"
-                                    href="{{ $products->nextPageUrl() }}">
+
+                                    <a
+                                        class="page-link"
+                                        href="{{ $products->nextPageUrl() }}"
+                                    >
                                         ›
                                     </a>
+
                                 </li>
+
                             @else
+
                                 <li class="page-item disabled">
-                                    <span class="page-link">›</span>
+
+                                    <span class="page-link">
+                                        ›
+                                    </span>
+
                                 </li>
+
                             @endif
 
                         </ul>
+
                     </nav>
+
                 </div>
+
             @endif
 
         </div>
+
     </div>
 
 </div>
+
 @endsection

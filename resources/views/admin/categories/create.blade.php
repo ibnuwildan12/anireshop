@@ -4,88 +4,144 @@
 
 @section('content')
 
-<div class="admin-page">
+<div class="ani-admin-category-form-page">
 
     <div class="container py-5">
 
         {{-- HEADER --}}
-        <div class="mb-4">
+        <div class="ani-admin-category-form-header">
 
-            <div class="admin-label">
-                ADMIN PANEL
+            <div>
+                <span class="ani-admin-eyebrow">
+                    CATEGORY MANAGEMENT
+                </span>
+
+                <h1>Tambah Kategori</h1>
+
+                <p>
+                    Tambahkan kategori baru untuk produk Anireshop.
+                </p>
             </div>
 
-            <h1 class="fw-bold text-white mb-1">
-                Tambah Kategori
-            </h1>
-
-            <p style="color:#aaa;">
-                Tambahkan kategori baru untuk produk Anireshop.
-            </p>
+            <a href="{{ route('admin.categories.index') }}"
+               class="ani-admin-back-btn">
+                ← Kembali ke Categories
+            </a>
 
         </div>
 
 
-        {{-- FORM --}}
-        <div class="row">
+        {{-- VALIDATION --}}
+        @if ($errors->any())
 
+            <div class="ani-admin-category-form-alert">
+
+                <div class="ani-admin-category-form-alert-icon">
+                    !
+                </div>
+
+                <div>
+                    <strong>
+                        Periksa kembali data kategori
+                    </strong>
+
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+
+            </div>
+
+        @endif
+
+
+        <div class="row g-4">
+
+            {{-- FORM --}}
             <div class="col-lg-7">
 
-                <div class="ani-card p-4">
+                <div class="ani-admin-category-form-card">
 
-                    <form
-                        action="{{ route('admin.categories.store') }}"
-                        method="POST"
-                    >
+                    <div class="ani-admin-category-form-card-header">
+
+                        <div class="ani-admin-form-number">
+                            01
+                        </div>
+
+                        <div>
+                            <span>CATEGORY INFORMATION</span>
+
+                            <h2>Data Kategori</h2>
+                        </div>
+
+                    </div>
+
+
+                    <form action="{{ route('admin.categories.store') }}"
+                          method="POST">
 
                         @csrf
 
+                        <div class="ani-admin-category-form-body">
 
-                        {{-- NAME --}}
-                        <div class="mb-4">
+                            {{-- NAME --}}
+                            <div class="ani-admin-category-field">
 
-                            <label
-                                for="name"
-                                class="form-label"
-                            >
-                                Nama Kategori
-                            </label>
+                                <label for="name">
+                                    Nama Kategori
+                                    <span>*</span>
+                                </label>
 
-                            <input
-                                type="text"
-                                name="name"
-                                id="name"
-                                class="form-control"
-                                value="{{ old('name') }}"
-                                placeholder="Contoh: Acrylic Stand"
-                                required
-                            >
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    value="{{ old('name') }}"
+                                    class="@error('name') is-invalid @enderror"
+                                    placeholder="Contoh: Acrylic Stand"
+                                    autocomplete="off"
+                                    required
+                                >
 
-                            @error('name')
-                                <div class="text-danger mt-2">
-                                    {{ $message }}
+                                <div class="ani-admin-category-field-help">
+                                    Gunakan nama kategori yang singkat dan mudah
+                                    dikenali oleh pelanggan.
                                 </div>
-                            @enderror
+
+                                @error('name')
+                                    <div class="ani-admin-category-field-error">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
+                            </div>
 
                         </div>
 
 
-                        {{-- BUTTON --}}
-                        <div class="d-flex gap-2">
+                        {{-- FOOTER --}}
+                        <div class="ani-admin-category-form-footer">
 
-                            <button
-                                type="submit"
-                                class="btn btn-ani"
-                            >
-                                Simpan Kategori
-                            </button>
+                            <div class="ani-admin-category-required-info">
+                                <span>*</span>
+                                Field wajib diisi
+                            </div>
 
-                            <a
-                                href="{{ route('admin.categories.index') }}"
-                                class="btn btn-secondary"
-                            >
-                                Batal
-                            </a>
+                            <div class="ani-admin-category-form-actions">
+
+                                <a href="{{ route('admin.categories.index') }}"
+                                   class="ani-admin-category-cancel-btn">
+                                    Batal
+                                </a>
+
+                                <button type="submit"
+                                        class="ani-admin-category-save-btn">
+                                    ✓ Simpan Kategori
+                                </button>
+
+                            </div>
 
                         </div>
 
@@ -96,23 +152,50 @@
             </div>
 
 
-            {{-- INFO --}}
-            <div class="col-lg-5 mt-4 mt-lg-0">
+            {{-- INFORMATION --}}
+            <div class="col-lg-5">
 
-                <div class="ani-card p-4">
+                <div class="ani-admin-category-info-card">
 
-                    <h5 class="text-white fw-bold mb-3">
-                        Informasi
-                    </h5>
+                    <div class="ani-admin-category-info-icon">
+                        📁
+                    </div>
 
-                    <p style="color:#aaa;">
+                    <span class="ani-admin-card-eyebrow">
+                        CATEGORY GUIDE
+                    </span>
+
+                    <h2>
+                        Informasi Kategori
+                    </h2>
+
+                    <p>
                         Nama kategori akan digunakan sebagai kategori
                         produk di Anireshop.
                     </p>
 
-                    <p style="color:#aaa;" class="mb-0">
-                        Slug akan dibuat otomatis berdasarkan nama kategori.
-                    </p>
+                    <div class="ani-admin-category-info-divider"></div>
+
+                    <div class="ani-admin-category-info-item">
+                        <span>01</span>
+                        <div>
+                            <strong>Nama Kategori</strong>
+                            <p>
+                                Gunakan nama yang jelas dan mudah dipahami.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="ani-admin-category-info-item">
+                        <span>02</span>
+                        <div>
+                            <strong>Slug Otomatis</strong>
+                            <p>
+                                Slug akan dibuat otomatis berdasarkan
+                                nama kategori.
+                            </p>
+                        </div>
+                    </div>
 
                 </div>
 

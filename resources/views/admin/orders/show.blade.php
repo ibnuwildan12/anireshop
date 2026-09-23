@@ -1,273 +1,157 @@
 @extends('layouts.app')
 
-@section('title', 'Detail Order - Anireshop')
+@section('title', 'Detail Order - Admin Anireshop')
 
 @section('content')
-<div class="container py-5">
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <h2 class="fw-bold mb-1">Detail Order</h2>
-            <p class="text-secondary mb-0">
-                {{ $order->order_number }}
-            </p>
+<div class="ani-admin-order-detail-page">
+
+    <div class="container py-5">
+
+        {{-- HEADER --}}
+        <div class="ani-admin-order-detail-header">
+
+            <div>
+                <span class="ani-admin-eyebrow">
+                    ORDER MANAGEMENT
+                </span>
+
+                <h1>Detail Order</h1>
+
+                <p>
+                    {{ $order->order_number }}
+                </p>
+            </div>
+
+            <a href="{{ route('admin.orders.index') }}"
+               class="ani-admin-back-btn">
+                ← Kembali ke Orders
+            </a>
+
         </div>
 
-        <a href="{{ route('admin.orders.index') }}"
-           class="btn btn-secondary">
-            ← Kembali
-        </a>
-    </div>
 
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+        {{-- ALERT --}}
+        @if(session('success'))
+            <div class="ani-admin-order-detail-alert success">
+                <div class="ani-admin-order-detail-alert-icon">✓</div>
 
-    {{-- INFORMASI ORDER --}}
-    <div class="row g-4">
-
-        <div class="col-lg-6">
-
-            <div class="card bg-dark border-secondary h-100">
-                <div class="card-body p-4">
-
-                    <h5 class="fw-bold mb-4">
-                        Informasi Order
-                    </h5>
-
-                    <div class="mb-3">
-                        <small class="text-secondary d-block">
-                            Nomor Order
-                        </small>
-                        <strong>
-                            {{ $order->order_number }}
-                        </strong>
-                    </div>
-
-                    <div class="mb-3">
-                        <small class="text-secondary d-block">
-                            Tanggal Order
-                        </small>
-                        {{ $order->created_at->format('d/m/Y H:i') }}
-                    </div>
-
-                    <div class="mb-3">
-                        <small class="text-secondary d-block">
-                            Status Order
-                        </small>
-
-                        <span class="badge bg-secondary">
-                            {{ $order->order_status }}
-                        </span>
-                    </div>
-
-                    <div>
-                        <small class="text-secondary d-block">
-                            Status Pembayaran
-                        </small>
-
-                        <span class="badge bg-secondary">
-                            {{ $order->payment_status }}
-                        </span>
-                    </div>
-
+                <div>
+                    <strong>Berhasil</strong>
+                    <p>{{ session('success') }}</p>
                 </div>
             </div>
+        @endif
 
-        </div>
+        @if(session('error'))
+            <div class="ani-admin-order-detail-alert error">
+                <div class="ani-admin-order-detail-alert-icon">!</div>
 
-
-        {{-- CUSTOMER --}}
-        <div class="col-lg-6">
-
-            <div class="card bg-dark border-secondary h-100">
-                <div class="card-body p-4">
-
-                    <h5 class="fw-bold mb-4">
-                        Informasi Customer
-                    </h5>
-
-                    <div class="mb-3">
-                        <small class="text-secondary d-block">
-                            Nama
-                        </small>
-
-                        {{ $order->user->name }}
-                    </div>
-
-                    <div class="mb-3">
-                        <small class="text-secondary d-block">
-                            Email
-                        </small>
-
-                        {{ $order->user->email }}
-                    </div>
-
-                    <div>
-                        <small class="text-secondary d-block">
-                            WhatsApp
-                        </small>
-
-                        {{ $order->user->whatsapp ?? '-' }}
-                    </div>
-
+                <div>
+                    <strong>Terjadi Kesalahan</strong>
+                    <p>{{ session('error') }}</p>
                 </div>
             </div>
-
-        </div>
-
-    </div>
+        @endif
 
 
-    {{-- PRODUK --}}
-    <div class="card bg-dark border-secondary mt-4">
+        {{-- ORDER + CUSTOMER --}}
+        <div class="row g-4">
 
-        <div class="card-body p-4">
+            {{-- ORDER INFORMATION --}}
+            <div class="col-lg-6">
 
-            <h5 class="fw-bold mb-4">
-                Produk
-            </h5>
+                <div class="ani-admin-order-detail-card h-100">
 
-            <div class="table-responsive">
+                    <div class="ani-admin-detail-card-header">
+                        <div class="ani-admin-detail-card-icon purple">
+                            #
+                        </div>
 
-                <table class="table table-dark align-middle">
-
-                    <thead>
-                        <tr>
-                            <th>Produk</th>
-                            <th>Variasi / Catatan</th>
-                            <th>Qty</th>
-                            <th>Harga</th>
-                            <th>Subtotal</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-
-                        @foreach($order->orderItems as $item)
-
-                            <tr>
-
-                                <td>
-                                    {{ $item->product_name }}
-                                </td>
-
-                                <td>
-                                    {{ $item->variation_note ?: '-' }}
-                                </td>
-
-                                <td>
-                                    {{ $item->quantity }}
-                                </td>
-
-                                <td>
-                                    Rp {{ number_format($item->price, 0, ',', '.') }}
-                                </td>
-
-                                <td>
-                                    Rp {{ number_format($item->subtotal, 0, ',', '.') }}
-                                </td>
-
-                            </tr>
-
-                        @endforeach
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    {{-- PENGIRIMAN --}}
-    <div class="row g-4 mt-0">
-
-        <div class="col-lg-6">
-
-            <div class="card bg-dark border-secondary h-100">
-
-                <div class="card-body p-4">
-
-                    <h5 class="fw-bold mb-4">
-                        Alamat Pengiriman
-                    </h5>
-
-                    <p class="mb-2">
-                        {{ $order->shipping_address }}
-                    </p>
-
-                    <p class="mb-2">
-                        {{ $order->shipping_district }},
-                        {{ $order->shipping_city }}
-                    </p>
-
-                    <p class="mb-0">
-                        {{ $order->shipping_postal_code }}
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        {{-- PEMBAYARAN --}}
-        <div class="col-lg-6">
-
-            <div class="card bg-dark border-secondary h-100">
-
-                <div class="card-body p-4">
-
-                    <h5 class="fw-bold mb-4">
-                        Pembayaran
-                    </h5>
-
-                    <div class="mb-3">
-                        <small class="text-secondary d-block">
-                            Metode
-                        </small>
-
-                        {{ $order->payment_method }}
+                        <div>
+                            <span>ORDER INFORMATION</span>
+                            <h2>Informasi Order</h2>
+                        </div>
                     </div>
 
-                    <div class="mb-3">
-                        <small class="text-secondary d-block">
-                            Bukti Pembayaran
-                        </small>
+                    <div class="ani-admin-detail-card-body">
 
-                        @if($order->payment_proof)
+                        <div class="ani-admin-detail-info-row">
+                            <span>Nomor Order</span>
+                            <strong>
+                                {{ $order->order_number }}
+                            </strong>
+                        </div>
 
-                            <a href="{{ asset('storage/' . $order->payment_proof) }}"
-                               target="_blank"
-                               class="btn btn-sm btn-outline-light">
-                                Lihat Bukti Pembayaran
-                            </a>
+                        <div class="ani-admin-detail-info-row">
+                            <span>Tanggal Order</span>
+                            <strong>
+                                {{ $order->created_at->format('d/m/Y H:i') }}
+                            </strong>
+                        </div>
 
-                        @else
+                        <div class="ani-admin-detail-info-row">
+                            <span>Status Order</span>
 
-                            <span class="text-secondary">
-                                Belum ada bukti pembayaran
+                            <span class="ani-admin-detail-status order-status">
+                                {{ $order->order_status }}
                             </span>
+                        </div>
 
-                        @endif
+                        <div class="ani-admin-detail-info-row">
+                            <span>Status Pembayaran</span>
+
+                            <span class="ani-admin-detail-status payment-status">
+                                {{ $order->payment_status }}
+                            </span>
+                        </div>
 
                     </div>
 
-                    <div>
-                        <small class="text-secondary d-block">
-                            Waktu Upload
-                        </small>
+                </div>
 
-                        {{ $order->payment_submitted_at
-                            ? $order->payment_submitted_at->format('d/m/Y H:i')
-                            : '-' }}
+            </div>
+
+
+            {{-- CUSTOMER --}}
+            <div class="col-lg-6">
+
+                <div class="ani-admin-order-detail-card h-100">
+
+                    <div class="ani-admin-detail-card-header">
+                        <div class="ani-admin-detail-card-icon pink">
+                            👤
+                        </div>
+
+                        <div>
+                            <span>CUSTOMER INFORMATION</span>
+                            <h2>Informasi Customer</h2>
+                        </div>
+                    </div>
+
+                    <div class="ani-admin-detail-card-body">
+
+                        <div class="ani-admin-detail-info-row">
+                            <span>Nama</span>
+                            <strong>
+                                {{ $order->user->name }}
+                            </strong>
+                        </div>
+
+                        <div class="ani-admin-detail-info-row">
+                            <span>Email</span>
+                            <strong>
+                                {{ $order->user->email }}
+                            </strong>
+                        </div>
+
+                        <div class="ani-admin-detail-info-row">
+                            <span>WhatsApp</span>
+                            <strong>
+                                {{ $order->user->whatsapp ?? '-' }}
+                            </strong>
+                        </div>
+
                     </div>
 
                 </div>
@@ -276,180 +160,400 @@
 
         </div>
 
-    </div>
+
+        {{-- PRODUCTS --}}
+        <div class="ani-admin-order-detail-card mt-4">
+
+            <div class="ani-admin-detail-card-header">
+
+                <div class="ani-admin-detail-card-icon purple">
+                    🛍
+                </div>
+
+                <div>
+                    <span>ORDER ITEMS</span>
+                    <h2>Produk</h2>
+                </div>
+
+            </div>
+
+            <div class="ani-admin-order-products-wrapper">
+
+                <div class="table-responsive">
+
+                    <table class="ani-admin-order-products-table">
+
+                        <thead>
+                            <tr>
+                                <th>Produk</th>
+                                <th>Variasi / Catatan</th>
+                                <th>Qty</th>
+                                <th>Harga</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            @foreach($order->orderItems as $item)
+
+                                <tr>
+
+                                    <td>
+                                        <strong>
+                                            {{ $item->product_name }}
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        <span class="ani-admin-variation">
+                                            {{ $item->variation_note ?: '-' }}
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <span class="ani-admin-quantity">
+                                            {{ $item->quantity }}
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <span class="ani-admin-item-price">
+                                            Rp {{ number_format($item->price, 0, ',', '.') }}
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <strong class="ani-admin-item-subtotal">
+                                            Rp {{ number_format($item->subtotal, 0, ',', '.') }}
+                                        </strong>
+                                    </td>
+
+                                </tr>
+
+                            @endforeach
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
 
 
-    {{-- TOTAL --}}
-    <div class="card bg-dark border-secondary mt-4">
+        {{-- SHIPPING + PAYMENT --}}
+        <div class="row g-4 mt-0">
 
-        <div class="card-body p-4">
+            {{-- SHIPPING --}}
+            <div class="col-lg-6">
 
-            <div class="d-flex justify-content-between mb-2">
+                <div class="ani-admin-order-detail-card h-100">
+
+                    <div class="ani-admin-detail-card-header">
+
+                        <div class="ani-admin-detail-card-icon green">
+                            🚚
+                        </div>
+
+                        <div>
+                            <span>SHIPPING INFORMATION</span>
+                            <h2>Alamat Pengiriman</h2>
+                        </div>
+
+                    </div>
+
+                    <div class="ani-admin-detail-card-body">
+
+                        <div class="ani-admin-shipping-address">
+
+                            <p>
+                                {{ $order->shipping_address }}
+                            </p>
+
+                            <p>
+                                {{ $order->shipping_district }},
+                                {{ $order->shipping_city }}
+                            </p>
+
+                            <p>
+                                {{ $order->shipping_postal_code }}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            {{-- PAYMENT --}}
+            <div class="col-lg-6">
+
+                <div class="ani-admin-order-detail-card h-100">
+
+                    <div class="ani-admin-detail-card-header">
+
+                        <div class="ani-admin-detail-card-icon pink">
+                            💳
+                        </div>
+
+                        <div>
+                            <span>PAYMENT INFORMATION</span>
+                            <h2>Pembayaran</h2>
+                        </div>
+
+                    </div>
+
+                    <div class="ani-admin-detail-card-body">
+
+                        <div class="ani-admin-detail-info-row">
+
+                            <span>Metode</span>
+
+                            <strong>
+                                {{ $order->payment_method }}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="ani-admin-detail-info-row">
+
+                            <span>Bukti Pembayaran</span>
+
+                            <div>
+
+                                @if($order->payment_proof)
+
+                                    <a href="{{ asset('storage/' . $order->payment_proof) }}"
+                                       target="_blank"
+                                       class="ani-admin-payment-proof-btn">
+                                        Lihat Bukti
+                                    </a>
+
+                                @else
+
+                                    <span class="ani-admin-no-proof">
+                                        Belum ada bukti
+                                    </span>
+
+                                @endif
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="ani-admin-detail-info-row">
+
+                            <span>Waktu Upload</span>
+
+                            <strong>
+                                {{ $order->payment_submitted_at
+                                    ? $order->payment_submitted_at->format('d/m/Y H:i')
+                                    : '-' }}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        {{-- TOTAL --}}
+        <div class="ani-admin-order-total-card mt-4">
+
+            <div class="ani-admin-total-row">
                 <span>Subtotal Produk</span>
 
-                <span>
+                <strong>
                     Rp {{ number_format(
                         $order->total_amount - $order->shipping_cost,
                         0,
                         ',',
                         '.'
                     ) }}
-                </span>
+                </strong>
             </div>
 
-            <div class="d-flex justify-content-between mb-3">
+            <div class="ani-admin-total-row">
                 <span>Ongkir</span>
 
-                <span>
+                <strong>
                     Rp {{ number_format($order->shipping_cost, 0, ',', '.') }}
-                </span>
+                </strong>
             </div>
 
-            <hr>
+            <div class="ani-admin-total-divider"></div>
 
-            <div class="d-flex justify-content-between fs-5 fw-bold">
-
+            <div class="ani-admin-total-final">
                 <span>Total</span>
 
-                <span>
+                <strong>
                     Rp {{ number_format($order->total_amount, 0, ',', '.') }}
-                </span>
+                </strong>
+            </div>
+
+        </div>
+
+
+        {{-- UPDATE ORDER --}}
+        <div class="ani-admin-order-update-card mt-4">
+
+            <div class="ani-admin-detail-card-header">
+
+                <div class="ani-admin-detail-card-icon purple">
+                    ⚙
+                </div>
+
+                <div>
+                    <span>ORDER MANAGEMENT</span>
+                    <h2>Update Order</h2>
+                </div>
 
             </div>
+
+
+            <form action="{{ route('admin.orders.update', $order) }}"
+                  method="POST">
+
+                @csrf
+                @method('PUT')
+
+                <div class="ani-admin-order-update-body">
+
+                    {{-- STATUS --}}
+                    <div class="ani-admin-order-field">
+
+                        <label for="order_status">
+                            Status Order
+                        </label>
+
+                        <select name="order_status"
+                                id="order_status"
+                                class="@error('order_status') is-invalid @enderror">
+
+                            <option value="PENDING"
+                                {{ $order->order_status === 'PENDING' ? 'selected' : '' }}>
+                                PENDING
+                            </option>
+
+                            <option value="PROCESSING"
+                                {{ $order->order_status === 'PROCESSING' ? 'selected' : '' }}>
+                                PROCESSING
+                            </option>
+
+                            <option value="SHIPPED"
+                                {{ $order->order_status === 'SHIPPED' ? 'selected' : '' }}>
+                                SHIPPED
+                            </option>
+
+                            <option value="COMPLETED"
+                                {{ $order->order_status === 'COMPLETED' ? 'selected' : '' }}>
+                                COMPLETED
+                            </option>
+
+                        </select>
+
+                        @error('order_status')
+                            <div class="ani-admin-order-field-error">
+                                {{ $message }}
+                            </div>
+                        @enderror
+
+                    </div>
+
+
+                    {{-- COURIER --}}
+                    <div class="ani-admin-order-field">
+
+                        <label for="courier">
+                            Courier
+                        </label>
+
+                        <select name="courier"
+                                id="courier"
+                                class="@error('courier') is-invalid @enderror">
+
+                            <option value="">
+                                -- Pilih Courier --
+                            </option>
+
+                            <option value="JNE"
+                                {{ old('courier', $order->courier) === 'JNE' ? 'selected' : '' }}>
+                                JNE
+                            </option>
+
+                            <option value="J&T"
+                                {{ old('courier', $order->courier) === 'J&T' ? 'selected' : '' }}>
+                                J&T
+                            </option>
+
+                        </select>
+
+                        @error('courier')
+                            <div class="ani-admin-order-field-error">
+                                {{ $message }}
+                            </div>
+                        @enderror
+
+                    </div>
+
+
+                    {{-- TRACKING --}}
+                    <div class="ani-admin-order-field">
+
+                        <label for="tracking_number">
+                            Tracking Number
+                        </label>
+
+                        <input type="text"
+                               id="tracking_number"
+                               name="tracking_number"
+                               value="{{ old('tracking_number', $order->tracking_number) }}"
+                               class="@error('tracking_number') is-invalid @enderror"
+                               placeholder="Contoh: JNE123456789">
+
+                        @error('tracking_number')
+                            <div class="ani-admin-order-field-error">
+                                {{ $message }}
+                            </div>
+                        @enderror
+
+                    </div>
+
+                </div>
+
+
+                <div class="ani-admin-order-update-footer">
+
+                    <span>
+                        Perubahan akan diterapkan pada order ini.
+                    </span>
+
+                    <button type="submit"
+                            class="ani-admin-order-save-btn">
+                        ✓ Simpan Perubahan
+                    </button>
+
+                </div>
+
+            </form>
 
         </div>
 
     </div>
 
-
-    {{-- UPDATE ORDER --}}
-<div class="card bg-dark border-secondary mt-4">
-
-    <div class="card-body p-4">
-
-        <h5 class="fw-bold mb-4">
-            Update Order
-        </h5>
-
-        @if(session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
-
-        <form action="{{ route('admin.orders.update', $order) }}"
-              method="POST">
-
-            @csrf
-            @method('PUT')
-
-            <div class="mb-3">
-
-                <label for="order_status" class="form-label">
-                    Status Order
-                </label>
-
-                <select name="order_status"
-                        id="order_status"
-                        class="form-select @error('order_status') is-invalid @enderror">
-
-                    <option value="PENDING"
-                        {{ $order->order_status === 'PENDING' ? 'selected' : '' }}>
-                        PENDING
-                    </option>
-
-                    <option value="PROCESSING"
-                        {{ $order->order_status === 'PROCESSING' ? 'selected' : '' }}>
-                        PROCESSING
-                    </option>
-
-                    <option value="SHIPPED"
-                        {{ $order->order_status === 'SHIPPED' ? 'selected' : '' }}>
-                        SHIPPED
-                    </option>
-
-                    <option value="COMPLETED"
-                        {{ $order->order_status === 'COMPLETED' ? 'selected' : '' }}>
-                        COMPLETED
-                    </option>
-
-                </select>
-
-                @error('order_status')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-
-            </div>
-
-
-            <div class="mb-3">
-
-                <label for="courier" class="form-label">
-                    Courier
-                </label>
-
-                <select name="courier"
-                        id="courier"
-                        class="form-select @error('courier') is-invalid @enderror">
-
-                    <option value="">
-                        -- Pilih Courier --
-                    </option>
-
-                    <option value="JNE"
-                        {{ old('courier', $order->courier) === 'JNE' ? 'selected' : '' }}>
-                        JNE
-                    </option>
-
-                    <option value="J&T"
-                        {{ old('courier', $order->courier) === 'J&T' ? 'selected' : '' }}>
-                        J&T
-                    </option>
-
-                </select>
-
-                @error('courier')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-
-            </div>
-
-
-            <div class="mb-4">
-
-                <label for="tracking_number" class="form-label">
-                    Tracking Number
-                </label>
-
-                <input type="text"
-                       id="tracking_number"
-                       name="tracking_number"
-                       value="{{ old('tracking_number', $order->tracking_number) }}"
-                       class="form-control @error('tracking_number') is-invalid @enderror"
-                       placeholder="Contoh: JNE123456789">
-
-                @error('tracking_number')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-
-            </div>
-
-
-            <button type="submit" class="btn btn-ani">
-                Simpan Perubahan
-            </button>
-
-        </form>
-
-    </div>
-
 </div>
 
-</div>
 @endsection

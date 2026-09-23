@@ -4,75 +4,126 @@
 
 @section('content')
 
-<div class="admin-page">
+<div class="ani-admin-page">
 
-    {{-- HEADER --}}
+    <div class="container py-5">
 
-    <div class="container">
-
-        <div class="admin-header">
+        {{-- HEADER --}}
+        <div class="ani-admin-header">
 
             <div>
 
-                <div class="admin-label">
+                <span class="ani-admin-eyebrow">
                     ADMIN PANEL
-                </div>
+                </span>
 
                 <h1>
                     Dashboard
                 </h1>
 
                 <p>
-                    Selamat datang, {{ auth()->user()->name }}
+                    Selamat datang kembali,
+                    <strong>{{ auth()->user()->name }}</strong>
                 </p>
 
             </div>
 
-            <div>
 
-                <span class="admin-badge">
-                    Administrator
+            <div class="ani-admin-role">
+                <span class="ani-admin-role-icon">
+                    ✓
                 </span>
 
+                <div>
+                    <small>
+                        ACCESS LEVEL
+                    </small>
+
+                    <strong>
+                        Administrator
+                    </strong>
+                </div>
             </div>
 
         </div>
 
 
+        {{-- SUCCESS --}}
         @if(session('success'))
 
-            <div class="alert alert-success">
-                {{ session('success') }}
+            <div class="ani-admin-alert">
+                <span>✓</span>
+
+                <div>
+                    {{ session('success') }}
+                </div>
             </div>
 
         @endif
 
 
         {{-- MENU --}}
+        <div class="ani-admin-section-heading">
 
-        <div class="row g-4 mt-2">
+            <div>
+                <span>
+                    MANAGEMENT
+                </span>
+
+                <h2>
+                    Kelola Anireshop
+                </h2>
+            </div>
+
+            <p>
+                Pilih menu untuk mengelola sistem toko.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
 
 
             {{-- PRODUCTS --}}
+            <div class="col-md-6 col-lg-4">
 
-            <div class="col-md-6 col-lg-3">
                 <a
                     href="{{ route('admin.products.index') }}"
-                    class="admin-menu-card"
+                    class="ani-admin-menu-card"
                 >
-                    <div class="admin-icon purple">
-                        ◈
-                    </div>
-                    <h4>
-                        Products
-                    </h4>
-                    <p>
-                        Kelola produk Anireshop
-                    </p>
 
-                    <span class="admin-card-link">
-                        Kelola Produk →
-                    </span>
+                    <div class="ani-admin-card-top">
+
+                        <div class="ani-admin-icon purple">
+                            ◈
+                        </div>
+
+                        <span class="ani-admin-arrow">
+                            →
+                        </span>
+
+                    </div>
+
+
+                    <div class="ani-admin-card-content">
+
+                        <h3>
+                            Products
+                        </h3>
+
+                        <p>
+                            Kelola produk Anireshop,
+                            stok, harga, gambar, dan informasi produk.
+                        </p>
+
+                    </div>
+
+
+                    <div class="ani-admin-card-link">
+                        Kelola Produk
+                        <span>→</span>
+                    </div>
 
                 </a>
 
@@ -80,29 +131,44 @@
 
 
             {{-- CATEGORIES --}}
-
-            <div class="col-md-6 col-lg-3">
+            <div class="col-md-6 col-lg-4">
 
                 <a
                     href="{{ route('admin.categories.index') }}"
-                    class="admin-menu-card"
+                    class="ani-admin-menu-card"
                 >
 
-                    <div class="admin-icon pink">
-                        ◇
+                    <div class="ani-admin-card-top">
+
+                        <div class="ani-admin-icon pink">
+                            ◇
+                        </div>
+
+                        <span class="ani-admin-arrow">
+                            →
+                        </span>
+
                     </div>
 
-                    <h4>
-                        Categories
-                    </h4>
 
-                    <p>
-                        Kelola kategori produk
-                    </p>
+                    <div class="ani-admin-card-content">
 
-                    <span class="admin-card-link">
-                        Kelola Kategori →
-                    </span>
+                        <h3>
+                            Categories
+                        </h3>
+
+                        <p>
+                            Kelola kategori dan pengelompokan
+                            produk Anireshop.
+                        </p>
+
+                    </div>
+
+
+                    <div class="ani-admin-card-link">
+                        Kelola Kategori
+                        <span>→</span>
+                    </div>
 
                 </a>
 
@@ -110,56 +176,89 @@
 
 
             {{-- ORDERS --}}
+            <div class="col-md-6 col-lg-4">
 
-                <div class="col-md-6 col-lg-3">
+                <a
+                    href="{{ route('admin.orders.index') }}"
+                    class="ani-admin-menu-card"
+                >
 
-                    <a
-                        href="{{ route('admin.orders.index') }}"
-                        class="admin-menu-card"
-                    >
+                    <div class="ani-admin-card-top">
 
-                        <div class="admin-icon purple">
+                        <div class="ani-admin-icon purple">
                             ◎
                         </div>
 
-                        <h4>
-                            Orders
-                        </h4>
-
-                        <p>
-                            Kelola pesanan customer
-                        </p>
-
-                        <span class="admin-card-link">
-                            Kelola Pesanan →
+                        <span class="ani-admin-arrow">
+                            →
                         </span>
 
-                    </a>
-
-                </div>
-
-            {{-- SHIPPING --}}
-
-            <div class="col-md-6 col-lg-3">
-                <a
-                    href="{{ route('admin.shipping-rates.index') }}"
-                    class="admin-menu-card"
-                >
-                    <div class="admin-icon pink">
-                        ✦
                     </div>
 
-                    <h4>
-                        Shipping
-                    </h4>
 
-                    <p>
-                        Kelola tarif pengiriman
-                    </p>
+                    <div class="ani-admin-card-content">
 
-                    <span class="admin-card-link">
-                        Kelola Ongkir →
-                    </span>
+                        <h3>
+                            Orders
+                        </h3>
+
+                        <p>
+                            Kelola pesanan customer,
+                            status pesanan, dan pengiriman.
+                        </p>
+
+                    </div>
+
+
+                    <div class="ani-admin-card-link">
+                        Kelola Pesanan
+                        <span>→</span>
+                    </div>
+
+                </a>
+
+            </div>
+
+
+            {{-- SHIPPING --}}
+            <div class="col-md-6 col-lg-4">
+
+                <a
+                    href="{{ route('admin.shipping-rates.index') }}"
+                    class="ani-admin-menu-card"
+                >
+
+                    <div class="ani-admin-card-top">
+
+                        <div class="ani-admin-icon pink">
+                            ✦
+                        </div>
+
+                        <span class="ani-admin-arrow">
+                            →
+                        </span>
+
+                    </div>
+
+
+                    <div class="ani-admin-card-content">
+
+                        <h3>
+                            Shipping
+                        </h3>
+
+                        <p>
+                            Kelola tarif pengiriman
+                            berdasarkan wilayah dan kurir.
+                        </p>
+
+                    </div>
+
+
+                    <div class="ani-admin-card-link">
+                        Kelola Ongkir
+                        <span>→</span>
+                    </div>
 
                 </a>
 
@@ -167,29 +266,44 @@
 
 
             {{-- PAYMENT --}}
-
-            <div class="col-md-6 col-lg-3">
+            <div class="col-md-6 col-lg-4">
 
                 <a
                     href="{{ route('admin.payments.index') }}"
-                    class="admin-menu-card"
+                    class="ani-admin-menu-card"
                 >
 
-                    <div class="admin-icon pink">
-                        ✓
+                    <div class="ani-admin-card-top">
+
+                        <div class="ani-admin-icon green">
+                            ✓
+                        </div>
+
+                        <span class="ani-admin-arrow">
+                            →
+                        </span>
+
                     </div>
 
-                    <h4>
-                        Payments
-                    </h4>
 
-                    <p>
-                        Verifikasi pembayaran customer
-                    </p>
+                    <div class="ani-admin-card-content">
 
-                    <span class="admin-card-link">
-                        Verifikasi →
-                    </span>
+                        <h3>
+                            Payments
+                        </h3>
+
+                        <p>
+                            Periksa dan verifikasi
+                            pembayaran customer.
+                        </p>
+
+                    </div>
+
+
+                    <div class="ani-admin-card-link">
+                        Verifikasi Pembayaran
+                        <span>→</span>
+                    </div>
 
                 </a>
 
@@ -198,9 +312,29 @@
         </div>
 
 
-        {{-- LOGOUT --}}
+        {{-- ADMIN FOOTER --}}
+        <div class="ani-admin-bottom">
 
-        <div class="admin-bottom">
+            <div class="ani-admin-bottom-info">
+
+                <span class="ani-admin-bottom-icon">
+                    ⚙
+                </span>
+
+                <div>
+
+                    <strong>
+                        Anireshop Administration
+                    </strong>
+
+                    <small>
+                        Gunakan menu di atas untuk mengelola toko.
+                    </small>
+
+                </div>
+
+            </div>
+
 
             <form
                 method="POST"
@@ -211,7 +345,7 @@
 
                 <button
                     type="submit"
-                    class="btn btn-outline-danger"
+                    class="ani-admin-logout"
                 >
                     Logout Admin
                 </button>

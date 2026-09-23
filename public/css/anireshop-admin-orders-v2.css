@@ -1,0 +1,865 @@
+/* =========================================================
+   ANIRESHOP ADMIN ORDERS V2
+   ========================================================= */
+
+   .ani-admin-orders-page {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(124, 58, 237, .10),
+            transparent 30%
+        ),
+        #110d16;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+.ani-admin-orders-header {
+    margin-bottom: 28px;
+}
+
+.ani-admin-orders-header h1 {
+    margin: 4px 0 7px;
+
+    color: #ffffff;
+
+    font-size: 34px;
+    font-weight: 900;
+    letter-spacing: -.5px;
+}
+
+.ani-admin-orders-header p {
+    margin: 0;
+
+    color: #d0c3da;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.ani-admin-orders-page .ani-admin-eyebrow {
+    color: #f05aa7;
+
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   ALERT
+   ========================= */
+
+.ani-admin-order-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    margin-bottom: 20px;
+    padding: 14px 16px;
+
+    border-radius: 10px;
+}
+
+.ani-admin-order-alert.success {
+    border: 1px solid #315f4b;
+    background: #15271f;
+}
+
+.ani-admin-order-alert.error {
+    border: 1px solid #70404e;
+    background: #321b23;
+}
+
+.ani-admin-order-alert-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    flex-shrink: 0;
+
+    border-radius: 7px;
+
+    background: #ec4899;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.ani-admin-order-alert strong {
+    display: block;
+    margin-bottom: 3px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.ani-admin-order-alert p {
+    margin: 0;
+
+    color: #cbbfd3;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   MAIN CARD
+   ========================= */
+
+.ani-admin-orders-card {
+    overflow: hidden;
+
+    border: 1px solid #352941;
+    border-radius: 14px;
+
+    background: #18121f;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, .16);
+}
+
+
+/* =========================
+   CARD HEADER
+   ========================= */
+
+.ani-admin-orders-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #30243a;
+}
+
+.ani-admin-card-eyebrow {
+    display: block;
+    margin-bottom: 4px;
+
+    color: #f05aa7;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.ani-admin-orders-card-header h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 19px;
+    font-weight: 900;
+}
+
+.ani-admin-order-count {
+    padding: 6px 10px;
+
+    border: 1px solid #4a3858;
+    border-radius: 7px;
+
+    background: #21182b;
+
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+/* =========================
+   TABLE
+   ========================= */
+
+.ani-admin-orders-table {
+    width: 100%;
+    margin: 0;
+
+    border-collapse: collapse;
+}
+
+.ani-admin-orders-table thead {
+    background: #21182b;
+}
+
+.ani-admin-orders-table thead th {
+    padding: 13px 14px;
+
+    border-bottom: 1px solid #3a2d45;
+
+    color: #d9cde2;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: .8px;
+
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.ani-admin-orders-table tbody tr {
+    border-bottom: 1px solid #2c2235;
+
+    transition: background .2s ease;
+}
+
+.ani-admin-orders-table tbody tr:last-child {
+    border-bottom: 0;
+}
+
+.ani-admin-orders-table tbody tr:hover {
+    background: #1e1726;
+}
+
+.ani-admin-orders-table tbody td {
+    padding: 15px 14px;
+
+    color: #e8dfea;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    vertical-align: middle;
+}
+
+.ani-admin-orders-table .col-number {
+    width: 55px;
+}
+
+.ani-admin-orders-table .col-action {
+    width: 90px;
+}
+
+
+/* =========================
+   NUMBER
+   ========================= */
+
+.ani-admin-orders-table .order-number {
+    color: #b9abc4;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+/* =========================
+   ORDER ID
+   ========================= */
+
+.ani-admin-order-id {
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    white-space: nowrap;
+}
+
+.ani-admin-order-date {
+    display: block;
+    margin-top: 4px;
+
+    color: #a99bb5;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   CUSTOMER
+   ========================= */
+
+.ani-admin-customer {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    min-width: 165px;
+}
+
+.ani-admin-customer-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    flex-shrink: 0;
+
+    border: 1px solid #54386b;
+    border-radius: 8px;
+
+    background: #281a35;
+
+    color: #f05aa7;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.ani-admin-customer strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    white-space: nowrap;
+}
+
+.ani-admin-customer small {
+    display: block;
+    margin-top: 3px;
+
+    color: #a99bb5;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    max-width: 160px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* =========================
+   TOTAL
+   ========================= */
+
+.ani-admin-order-total {
+    color: #f05aa7;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   STATUS BADGES
+   ========================= */
+
+.ani-admin-status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 8px;
+
+    border: 1px solid transparent;
+    border-radius: 7px;
+
+    font-size: 8px;
+    font-weight: 900;
+
+    white-space: nowrap;
+}
+
+.ani-admin-status-badge.payment.paid {
+    border-color: #315f4b;
+    background: #15271f;
+    color: #80d8ae;
+}
+
+.ani-admin-status-badge.payment.waiting {
+    border-color: #6e5a2d;
+    background: #302817;
+    color: #f4cf71;
+}
+
+.ani-admin-status-badge.payment.rejected {
+    border-color: #70404e;
+    background: #321b23;
+    color: #ef9aaa;
+}
+
+.ani-admin-status-badge.payment.default {
+    border-color: #493c53;
+    background: #211a26;
+    color: #bcb0c4;
+}
+
+
+/* ORDER STATUS */
+
+.ani-admin-status-badge.order.processing {
+    border-color: #315e72;
+    background: #172933;
+    color: #79cbe7;
+}
+
+.ani-admin-status-badge.order.shipped {
+    border-color: #493c7c;
+    background: #241e3b;
+    color: #aaa0ff;
+}
+
+.ani-admin-status-badge.order.completed {
+    border-color: #315f4b;
+    background: #15271f;
+    color: #80d8ae;
+}
+
+.ani-admin-status-badge.order.cancelled,
+.ani-admin-status-badge.order.expired {
+    border-color: #70404e;
+    background: #321b23;
+    color: #ef9aaa;
+}
+
+.ani-admin-status-badge.order.default {
+    border-color: #493c53;
+    background: #211a26;
+    color: #bcb0c4;
+}
+
+
+/* =========================
+   COURIER
+   ========================= */
+
+.ani-admin-courier-badge {
+    display: inline-block;
+
+    padding: 5px 8px;
+
+    border: 1px solid #443650;
+    border-radius: 6px;
+
+    background: #21182b;
+
+    color: #d8cce0;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.ani-admin-no-courier {
+    color: #817586;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   DETAIL BUTTON
+   ========================= */
+
+.ani-admin-order-detail-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    min-height: 30px;
+    padding: 0 9px;
+
+    border: 1px solid #4c3c5a;
+    border-radius: 6px;
+
+    background: #241b2c;
+
+    color: #e0d5e7;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    text-decoration: none;
+
+    transition: .2s ease;
+}
+
+.ani-admin-order-detail-btn span {
+    color: #f05aa7;
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.ani-admin-order-detail-btn:hover {
+    border-color: #ec4899;
+    background: #30203b;
+    color: #ffffff;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   EMPTY
+   ========================= */
+
+.ani-admin-order-empty {
+    padding: 60px 20px;
+
+    text-align: center;
+}
+
+.ani-admin-order-empty-icon {
+    margin-bottom: 15px;
+
+    font-size: 42px;
+}
+
+.ani-admin-order-empty strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 900;
+}
+
+.ani-admin-order-empty p {
+    margin: 7px 0 0;
+
+    color: #b8a9c4;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   FOOTER / PAGINATION
+   ========================= */
+
+.ani-admin-orders-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 16px 20px;
+
+    border-top: 1px solid #30243a;
+}
+
+.ani-admin-pagination-info {
+    color: #bcaec7;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.ani-admin-pagination-info strong {
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.ani-admin-orders-footer .pagination {
+    gap: 4px;
+}
+
+.ani-admin-orders-footer .page-link {
+    min-width: 29px;
+    min-height: 29px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #43344f;
+    border-radius: 6px !important;
+
+    background: #21182b;
+
+    color: #d9cde2;
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.ani-admin-orders-footer .page-item.active .page-link {
+    border-color: #ec4899;
+
+    background: #ec4899;
+
+    color: #ffffff;
+}
+
+.ani-admin-orders-footer .page-link:hover {
+    border-color: #ec4899;
+
+    background: #30203b;
+
+    color: #ffffff;
+}
+
+.ani-admin-orders-footer .page-item.disabled .page-link {
+    border-color: #33283c;
+
+    background: #18121f;
+
+    color: #62586a;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 1199.98px) {
+
+    .ani-admin-orders-table {
+        min-width: 1050px;
+    }
+
+}
+
+
+@media (max-width: 767.98px) {
+
+    .ani-admin-orders-header h1 {
+        font-size: 29px;
+    }
+
+    .ani-admin-orders-card-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .ani-admin-orders-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}
+
+/* =========================================================
+   TYPOGRAPHY BOOST - ADMIN ORDERS
+   ========================================================= */
+
+/* HEADER */
+
+.ani-admin-orders-header h1 {
+    color: #ffffff !important;
+    font-size: 36px !important;
+    font-weight: 900 !important;
+    letter-spacing: -.5px !important;
+}
+
+.ani-admin-orders-header p {
+    color: #d8ccdf !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+}
+
+.ani-admin-orders-page .ani-admin-eyebrow {
+    color: #f05aa7 !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+    letter-spacing: 2px !important;
+}
+
+
+/* ALERT */
+
+.ani-admin-order-alert strong {
+    color: #ffffff !important;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-order-alert p {
+    color: #d7cadf !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+}
+
+
+/* CARD HEADER */
+
+.ani-admin-card-eyebrow {
+    color: #f05aa7 !important;
+    font-size: 10px !important;
+    font-weight: 900 !important;
+    letter-spacing: 2px !important;
+}
+
+.ani-admin-orders-card-header h2 {
+    color: #ffffff !important;
+    font-size: 21px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-order-count {
+    color: #ffffff !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+}
+
+
+/* TABLE HEADER */
+
+.ani-admin-orders-table thead th {
+    color: #e5d9eb !important;
+    font-size: 10px !important;
+    font-weight: 900 !important;
+    letter-spacing: 1px !important;
+}
+
+
+/* TABLE CONTENT */
+
+.ani-admin-orders-table tbody td {
+    color: #eee6f1 !important;
+    font-size: 12px !important;
+    font-weight: 650 !important;
+}
+
+
+/* NUMBER */
+
+.ani-admin-orders-table .order-number {
+    color: #c7b8d1 !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+}
+
+
+/* ORDER NUMBER */
+
+.ani-admin-order-id {
+    color: #ffffff !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-order-date {
+    color: #b9aabe !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+}
+
+
+/* CUSTOMER */
+
+.ani-admin-customer strong {
+    color: #ffffff !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-customer small {
+    color: #b9aabe !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+}
+
+.ani-admin-customer-avatar {
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+
+/* TOTAL */
+
+.ani-admin-order-total {
+    color: #f05aa7 !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+
+/* PAYMENT & ORDER STATUS */
+
+.ani-admin-status-badge {
+    font-size: 9px !important;
+    font-weight: 900 !important;
+    letter-spacing: .2px !important;
+}
+
+
+/* COURIER */
+
+.ani-admin-courier-badge {
+    color: #e1d6e7 !important;
+    font-size: 10px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-no-courier {
+    color: #a99cad !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+}
+
+
+/* DETAIL BUTTON */
+
+.ani-admin-order-detail-btn {
+    color: #e8dfea !important;
+    font-size: 10px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-order-detail-btn span {
+    color: #f05aa7 !important;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+}
+
+
+/* PAGINATION */
+
+.ani-admin-pagination-info {
+    color: #c7b9d0 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+}
+
+.ani-admin-pagination-info strong {
+    color: #ffffff !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-orders-footer .page-link {
+    color: #e1d6e7 !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+}
+
+
+/* EMPTY STATE */
+
+.ani-admin-order-empty strong {
+    color: #ffffff !important;
+    font-size: 16px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-order-empty p {
+    color: #c1b4ca !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+}

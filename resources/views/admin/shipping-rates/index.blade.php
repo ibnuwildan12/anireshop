@@ -1,155 +1,312 @@
 @extends('layouts.app')
 
-@section('title', 'Shipping Rates - Anireshop')
+@section('title', 'Shipping Rates - Admin Anireshop')
 
 @section('content')
-<div class="container py-5">
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <h2 class="fw-bold mb-1">Shipping Rates</h2>
-            <p class="text-secondary mb-0">
-                Kelola tarif pengiriman Anireshop
-            </p>
+<div class="ani-admin-shipping-page">
+
+    <div class="container py-5">
+
+        {{-- HEADER --}}
+        <div class="ani-admin-shipping-header">
+
+            <div>
+                <span class="ani-admin-eyebrow">
+                    SHIPPING MANAGEMENT
+                </span>
+
+                <h1>Shipping Rates</h1>
+
+                <p>
+                    Kelola tarif pengiriman Anireshop.
+                </p>
+            </div>
+
+            <a href="{{ route('admin.shipping-rates.create') }}"
+               class="ani-admin-primary-btn">
+                <span>+</span>
+                Tambah Tarif
+            </a>
+
         </div>
 
-        <a href="{{ route('admin.shipping-rates.create') }}"
-           class="btn btn-ani">
-            + Tambah Tarif
-        </a>
-    </div>
 
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+        {{-- ALERT --}}
+        @if(session('success'))
 
-    @if(session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
+            <div class="ani-admin-shipping-alert success">
 
-    <div class="card bg-dark border-secondary shadow">
-        <div class="card-body">
+                <div class="ani-admin-shipping-alert-icon">
+                    ✓
+                </div>
 
+                <div>
+                    <strong>Berhasil</strong>
+                    <p>{{ session('success') }}</p>
+                </div>
+
+            </div>
+
+        @endif
+
+
+        @if(session('error'))
+
+            <div class="ani-admin-shipping-alert error">
+
+                <div class="ani-admin-shipping-alert-icon">
+                    !
+                </div>
+
+                <div>
+                    <strong>Terjadi Kesalahan</strong>
+                    <p>{{ session('error') }}</p>
+                </div>
+
+            </div>
+
+        @endif
+
+
+        {{-- MAIN CARD --}}
+        <div class="ani-admin-shipping-card">
+
+            <div class="ani-admin-shipping-card-header">
+
+                <div>
+                    <span class="ani-admin-card-eyebrow">
+                        SHIPPING RATE LIST
+                    </span>
+
+                    <h2>Daftar Tarif Pengiriman</h2>
+                </div>
+
+                <div class="ani-admin-shipping-count">
+                    {{ $shippingRates->total() }} Tarif
+                </div>
+
+            </div>
+
+
+            {{-- TABLE --}}
             <div class="table-responsive">
-                <table class="table table-dark table-hover align-middle mb-0">
+
+                <table class="ani-admin-shipping-table">
 
                     <thead>
+
                         <tr>
-                            <th>#</th>
+                            <th class="col-number">#</th>
                             <th>Courier</th>
-                            <th>Kabupaten/Kota</th>
+                            <th>Kabupaten / Kota</th>
                             <th>Biaya</th>
-                            <th width="180">Aksi</th>
+                            <th class="col-action">Aksi</th>
                         </tr>
+
                     </thead>
 
                     <tbody>
+
                         @forelse($shippingRates as $rate)
+
                             <tr>
-                                <td>
+
+                                {{-- NUMBER --}}
+                                <td class="shipping-number">
                                     {{ $shippingRates->firstItem() + $loop->index }}
                                 </td>
 
+
+                                {{-- COURIER --}}
                                 <td>
-                                    <span class="badge bg-secondary">
-                                        {{ $rate->courier }}
+
+                                    <span class="ani-admin-courier-badge">
+                                        🚚 {{ $rate->courier }}
                                     </span>
+
                                 </td>
 
+
+                                {{-- CITY --}}
                                 <td>
-                                    {{ $rate->city }}
+
+                                    <div class="ani-admin-shipping-city">
+
+                                        <div class="ani-admin-city-icon">
+                                            📍
+                                        </div>
+
+                                        <strong>
+                                            {{ $rate->city }}
+                                        </strong>
+
+                                    </div>
+
                                 </td>
 
+
+                                {{-- COST --}}
                                 <td>
-                                    Rp {{ number_format($rate->cost, 0, ',', '.') }}
+
+                                    <span class="ani-admin-shipping-cost">
+                                        Rp {{ number_format($rate->cost, 0, ',', '.') }}
+                                    </span>
+
                                 </td>
 
+
+                                {{-- ACTION --}}
                                 <td>
-                                    <div class="d-flex gap-2">
+
+                                    <div class="ani-admin-shipping-actions">
 
                                         <a href="{{ route('admin.shipping-rates.edit', $rate) }}"
-                                           class="btn btn-sm btn-outline-light">
+                                           class="ani-admin-edit-btn">
                                             Edit
                                         </a>
 
                                         <form action="{{ route('admin.shipping-rates.destroy', $rate) }}"
                                               method="POST"
                                               onsubmit="return confirm('Yakin ingin menghapus tarif ini?');">
+
                                             @csrf
                                             @method('DELETE')
 
                                             <button type="submit"
-                                                    class="btn btn-sm btn-danger">
+                                                    class="ani-admin-delete-btn">
                                                 Hapus
                                             </button>
+
                                         </form>
 
                                     </div>
+
                                 </td>
+
                             </tr>
+
                         @empty
+
                             <tr>
-                                <td colspan="5"
-                                    class="text-center text-secondary py-4">
-                                    Belum ada data shipping rate.
+
+                                <td colspan="5">
+
+                                    <div class="ani-admin-shipping-empty">
+
+                                        <div class="ani-admin-shipping-empty-icon">
+                                            🚚
+                                        </div>
+
+                                        <strong>
+                                            Belum Ada Shipping Rate
+                                        </strong>
+
+                                        <p>
+                                            Belum ada data tarif pengiriman
+                                            yang tersedia.
+                                        </p>
+
+                                        <a href="{{ route('admin.shipping-rates.create') }}"
+                                           class="ani-admin-empty-btn">
+                                            + Tambah Tarif
+                                        </a>
+
+                                    </div>
+
                                 </td>
+
                             </tr>
+
                         @endforelse
+
                     </tbody>
 
                 </table>
+
             </div>
 
+
+            {{-- PAGINATION --}}
             @if($shippingRates->hasPages())
-                <div class="mt-4 d-flex justify-content-center">
+
+                <div class="ani-admin-shipping-footer">
+
+                    <div class="ani-admin-pagination-info">
+                        Menampilkan
+                        <strong>{{ $shippingRates->firstItem() }}</strong>
+                        –
+                        <strong>{{ $shippingRates->lastItem() }}</strong>
+                        dari
+                        <strong>{{ $shippingRates->total() }}</strong>
+                        tarif
+                    </div>
+
                     <nav>
-                        <ul class="pagination pagination-sm mb-0">
+
+                        <ul class="pagination mb-0">
 
                             @if ($shippingRates->onFirstPage())
+
                                 <li class="page-item disabled">
                                     <span class="page-link">‹</span>
                                 </li>
+
                             @else
+
                                 <li class="page-item">
                                     <a class="page-link"
                                        href="{{ $shippingRates->previousPageUrl() }}">
                                         ‹
                                     </a>
                                 </li>
+
                             @endif
 
+
                             @foreach ($shippingRates->getUrlRange(1, $shippingRates->lastPage()) as $page => $url)
+
                                 <li class="page-item {{ $page == $shippingRates->currentPage() ? 'active' : '' }}">
-                                    <a class="page-link" href="{{ $url }}">
+
+                                    <a class="page-link"
+                                       href="{{ $url }}">
                                         {{ $page }}
                                     </a>
+
                                 </li>
+
                             @endforeach
 
+
                             @if ($shippingRates->hasMorePages())
+
                                 <li class="page-item">
                                     <a class="page-link"
                                        href="{{ $shippingRates->nextPageUrl() }}">
                                         ›
                                     </a>
                                 </li>
+
                             @else
+
                                 <li class="page-item disabled">
                                     <span class="page-link">›</span>
                                 </li>
+
                             @endif
 
                         </ul>
+
                     </nav>
+
                 </div>
+
             @endif
 
         </div>
+
     </div>
 
 </div>
+
 @endsection

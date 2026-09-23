@@ -1,0 +1,939 @@
+/* =========================================================
+   ANIRESHOP ADMIN PRODUCTS V2
+   ========================================================= */
+
+   .ani-admin-products-page {
+    min-height: 75vh;
+    padding-bottom: 30px;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.ani-admin-products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 25px;
+    margin-bottom: 28px;
+}
+
+.ani-admin-products-header h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.ani-admin-products-header p {
+    margin: 7px 0 0;
+    color: #c5b8ce;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON
+   ========================================================= */
+
+.ani-admin-primary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    min-height: 43px;
+    padding: 0 17px;
+
+    border: 0;
+    border-radius: 10px;
+
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #ec4899
+    );
+
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 8px 20px rgba(124,58,237,.18);
+
+    transition: .2s ease;
+}
+
+.ani-admin-primary-btn span {
+    color: #ffffff !important;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.ani-admin-primary-btn:hover {
+    color: #ffffff;
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 11px 26px rgba(236,72,153,.22);
+}
+
+
+/* =========================================================
+   ALERT
+   ========================================================= */
+
+.ani-admin-products-alert {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    margin-bottom: 20px;
+    padding: 12px 15px;
+
+    border-radius: 10px;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.ani-admin-products-alert > span {
+    width: 23px;
+    height: 23px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 23px;
+
+    border-radius: 50%;
+
+    color: #ffffff;
+    font-weight: 900;
+}
+
+.ani-admin-products-alert.success {
+    border: 1px solid #35674d;
+    background: #172c23;
+    color: #c5ead4;
+}
+
+.ani-admin-products-alert.success > span {
+    background: #2c8b5c;
+}
+
+.ani-admin-products-alert.error {
+    border: 1px solid #70404e;
+    background: #321b23;
+    color: #f0bdc8;
+}
+
+.ani-admin-products-alert.error > span {
+    background: #b83d55;
+}
+
+
+/* =========================================================
+   MAIN CARD
+   ========================================================= */
+
+.ani-admin-products-card {
+    overflow: hidden;
+
+    border: 1px solid #453650;
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #291f36,
+            #211a2b
+        );
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.14);
+}
+
+
+/* =========================================================
+   CARD HEADER
+   ========================================================= */
+
+.ani-admin-products-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #3c3048;
+}
+
+.ani-admin-card-eyebrow {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #ec4899;
+
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 1.7px;
+}
+
+.ani-admin-products-card-header h2 {
+    margin: 0;
+
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 900;
+}
+
+.ani-admin-product-count {
+    padding: 7px 11px;
+
+    border: 1px solid #4d3a58;
+    border-radius: 8px;
+
+    background: #251c30;
+
+    color: #d5c8dc;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.ani-admin-products-table {
+    width: 100%;
+    min-width: 1050px;
+
+    margin: 0;
+
+    border-collapse: collapse;
+
+    color: #ffffff;
+}
+
+
+/* HEADER */
+
+.ani-admin-products-table thead th {
+    padding: 13px 14px;
+
+    border-bottom: 1px solid #493957;
+
+    background: #241b2f;
+
+    color: #bdaec8;
+
+    font-size: 8px;
+    font-weight: 900;
+
+    text-transform: uppercase;
+    letter-spacing: .7px;
+
+    white-space: nowrap;
+}
+
+.ani-admin-products-table thead th:first-child {
+    padding-left: 22px;
+}
+
+.ani-admin-products-table thead th:last-child {
+    padding-right: 22px;
+}
+
+
+/* BODY */
+
+.ani-admin-products-table tbody td {
+    padding: 14px;
+
+    border-bottom: 1px solid #342a3e;
+
+    background: rgba(33,26,43,.45);
+
+    color: #e7dfea;
+
+    font-size: 10px;
+
+    vertical-align: middle;
+}
+
+.ani-admin-products-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.ani-admin-products-table tbody tr {
+    transition: background .18s ease;
+}
+
+.ani-admin-products-table tbody tr:hover td {
+    background: rgba(73,52,91,.28);
+}
+
+
+/* NUMBER */
+
+.ani-admin-products-table .product-number {
+    width: 45px;
+
+    padding-left: 22px;
+
+    color: #9687a2;
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   PRODUCT INFO
+   ========================================================= */
+
+.ani-admin-product-info {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    min-width: 230px;
+}
+
+.ani-admin-product-image {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 48px;
+
+    overflow: hidden;
+
+    border: 1px solid #4a3957;
+    border-radius: 9px;
+
+    background: #18121f;
+}
+
+.ani-admin-product-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+.ani-admin-product-image span {
+    color: #776982;
+    font-size: 12px;
+}
+
+.ani-admin-product-name {
+    min-width: 0;
+}
+
+.ani-admin-product-name strong {
+    display: block;
+
+    overflow: hidden;
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 850;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ani-admin-product-name small {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #94869f;
+
+    font-size: 8px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   CATEGORY
+   ========================================================= */
+
+.ani-admin-category-badge {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 6px 8px;
+
+    border: 1px solid #493957;
+    border-radius: 7px;
+
+    background: #251c30;
+
+    color: #cfc1d8;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   PRICE
+   ========================================================= */
+
+.ani-admin-product-price {
+    color: #f05aa7 !important;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   STOCK
+   ========================================================= */
+
+.ani-stock-number {
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 850;
+}
+
+.ani-stock-badge {
+    display: inline-flex;
+
+    min-width: 30px;
+    min-height: 24px;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 7px;
+
+    border-radius: 7px;
+
+    font-size: 9px;
+    font-weight: 850;
+}
+
+.ani-stock-badge.available {
+    border: 1px solid #35674d;
+    background: #172c23;
+    color: #75d49e;
+}
+
+.ani-stock-badge.low {
+    border: 1px solid #6b5629;
+    background: #302817;
+    color: #e3c66f;
+}
+
+.ani-stock-badge.sold {
+    border: 1px solid #70404e;
+    background: #321b23;
+    color: #ef8fa1;
+}
+
+.ani-stock-badge.reserved {
+    border: 1px solid #51416a;
+    background: #282039;
+    color: #c4a6ff;
+}
+
+.ani-stock-badge.neutral {
+    border: 1px solid #403448;
+    background: #211a2b;
+    color: #9d90a7;
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.ani-admin-product-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 6px;
+}
+
+.ani-admin-product-actions form {
+    margin: 0;
+}
+
+.ani-admin-edit-btn,
+.ani-admin-delete-btn {
+    min-height: 30px;
+
+    padding: 0 10px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    font-size: 8px;
+    font-weight: 800;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: .18s ease;
+}
+
+.ani-admin-edit-btn {
+    border: 1px solid #51416a;
+    background: #282039;
+    color: #c9b4f5;
+}
+
+.ani-admin-edit-btn:hover {
+    border-color: #8b5cf6;
+    background: #35284b;
+    color: #ffffff;
+}
+
+.ani-admin-delete-btn {
+    border: 1px solid #70404e;
+    background: #321b23;
+    color: #ef9aaa;
+}
+
+.ani-admin-delete-btn:hover {
+    border-color: #ef7186;
+    background: #48212d;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.ani-admin-empty {
+    height: 300px;
+
+    text-align: center !important;
+
+    color: #ffffff !important;
+}
+
+.ani-admin-empty-icon {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 13px;
+
+    border: 1px solid #5a3c73;
+    border-radius: 13px;
+
+    background: #282039;
+
+    color: #b47aff;
+
+    font-size: 19px;
+}
+
+.ani-admin-empty strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 850;
+}
+
+.ani-admin-empty > span {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #a99ab5;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.ani-admin-empty-btn {
+    display: inline-flex;
+
+    margin-top: 17px;
+
+    min-height: 36px;
+    padding: 0 13px;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #ec4899
+    );
+
+    color: #ffffff;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   PAGINATION
+   ========================================================= */
+
+.ani-admin-products-pagination {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 17px 22px;
+
+    border-top: 1px solid #3c3048;
+}
+
+.ani-pagination-info {
+    color: #9f91aa;
+
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.ani-pagination-info strong {
+    color: #e0d5e5;
+    font-weight: 800;
+}
+
+.ani-admin-products-pagination .pagination {
+    gap: 4px;
+}
+
+.ani-admin-products-pagination .page-link {
+    min-width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 8px;
+
+    border: 1px solid #493957;
+    border-radius: 7px !important;
+
+    background: #211a2b;
+    color: #cfc1d8;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.ani-admin-products-pagination .page-link:hover {
+    border-color: #ec4899;
+
+    background: #342640;
+
+    color: #ffffff;
+}
+
+.ani-admin-products-pagination .page-item.active .page-link {
+    border-color: #ec4899;
+
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #ec4899
+    );
+
+    color: #ffffff;
+}
+
+.ani-admin-products-pagination .page-item.disabled .page-link {
+    opacity: .4;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+
+    .ani-admin-products-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .ani-admin-primary-btn {
+        width: 100%;
+    }
+
+    .ani-admin-products-card-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .ani-admin-products-pagination {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .ani-admin-products-pagination nav {
+        width: 100%;
+    }
+
+    .ani-admin-products-pagination .pagination {
+        justify-content: center;
+    }
+
+}
+
+/* =========================================================
+   ADMIN PRODUCTS - TYPOGRAPHY BOOST
+   Membuat tulisan lebih besar, tebal & jelas
+   ========================================================= */
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+   .ani-admin-products-header h1 {
+    color: #ffffff !important;
+    font-size: 34px !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.5px;
+}
+
+.ani-admin-products-header p {
+    color: #d0c3da !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+}
+
+
+/* Label kecil PRODUCT MANAGEMENT */
+
+.ani-admin-products-header .ani-admin-eyebrow {
+    color: #f05aa7 !important;
+    font-size: 10px !important;
+    font-weight: 900 !important;
+    letter-spacing: 2px !important;
+}
+
+
+/* Tombol tambah produk */
+
+.ani-admin-primary-btn {
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-primary-btn span {
+    font-size: 16px !important;
+    font-weight: 900 !important;
+}
+
+
+/* =========================================================
+   INVENTORY HEADER
+   ========================================================= */
+
+.ani-admin-card-eyebrow {
+    color: #f05aa7 !important;
+    font-size: 9px !important;
+    font-weight: 900 !important;
+    letter-spacing: 2px !important;
+}
+
+.ani-admin-products-card-header h2 {
+    color: #ffffff !important;
+    font-size: 19px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-product-count {
+    color: #ffffff !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+   ========================================================= */
+
+.ani-admin-products-table thead th {
+    color: #d9cde2 !important;
+    font-size: 9px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.8px !important;
+}
+
+
+/* =========================================================
+   NUMBER
+   ========================================================= */
+
+.ani-admin-products-table .product-number {
+    color: #b9abc4 !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
+}
+
+
+/* =========================================================
+   PRODUCT NAME
+   ========================================================= */
+
+.ani-admin-product-name strong {
+    color: #ffffff !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-product-name small {
+    color: #a99bb5 !important;
+    font-size: 9px !important;
+    font-weight: 600 !important;
+}
+
+
+/* =========================================================
+   CATEGORY
+   ========================================================= */
+
+.ani-admin-category-badge {
+    color: #e1d6e7 !important;
+    font-size: 9px !important;
+    font-weight: 800 !important;
+}
+
+
+/* =========================================================
+   PRICE
+   ========================================================= */
+
+.ani-admin-product-price {
+    color: #f05aa7 !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+
+/* =========================================================
+   STOCK
+   ========================================================= */
+
+.ani-stock-number {
+    color: #ffffff !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+.ani-stock-badge {
+    font-size: 10px !important;
+    font-weight: 900 !important;
+}
+
+
+/* =========================================================
+   ACTION BUTTON
+   ========================================================= */
+
+.ani-admin-edit-btn,
+.ani-admin-delete-btn {
+    font-size: 9px !important;
+    font-weight: 900 !important;
+}
+
+
+/* =========================================================
+   PAGINATION
+   ========================================================= */
+
+.ani-pagination-info {
+    color: #bcaec7 !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+}
+
+.ani-pagination-info strong {
+    color: #ffffff !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-products-pagination .page-link {
+    font-size: 10px !important;
+    font-weight: 900 !important;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.ani-admin-empty strong {
+    color: #ffffff !important;
+    font-size: 14px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-empty > span {
+    color: #b8a9c4 !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+}
+
+.ani-admin-empty-btn {
+    font-size: 10px !important;
+    font-weight: 900 !important;
+}
+
+
+/* =========================================================
+   TABLE GENERAL TEXT
+   ========================================================= */
+
+.ani-admin-products-table tbody td {
+    color: #e8dfea !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+}

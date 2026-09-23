@@ -1,0 +1,1614 @@
+/* =========================================================
+   ANIRESHOP ADMIN CATEGORIES V2
+   ========================================================= */
+
+   .ani-admin-categories-page {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 10% 0%, rgba(124, 58, 237, .10), transparent 30%),
+        #110d16;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+.ani-admin-categories-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 28px;
+}
+
+.ani-admin-categories-header h1 {
+    margin: 4px 0 7px;
+    color: #ffffff;
+    font-size: 34px;
+    font-weight: 900;
+    letter-spacing: -.5px;
+}
+
+.ani-admin-categories-header p {
+    margin: 0;
+    color: #d0c3da;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   EYEBROW
+   ========================= */
+
+.ani-admin-categories-page .ani-admin-eyebrow {
+    display: inline-block;
+    color: #f05aa7;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   PRIMARY BUTTON
+   ========================= */
+
+.ani-admin-categories-page .ani-admin-primary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    min-height: 42px;
+    padding: 0 16px;
+
+    border: 0;
+    border-radius: 9px;
+
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #ec4899
+    );
+
+    color: #ffffff;
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    box-shadow:
+        0 8px 20px rgba(124, 58, 237, .18);
+
+    transition: .2s ease;
+}
+
+.ani-admin-categories-page .ani-admin-primary-btn span {
+    font-size: 17px;
+    font-weight: 900;
+}
+
+.ani-admin-categories-page .ani-admin-primary-btn:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow:
+        0 12px 25px rgba(236, 72, 153, .25);
+}
+
+
+/* =========================
+   ALERT
+   ========================= */
+
+.ani-admin-category-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    margin-bottom: 20px;
+    padding: 14px 16px;
+
+    border-radius: 10px;
+}
+
+.ani-admin-category-alert.success {
+    border: 1px solid #315f4b;
+    background: #15271f;
+}
+
+.ani-admin-category-alert.error {
+    border: 1px solid #70404e;
+    background: #321b23;
+}
+
+.ani-admin-category-alert-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    flex-shrink: 0;
+
+    border-radius: 7px;
+
+    background: #ec4899;
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.ani-admin-category-alert strong {
+    display: block;
+    margin-bottom: 3px;
+
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.ani-admin-category-alert p {
+    margin: 0;
+
+    color: #cbbfd3;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   MAIN CARD
+   ========================= */
+
+.ani-admin-categories-card {
+    overflow: hidden;
+
+    border: 1px solid #352941;
+    border-radius: 14px;
+
+    background: #18121f;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, .16);
+}
+
+
+/* =========================
+   CARD HEADER
+   ========================= */
+
+.ani-admin-categories-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #30243a;
+}
+
+.ani-admin-card-eyebrow {
+    display: block;
+    margin-bottom: 4px;
+
+    color: #f05aa7;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.ani-admin-categories-card-header h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 19px;
+    font-weight: 900;
+}
+
+.ani-admin-category-count {
+    padding: 6px 10px;
+
+    border: 1px solid #4a3858;
+    border-radius: 7px;
+
+    background: #21182b;
+
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+/* =========================
+   TABLE
+   ========================= */
+
+.ani-admin-categories-table {
+    width: 100%;
+    margin: 0;
+
+    border-collapse: collapse;
+}
+
+.ani-admin-categories-table thead {
+    background: #21182b;
+}
+
+.ani-admin-categories-table thead th {
+    padding: 13px 16px;
+
+    border-bottom: 1px solid #3a2d45;
+
+    color: #d9cde2;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+.ani-admin-categories-table tbody tr {
+    border-bottom: 1px solid #2c2235;
+
+    transition: background .2s ease;
+}
+
+.ani-admin-categories-table tbody tr:last-child {
+    border-bottom: 0;
+}
+
+.ani-admin-categories-table tbody tr:hover {
+    background: #1e1726;
+}
+
+.ani-admin-categories-table tbody td {
+    padding: 15px 16px;
+
+    color: #e8dfea;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    vertical-align: middle;
+}
+
+.ani-admin-categories-table .col-number {
+    width: 65px;
+}
+
+.ani-admin-categories-table .col-action {
+    width: 165px;
+}
+
+
+/* =========================
+   NUMBER
+   ========================= */
+
+.category-number {
+    color: #b9abc4 !important;
+
+    font-size: 10px !important;
+    font-weight: 800 !important;
+}
+
+
+/* =========================
+   CATEGORY NAME
+   ========================= */
+
+.ani-admin-category-name {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.ani-admin-category-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    border: 1px solid #4c385d;
+    border-radius: 9px;
+
+    background: #21182b;
+
+    font-size: 16px;
+}
+
+.ani-admin-category-name strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.ani-admin-category-name small {
+    display: block;
+    margin-top: 3px;
+
+    color: #a99bb5;
+
+    font-size: 9px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   SLUG
+   ========================= */
+
+.ani-admin-category-slug {
+    display: inline-block;
+
+    padding: 5px 8px;
+
+    border: 1px solid #3f324b;
+    border-radius: 6px;
+
+    background: #151019;
+
+    color: #cfc2d7;
+
+    font-family: monospace;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   PRODUCT COUNT
+   ========================= */
+
+.ani-admin-product-count-badge {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 6px 9px;
+
+    border: 1px solid #51367b;
+    border-radius: 7px;
+
+    background: #28183d;
+
+    color: #d8c4f3;
+
+    font-size: 9px;
+    font-weight: 900;
+}
+
+
+/* =========================
+   ACTION
+   ========================= */
+
+.ani-admin-category-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.ani-admin-category-actions form {
+    margin: 0;
+}
+
+.ani-admin-categories-page .ani-admin-edit-btn,
+.ani-admin-categories-page .ani-admin-delete-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 52px;
+    min-height: 29px;
+    padding: 0 9px;
+
+    border-radius: 6px;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    transition: .2s ease;
+}
+
+.ani-admin-categories-page .ani-admin-edit-btn {
+    border: 1px solid #4c3c5a;
+    background: #241b2c;
+    color: #d8cce0;
+}
+
+.ani-admin-categories-page .ani-admin-edit-btn:hover {
+    border-color: #7c5b91;
+    background: #30213c;
+    color: #ffffff;
+}
+
+.ani-admin-categories-page .ani-admin-delete-btn {
+    border: 1px solid #70404e;
+    background: #321b23;
+    color: #ef9aaa;
+}
+
+.ani-admin-categories-page .ani-admin-delete-btn:hover {
+    border-color: #ef7186;
+    background: #48212d;
+    color: #ffffff;
+}
+
+
+/* =========================
+   EMPTY STATE
+   ========================= */
+
+.ani-admin-category-empty {
+    padding: 60px 20px;
+
+    text-align: center;
+}
+
+.ani-admin-category-empty-icon {
+    margin-bottom: 15px;
+
+    font-size: 42px;
+}
+
+.ani-admin-category-empty strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.ani-admin-category-empty p {
+    margin: 7px 0 18px;
+
+    color: #b8a9c4;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.ani-admin-empty-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 35px;
+    padding: 0 13px;
+
+    border-radius: 7px;
+
+    background: #ec4899;
+
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    text-decoration: none;
+
+    transition: .2s ease;
+}
+
+.ani-admin-empty-btn:hover {
+    background: #f472b6;
+    color: #ffffff;
+}
+
+
+/* =========================
+   FOOTER / PAGINATION
+   ========================= */
+
+.ani-admin-categories-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 16px 20px;
+
+    border-top: 1px solid #30243a;
+}
+
+.ani-admin-pagination-info {
+    color: #bcaec7;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.ani-admin-pagination-info strong {
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.ani-admin-categories-pagination nav {
+    margin: 0;
+}
+
+.ani-admin-categories-pagination .pagination {
+    margin: 0;
+    gap: 4px;
+}
+
+.ani-admin-categories-pagination .page-item .page-link {
+    min-width: 29px;
+    min-height: 29px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #43344f;
+    border-radius: 6px;
+
+    background: #21182b;
+
+    color: #d9cde2;
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.ani-admin-categories-pagination .page-item.active .page-link {
+    border-color: #ec4899;
+
+    background: #ec4899;
+
+    color: #ffffff;
+}
+
+.ani-admin-categories-pagination .page-item .page-link:hover {
+    border-color: #ec4899;
+
+    background: #30203b;
+
+    color: #ffffff;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 991.98px) {
+
+    .ani-admin-categories-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .ani-admin-categories-header .ani-admin-primary-btn {
+        align-self: flex-start;
+    }
+
+    .ani-admin-categories-card {
+        border-radius: 12px;
+    }
+}
+
+
+@media (max-width: 767.98px) {
+
+    .ani-admin-categories-header h1 {
+        font-size: 29px;
+    }
+
+    .ani-admin-categories-card-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .ani-admin-categories-table {
+        min-width: 760px;
+    }
+
+    .ani-admin-categories-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}
+
+
+@media (max-width: 576px) {
+
+    .ani-admin-categories-header {
+        margin-bottom: 20px;
+    }
+
+    .ani-admin-categories-header h1 {
+        font-size: 26px;
+    }
+
+    .ani-admin-categories-header p {
+        font-size: 12px;
+    }
+
+    .ani-admin-categories-header .ani-admin-primary-btn {
+        width: 100%;
+    }
+
+}
+
+/* =========================================================
+   TYPOGRAPHY BOOST - ADMIN CATEGORIES
+   ========================================================= */
+
+   .ani-admin-categories-header h1 {
+    color: #ffffff !important;
+    font-size: 36px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-categories-header p {
+    color: #d8ccdf !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+}
+
+.ani-admin-categories-page .ani-admin-eyebrow {
+    color: #f05aa7 !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+    letter-spacing: 2px !important;
+}
+
+
+/* BUTTON */
+
+.ani-admin-categories-page .ani-admin-primary-btn {
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-categories-page .ani-admin-primary-btn span {
+    font-size: 18px !important;
+    font-weight: 900 !important;
+}
+
+
+/* CARD HEADER */
+
+.ani-admin-card-eyebrow {
+    color: #f05aa7 !important;
+    font-size: 10px !important;
+    font-weight: 900 !important;
+    letter-spacing: 2px !important;
+}
+
+.ani-admin-categories-card-header h2 {
+    color: #ffffff !important;
+    font-size: 21px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-category-count {
+    color: #ffffff !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+}
+
+
+/* TABLE HEADER */
+
+.ani-admin-categories-table thead th {
+    color: #e3d8e9 !important;
+    font-size: 10px !important;
+    font-weight: 900 !important;
+    letter-spacing: .9px !important;
+}
+
+
+/* TABLE CONTENT */
+
+.ani-admin-categories-table tbody td {
+    color: #eee6f1 !important;
+    font-size: 12px !important;
+    font-weight: 650 !important;
+}
+
+
+/* NUMBER */
+
+.ani-admin-categories-table .category-number {
+    color: #c7b8d1 !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+}
+
+
+/* CATEGORY NAME */
+
+.ani-admin-category-name strong {
+    color: #ffffff !important;
+    font-size: 14px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-category-name small {
+    color: #b9aabe !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+}
+
+
+/* SLUG */
+
+.ani-admin-category-slug {
+    color: #ddd2e3 !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
+}
+
+
+/* PRODUCT COUNT */
+
+.ani-admin-product-count-badge {
+    color: #e5d7f2 !important;
+    font-size: 10px !important;
+    font-weight: 900 !important;
+}
+
+
+/* ACTION BUTTON */
+
+.ani-admin-categories-page .ani-admin-edit-btn,
+.ani-admin-categories-page .ani-admin-delete-btn {
+    font-size: 10px !important;
+    font-weight: 900 !important;
+}
+
+
+/* ALERT */
+
+.ani-admin-category-alert strong {
+    color: #ffffff !important;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-category-alert p {
+    color: #d7cadf !important;
+    font-size: 12px !important;
+    font-weight: 650 !important;
+}
+
+
+/* PAGINATION */
+
+.ani-admin-pagination-info {
+    color: #c7b9d0 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+}
+
+.ani-admin-pagination-info strong {
+    color: #ffffff !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-categories-pagination .page-item .page-link {
+    color: #e1d6e7 !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+}
+
+
+/* EMPTY STATE */
+
+.ani-admin-category-empty strong {
+    color: #ffffff !important;
+    font-size: 16px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-category-empty p {
+    color: #c1b4ca !important;
+    font-size: 12px !important;
+    font-weight: 650 !important;
+}
+
+.ani-admin-empty-btn {
+    font-size: 11px !important;
+    font-weight: 900 !important;
+}
+
+/* =========================================================
+   CATEGORY CREATE FORM V2
+   ========================================================= */
+
+   .ani-admin-category-form-page {
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(124, 58, 237, .10),
+            transparent 30%
+        ),
+        #110d16;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+.ani-admin-category-form-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 28px;
+}
+
+.ani-admin-category-form-header h1 {
+    margin: 4px 0 7px;
+    color: #ffffff;
+    font-size: 34px;
+    font-weight: 900;
+}
+
+.ani-admin-category-form-header p {
+    margin: 0;
+    color: #d0c3da;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.ani-admin-category-form-header .ani-admin-eyebrow {
+    color: #f05aa7;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   BACK BUTTON
+   ========================= */
+
+.ani-admin-category-form-page .ani-admin-back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 40px;
+    padding: 0 14px;
+
+    border: 1px solid #4a3a55;
+    border-radius: 8px;
+
+    background: #21182b;
+    color: #ddd2e5;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    text-decoration: none;
+    transition: .2s ease;
+}
+
+.ani-admin-category-form-page .ani-admin-back-btn:hover {
+    border-color: #7c5b91;
+    background: #2b2035;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   VALIDATION ALERT
+   ========================= */
+
+.ani-admin-category-form-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    margin-bottom: 20px;
+    padding: 15px 17px;
+
+    border: 1px solid #70404e;
+    border-radius: 10px;
+
+    background: #321b23;
+}
+
+.ani-admin-category-form-alert-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 29px;
+    height: 29px;
+
+    flex-shrink: 0;
+
+    border-radius: 7px;
+
+    background: #ec4899;
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.ani-admin-category-form-alert strong {
+    display: block;
+    margin-bottom: 5px;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.ani-admin-category-form-alert ul {
+    margin: 0;
+    padding-left: 17px;
+
+    color: #d7cadf;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.ani-admin-category-form-alert li {
+    margin-bottom: 3px;
+}
+
+
+/* =========================
+   FORM CARD
+   ========================= */
+
+.ani-admin-category-form-card {
+    overflow: hidden;
+
+    border: 1px solid #352941;
+    border-radius: 14px;
+
+    background: #18121f;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, .16);
+}
+
+.ani-admin-category-form-card-header {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #30243a;
+}
+
+.ani-admin-form-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    border: 1px solid #5a3d70;
+    border-radius: 9px;
+
+    background: #281a35;
+
+    color: #ec4899;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.ani-admin-category-form-card-header span {
+    display: block;
+    margin-bottom: 4px;
+
+    color: #f05aa7;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.ani-admin-category-form-card-header h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 19px;
+    font-weight: 900;
+}
+
+
+/* =========================
+   FORM BODY
+   ========================= */
+
+.ani-admin-category-form-body {
+    padding: 25px 22px;
+}
+
+.ani-admin-category-field label {
+    display: block;
+    margin-bottom: 9px;
+
+    color: #f2eaf5;
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.ani-admin-category-field label span {
+    color: #ec4899;
+}
+
+.ani-admin-category-field input {
+    width: 100%;
+    height: 45px;
+
+    padding: 0 13px;
+
+    border: 1px solid #493953;
+    border-radius: 8px;
+
+    outline: none;
+
+    background: #120e17;
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: .2s ease;
+}
+
+.ani-admin-category-field input::placeholder {
+    color: #8f8298;
+}
+
+.ani-admin-category-field input:focus {
+    border-color: #ec4899;
+
+    box-shadow:
+        0 0 0 3px rgba(236, 72, 153, .10);
+}
+
+.ani-admin-category-field input.is-invalid {
+    border-color: #ef7186;
+}
+
+.ani-admin-category-field-help {
+    margin-top: 8px;
+
+    color: #aaa0b2;
+
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+.ani-admin-category-field-error {
+    margin-top: 7px;
+
+    color: #ef9aaa;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+/* =========================
+   FORM FOOTER
+   ========================= */
+
+.ani-admin-category-form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 17px 22px;
+
+    border-top: 1px solid #30243a;
+}
+
+.ani-admin-category-required-info {
+    color: #aaa0b2;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.ani-admin-category-required-info span {
+    color: #ec4899;
+    font-weight: 900;
+}
+
+.ani-admin-category-form-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ani-admin-category-cancel-btn,
+.ani-admin-category-save-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 36px;
+    padding: 0 13px;
+
+    border-radius: 7px;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    text-decoration: none;
+
+    transition: .2s ease;
+}
+
+.ani-admin-category-cancel-btn {
+    border: 1px solid #4a3a55;
+    background: #21182b;
+    color: #d0c3da;
+}
+
+.ani-admin-category-cancel-btn:hover {
+    border-color: #6c557b;
+    background: #2b2035;
+    color: #ffffff;
+}
+
+.ani-admin-category-save-btn {
+    border: 0;
+
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #ec4899
+    );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 7px 18px rgba(124, 58, 237, .18);
+
+    cursor: pointer;
+}
+
+.ani-admin-category-save-btn:hover {
+    color: #ffffff;
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 10px 22px rgba(236, 72, 153, .25);
+}
+
+
+/* =========================
+   INFORMATION CARD
+   ========================= */
+
+.ani-admin-category-info-card {
+    padding: 24px;
+
+    border: 1px solid #352941;
+    border-radius: 14px;
+
+    background: #18121f;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, .12);
+}
+
+.ani-admin-category-info-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 45px;
+    height: 45px;
+
+    margin-bottom: 18px;
+
+    border: 1px solid #54386b;
+    border-radius: 11px;
+
+    background: #281a35;
+
+    font-size: 21px;
+}
+
+.ani-admin-category-info-card .ani-admin-card-eyebrow {
+    display: block;
+    margin-bottom: 5px;
+
+    color: #f05aa7;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.ani-admin-category-info-card h2 {
+    margin: 0 0 12px;
+
+    color: #ffffff;
+
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.ani-admin-category-info-card > p {
+    margin: 0;
+
+    color: #c3b6cb;
+
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.7;
+}
+
+.ani-admin-category-info-divider {
+    height: 1px;
+
+    margin: 20px 0;
+
+    background: #30243a;
+}
+
+
+/* =========================
+   INFO ITEMS
+   ========================= */
+
+.ani-admin-category-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    margin-bottom: 17px;
+}
+
+.ani-admin-category-info-item:last-child {
+    margin-bottom: 0;
+}
+
+.ani-admin-category-info-item > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 26px;
+    height: 26px;
+
+    flex-shrink: 0;
+
+    border-radius: 6px;
+
+    background: #281a35;
+
+    color: #ec4899;
+
+    font-size: 9px;
+    font-weight: 900;
+}
+
+.ani-admin-category-info-item strong {
+    display: block;
+    margin-bottom: 3px;
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.ani-admin-category-info-item p {
+    margin: 0;
+
+    color: #aaa0b2;
+
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   TYPOGRAPHY BOOST
+   ========================= */
+
+.ani-admin-category-form-header h1 {
+    font-size: 36px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-category-form-header p {
+    color: #d8ccdf !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+}
+
+.ani-admin-category-form-header .ani-admin-eyebrow {
+    font-size: 11px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-category-form-card-header h2 {
+    font-size: 21px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-category-form-card-header span {
+    font-size: 10px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-category-field label {
+    color: #ffffff !important;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-category-field input {
+    color: #ffffff !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+}
+
+.ani-admin-category-field input::placeholder {
+    color: #a99bb4 !important;
+    font-weight: 600 !important;
+}
+
+.ani-admin-category-field-help {
+    color: #bfb2c8 !important;
+    font-size: 11px !important;
+    font-weight: 650 !important;
+}
+
+.ani-admin-category-field-error {
+    font-size: 11px !important;
+    font-weight: 800 !important;
+}
+
+.ani-admin-category-required-info {
+    color: #bfb2c8 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+}
+
+.ani-admin-category-cancel-btn,
+.ani-admin-category-save-btn {
+    font-size: 11px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-category-info-card h2 {
+    font-size: 21px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-category-info-card > p {
+    color: #cfc2d7 !important;
+    font-size: 12px !important;
+    font-weight: 650 !important;
+}
+
+.ani-admin-category-info-item strong {
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-category-info-item p {
+    color: #bfb2c8 !important;
+    font-size: 11px !important;
+    font-weight: 650 !important;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 767.98px) {
+
+    .ani-admin-category-form-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .ani-admin-category-form-header .ani-admin-back-btn {
+        width: 100%;
+    }
+
+    .ani-admin-category-form-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .ani-admin-category-form-actions {
+        width: 100%;
+    }
+
+    .ani-admin-category-cancel-btn,
+    .ani-admin-category-save-btn {
+        flex: 1;
+    }
+
+}
+
+/* =========================================================
+   CATEGORY EDIT - CURRENT CATEGORY INFO
+   ========================================================= */
+
+   .ani-admin-category-current-info {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    margin-top: 20px;
+}
+
+.ani-admin-category-current-item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid #30243a;
+}
+
+.ani-admin-category-current-item:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.ani-admin-category-current-item > span {
+    color: #aaa0b2;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.ani-admin-category-current-item > strong {
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 900;
+    text-align: right;
+}
+
+.ani-admin-category-current-item > strong.slug {
+    max-width: 190px;
+    overflow: hidden;
+
+    color: #d5c5e2;
+    font-family: monospace;
+    font-size: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ani-admin-category-info-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    padding: 12px;
+
+    border: 1px solid #443650;
+    border-radius: 8px;
+
+    background: #21182b;
+}
+
+.ani-admin-category-info-note > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 22px;
+    height: 22px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #7c3aed;
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.ani-admin-category-info-note p {
+    margin: 0;
+
+    color: #cfc2d7;
+
+    font-size: 10px;
+    font-weight: 650;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   EDIT TYPOGRAPHY BOOST
+   ========================= */
+
+.ani-admin-category-current-item > span {
+    color: #bfb2c8 !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+}
+
+.ani-admin-category-current-item > strong {
+    color: #ffffff !important;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-category-current-item > strong.slug {
+    color: #e0d2e8 !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+}
+
+.ani-admin-category-info-note p {
+    color: #cfc2d7 !important;
+    font-size: 11px !important;
+    font-weight: 650 !important;
+}
+
+@media (max-width: 576px) {
+
+    .ani-admin-category-current-item {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .ani-admin-category-current-item > strong {
+        text-align: left;
+    }
+
+    .ani-admin-category-current-item > strong.slug {
+        max-width: 100%;
+    }
+
+}

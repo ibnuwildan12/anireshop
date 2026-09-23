@@ -1,0 +1,1735 @@
+/* =========================================================
+   ANIRESHOP ADMIN SHIPPING RATES V2
+   ========================================================= */
+
+   .ani-admin-shipping-page {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(124, 58, 237, .10),
+            transparent 30%
+        ),
+        #110d16;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+.ani-admin-shipping-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 30px;
+    margin-bottom: 28px;
+}
+
+.ani-admin-shipping-header h1 {
+    margin: 4px 0 7px;
+
+    color: #ffffff;
+
+    font-size: 34px;
+    font-weight: 900;
+}
+
+.ani-admin-shipping-header p {
+    margin: 0;
+
+    color: #d0c3da;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.ani-admin-shipping-page .ani-admin-eyebrow {
+    color: #f05aa7;
+
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   PRIMARY BUTTON
+   ========================= */
+
+.ani-admin-shipping-page .ani-admin-primary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    min-height: 42px;
+    padding: 0 16px;
+
+    border: 0;
+    border-radius: 9px;
+
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #ec4899
+    );
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 8px 20px rgba(124, 58, 237, .18);
+
+    transition: .2s ease;
+}
+
+.ani-admin-shipping-page .ani-admin-primary-btn span {
+    font-size: 17px;
+    font-weight: 900;
+}
+
+.ani-admin-shipping-page .ani-admin-primary-btn:hover {
+    color: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(236, 72, 153, .25);
+}
+
+
+/* =========================
+   ALERT
+   ========================= */
+
+.ani-admin-shipping-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    margin-bottom: 20px;
+    padding: 14px 16px;
+
+    border-radius: 10px;
+}
+
+.ani-admin-shipping-alert.success {
+    border: 1px solid #315f4b;
+    background: #15271f;
+}
+
+.ani-admin-shipping-alert.error {
+    border: 1px solid #70404e;
+    background: #321b23;
+}
+
+.ani-admin-shipping-alert-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    flex-shrink: 0;
+
+    border-radius: 7px;
+
+    background: #ec4899;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.ani-admin-shipping-alert strong {
+    display: block;
+    margin-bottom: 3px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.ani-admin-shipping-alert p {
+    margin: 0;
+
+    color: #cbbfd3;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   MAIN CARD
+   ========================= */
+
+.ani-admin-shipping-card {
+    overflow: hidden;
+
+    border: 1px solid #352941;
+    border-radius: 14px;
+
+    background: #18121f;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, .16);
+}
+
+
+/* =========================
+   CARD HEADER
+   ========================= */
+
+.ani-admin-shipping-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #30243a;
+}
+
+.ani-admin-card-eyebrow {
+    display: block;
+    margin-bottom: 4px;
+
+    color: #f05aa7;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.ani-admin-shipping-card-header h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 19px;
+    font-weight: 900;
+}
+
+.ani-admin-shipping-count {
+    padding: 6px 10px;
+
+    border: 1px solid #4a3858;
+    border-radius: 7px;
+
+    background: #21182b;
+
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+/* =========================
+   TABLE
+   ========================= */
+
+.ani-admin-shipping-table {
+    width: 100%;
+    margin: 0;
+
+    border-collapse: collapse;
+}
+
+.ani-admin-shipping-table thead {
+    background: #21182b;
+}
+
+.ani-admin-shipping-table thead th {
+    padding: 13px 16px;
+
+    border-bottom: 1px solid #3a2d45;
+
+    color: #d9cde2;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: .8px;
+
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.ani-admin-shipping-table tbody tr {
+    border-bottom: 1px solid #2c2235;
+
+    transition: background .2s ease;
+}
+
+.ani-admin-shipping-table tbody tr:last-child {
+    border-bottom: 0;
+}
+
+.ani-admin-shipping-table tbody tr:hover {
+    background: #1e1726;
+}
+
+.ani-admin-shipping-table tbody td {
+    padding: 15px 16px;
+
+    color: #e8dfea;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    vertical-align: middle;
+}
+
+.ani-admin-shipping-table .col-number {
+    width: 60px;
+}
+
+.ani-admin-shipping-table .col-action {
+    width: 155px;
+}
+
+
+/* =========================
+   NUMBER
+   ========================= */
+
+.shipping-number {
+    color: #b9abc4 !important;
+
+    font-size: 10px !important;
+    font-weight: 800 !important;
+}
+
+
+/* =========================
+   COURIER
+   ========================= */
+
+.ani-admin-courier-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 6px 9px;
+
+    border: 1px solid #4c385d;
+    border-radius: 7px;
+
+    background: #21182b;
+
+    color: #ddd2e5;
+
+    font-size: 9px;
+    font-weight: 900;
+}
+
+
+/* =========================
+   CITY
+   ========================= */
+
+.ani-admin-shipping-city {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ani-admin-city-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 31px;
+    height: 31px;
+
+    flex-shrink: 0;
+
+    border: 1px solid #4b3859;
+    border-radius: 8px;
+
+    background: #21182b;
+
+    font-size: 13px;
+}
+
+.ani-admin-shipping-city strong {
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+
+/* =========================
+   COST
+   ========================= */
+
+.ani-admin-shipping-cost {
+    color: #f05aa7;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   ACTION
+   ========================= */
+
+.ani-admin-shipping-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.ani-admin-shipping-actions form {
+    margin: 0;
+}
+
+.ani-admin-shipping-page .ani-admin-edit-btn,
+.ani-admin-shipping-page .ani-admin-delete-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 52px;
+    min-height: 29px;
+
+    padding: 0 9px;
+
+    border-radius: 6px;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.ani-admin-shipping-page .ani-admin-edit-btn {
+    border: 1px solid #4c3c5a;
+
+    background: #241b2c;
+
+    color: #d8cce0;
+}
+
+.ani-admin-shipping-page .ani-admin-edit-btn:hover {
+    border-color: #7c5b91;
+
+    background: #30213c;
+
+    color: #ffffff;
+}
+
+.ani-admin-shipping-page .ani-admin-delete-btn {
+    border: 1px solid #70404e;
+
+    background: #321b23;
+
+    color: #ef9aaa;
+}
+
+.ani-admin-shipping-page .ani-admin-delete-btn:hover {
+    border-color: #ef7186;
+
+    background: #48212d;
+
+    color: #ffffff;
+}
+
+
+/* =========================
+   EMPTY STATE
+   ========================= */
+
+.ani-admin-shipping-empty {
+    padding: 60px 20px;
+
+    text-align: center;
+}
+
+.ani-admin-shipping-empty-icon {
+    margin-bottom: 15px;
+
+    font-size: 42px;
+}
+
+.ani-admin-shipping-empty strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 900;
+}
+
+.ani-admin-shipping-empty p {
+    margin: 7px 0 18px;
+
+    color: #b8a9c4;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.ani-admin-shipping-empty .ani-admin-empty-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 35px;
+
+    padding: 0 13px;
+
+    border-radius: 7px;
+
+    background: #ec4899;
+
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    text-decoration: none;
+}
+
+.ani-admin-shipping-empty .ani-admin-empty-btn:hover {
+    background: #f472b6;
+    color: #ffffff;
+}
+
+
+/* =========================
+   PAGINATION
+   ========================= */
+
+.ani-admin-shipping-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 16px 20px;
+
+    border-top: 1px solid #30243a;
+}
+
+.ani-admin-pagination-info {
+    color: #bcaec7;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.ani-admin-pagination-info strong {
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.ani-admin-shipping-footer .pagination {
+    gap: 4px;
+}
+
+.ani-admin-shipping-footer .page-link {
+    min-width: 29px;
+    min-height: 29px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #43344f;
+    border-radius: 6px !important;
+
+    background: #21182b;
+
+    color: #d9cde2;
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.ani-admin-shipping-footer .page-item.active .page-link {
+    border-color: #ec4899;
+
+    background: #ec4899;
+
+    color: #ffffff;
+}
+
+.ani-admin-shipping-footer .page-link:hover {
+    border-color: #ec4899;
+
+    background: #30203b;
+
+    color: #ffffff;
+}
+
+.ani-admin-shipping-footer .page-item.disabled .page-link {
+    border-color: #33283c;
+
+    background: #18121f;
+
+    color: #62586a;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 991.98px) {
+
+    .ani-admin-shipping-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .ani-admin-shipping-header .ani-admin-primary-btn {
+        align-self: flex-start;
+    }
+
+    .ani-admin-shipping-table {
+        min-width: 700px;
+    }
+
+}
+
+@media (max-width: 767.98px) {
+
+    .ani-admin-shipping-header h1 {
+        font-size: 29px;
+    }
+
+    .ani-admin-shipping-card-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .ani-admin-shipping-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}
+
+/* =========================================================
+   SHIPPING RATES - TYPOGRAPHY BOOST
+   ========================================================= */
+
+/* Header */
+.ani-admin-shipping-header h1 {
+    color: #ffffff !important;
+    font-size: 36px !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.5px !important;
+}
+
+.ani-admin-shipping-header p {
+    color: #d8ccdf !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+}
+
+.ani-admin-shipping-page .ani-admin-eyebrow {
+    color: #f05aa7 !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+    letter-spacing: 2px !important;
+}
+
+
+/* Tombol Tambah Tarif */
+.ani-admin-shipping-page .ani-admin-primary-btn {
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-shipping-page .ani-admin-primary-btn span {
+    font-size: 18px !important;
+    font-weight: 900 !important;
+}
+
+
+/* Card Header */
+.ani-admin-shipping-card-header .ani-admin-card-eyebrow {
+    color: #f05aa7 !important;
+    font-size: 10px !important;
+    font-weight: 900 !important;
+    letter-spacing: 2px !important;
+}
+
+.ani-admin-shipping-card-header h2 {
+    color: #ffffff !important;
+    font-size: 21px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-shipping-count {
+    color: #ffffff !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+}
+
+
+/* Table Header */
+.ani-admin-shipping-table thead th {
+    color: #e8ddea !important;
+    font-size: 10px !important;
+    font-weight: 900 !important;
+    letter-spacing: 1px !important;
+}
+
+
+/* Isi tabel */
+.ani-admin-shipping-table tbody td {
+    color: #eee6f1 !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+}
+
+
+/* Nomor */
+.ani-admin-shipping-table .shipping-number {
+    color: #c7b8d1 !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+
+/* Courier */
+.ani-admin-courier-badge {
+    color: #e8ddea !important;
+    font-size: 10px !important;
+    font-weight: 900 !important;
+}
+
+
+/* Kota */
+.ani-admin-shipping-city strong {
+    color: #ffffff !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+
+/* Icon kota */
+.ani-admin-city-icon {
+    font-size: 14px !important;
+}
+
+
+/* Biaya */
+.ani-admin-shipping-cost {
+    color: #f05aa7 !important;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+}
+
+
+/* Tombol Edit & Hapus */
+.ani-admin-shipping-page .ani-admin-edit-btn,
+.ani-admin-shipping-page .ani-admin-delete-btn {
+    font-size: 10px !important;
+    font-weight: 900 !important;
+}
+
+
+/* Alert */
+.ani-admin-shipping-alert strong {
+    color: #ffffff !important;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-shipping-alert p {
+    color: #d7cadf !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+}
+
+
+/* Pagination info */
+.ani-admin-pagination-info {
+    color: #c7b9d0 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+}
+
+.ani-admin-pagination-info strong {
+    color: #ffffff !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+
+/* Pagination buttons */
+.ani-admin-shipping-footer .page-link {
+    color: #e8ddea !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+}
+
+
+/* Empty state */
+.ani-admin-shipping-empty strong {
+    color: #ffffff !important;
+    font-size: 16px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-shipping-empty p {
+    color: #c1b4ca !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+}
+
+.ani-admin-shipping-empty .ani-admin-empty-btn {
+    font-size: 11px !important;
+    font-weight: 900 !important;
+}
+
+/* =========================================================
+   SHIPPING RATE CREATE FORM V2
+   ========================================================= */
+
+   .ani-admin-shipping-form-page {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(124, 58, 237, .10),
+            transparent 30%
+        ),
+        #110d16;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+.ani-admin-shipping-form-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 30px;
+    margin-bottom: 28px;
+}
+
+.ani-admin-shipping-form-header h1 {
+    margin: 4px 0 7px;
+
+    color: #ffffff;
+
+    font-size: 34px;
+    font-weight: 900;
+}
+
+.ani-admin-shipping-form-header p {
+    margin: 0;
+
+    color: #d0c3da;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.ani-admin-shipping-form-page .ani-admin-eyebrow {
+    color: #f05aa7;
+
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   BACK BUTTON
+   ========================= */
+
+.ani-admin-shipping-form-page .ani-admin-back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 40px;
+
+    padding: 0 14px;
+
+    border: 1px solid #493653;
+    border-radius: 8px;
+
+    background: #1d1525;
+
+    color: #d9cde2;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    text-decoration: none;
+
+    transition: .2s ease;
+}
+
+.ani-admin-shipping-form-page .ani-admin-back-btn:hover {
+    border-color: #ec4899;
+
+    background: #281a32;
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   VALIDATION ALERT
+   ========================= */
+
+.ani-admin-shipping-form-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    margin-bottom: 22px;
+    padding: 15px 17px;
+
+    border: 1px solid #70404e;
+    border-radius: 10px;
+
+    background: #321b23;
+}
+
+.ani-admin-shipping-form-alert-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 29px;
+    height: 29px;
+
+    flex-shrink: 0;
+
+    border-radius: 7px;
+
+    background: #ec4899;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.ani-admin-shipping-form-alert strong {
+    display: block;
+    margin-bottom: 5px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.ani-admin-shipping-form-alert ul {
+    margin: 0;
+    padding-left: 18px;
+
+    color: #d7cadf;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.ani-admin-shipping-form-alert li {
+    margin-bottom: 2px;
+}
+
+
+/* =========================
+   FORM CARD
+   ========================= */
+
+.ani-admin-shipping-form-card {
+    overflow: hidden;
+
+    border: 1px solid #352941;
+    border-radius: 14px;
+
+    background: #18121f;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, .16);
+}
+
+.ani-admin-shipping-form-card-header {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #30243a;
+
+    background: #1b1423;
+}
+
+.ani-admin-form-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    border: 1px solid #7544a0;
+    border-radius: 9px;
+
+    background: #29183a;
+
+    color: #c084fc;
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.ani-admin-shipping-form-card-header span {
+    display: block;
+    margin-bottom: 3px;
+
+    color: #f05aa7;
+
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 1.8px;
+}
+
+.ani-admin-shipping-form-card-header h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 18px;
+    font-weight: 900;
+}
+
+
+/* =========================
+   FORM BODY
+   ========================= */
+
+.ani-admin-shipping-form-body {
+    padding: 25px 22px;
+}
+
+
+/* =========================
+   FIELD
+   ========================= */
+
+.ani-admin-shipping-field {
+    margin-bottom: 22px;
+}
+
+.ani-admin-shipping-field:last-child {
+    margin-bottom: 0;
+}
+
+.ani-admin-shipping-field label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #eee6f1;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.ani-admin-shipping-field label span {
+    color: #f05aa7;
+}
+
+
+/* =========================
+   INPUT / SELECT
+   ========================= */
+
+.ani-admin-shipping-field input,
+.ani-admin-shipping-field select {
+    width: 100%;
+    height: 44px;
+
+    padding: 0 13px;
+
+    border: 1px solid #4a3a55;
+    border-radius: 8px;
+
+    outline: none;
+
+    background: #21182b;
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+
+    transition: .2s ease;
+}
+
+.ani-admin-shipping-field select {
+    cursor: pointer;
+}
+
+.ani-admin-shipping-field input::placeholder {
+    color: #8f8298;
+    opacity: 1;
+}
+
+.ani-admin-shipping-field input:focus,
+.ani-admin-shipping-field select:focus {
+    border-color: #ec4899;
+
+    background: #251b30;
+
+    box-shadow:
+        0 0 0 3px rgba(236, 72, 153, .10);
+}
+
+.ani-admin-shipping-field input.is-invalid,
+.ani-admin-shipping-field select.is-invalid {
+    border-color: #ef7186;
+}
+
+
+/* =========================
+   FIELD HELP
+   ========================= */
+
+.ani-admin-shipping-field-help {
+    margin-top: 7px;
+
+    color: #a99bb4;
+
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   FIELD ERROR
+   ========================= */
+
+.ani-admin-shipping-field-error {
+    margin-top: 6px;
+
+    color: #ef9aaa;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+/* =========================
+   PRICE PREFIX
+   ========================= */
+
+.ani-admin-shipping-input-prefix {
+    display: flex;
+    align-items: stretch;
+}
+
+.ani-admin-shipping-input-prefix > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 48px;
+
+    border: 1px solid #4a3a55;
+    border-right: 0;
+
+    border-radius: 8px 0 0 8px;
+
+    background: #291d34;
+
+    color: #f05aa7;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.ani-admin-shipping-input-prefix input {
+    border-radius: 0 8px 8px 0;
+}
+
+
+/* =========================
+   FORM FOOTER
+   ========================= */
+
+.ani-admin-shipping-form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 17px 22px;
+
+    border-top: 1px solid #30243a;
+
+    background: #15101b;
+}
+
+.ani-admin-shipping-required-info {
+    color: #a99bb4;
+
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.ani-admin-shipping-required-info span {
+    color: #f05aa7;
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.ani-admin-shipping-form-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+/* =========================
+   FORM BUTTONS
+   ========================= */
+
+.ani-admin-shipping-cancel-btn,
+.ani-admin-shipping-save-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 38px;
+
+    padding: 0 14px;
+
+    border-radius: 8px;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.ani-admin-shipping-cancel-btn {
+    border: 1px solid #4a3a55;
+
+    background: #21182b;
+
+    color: #cfc2d7;
+}
+
+.ani-admin-shipping-cancel-btn:hover {
+    border-color: #6b5578;
+
+    background: #2a1e35;
+
+    color: #ffffff;
+}
+
+.ani-admin-shipping-save-btn {
+    border: 0;
+
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #ec4899
+    );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 7px 18px rgba(124, 58, 237, .18);
+}
+
+.ani-admin-shipping-save-btn:hover {
+    color: #ffffff;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 10px 22px rgba(236, 72, 153, .25);
+}
+
+
+/* =========================
+   INFO CARD
+   ========================= */
+
+.ani-admin-shipping-info-card {
+    padding: 24px;
+
+    border: 1px solid #352941;
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #21172b,
+            #18121f
+        );
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, .14);
+}
+
+.ani-admin-shipping-info-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+
+    margin-bottom: 17px;
+
+    border: 1px solid #7044a0;
+    border-radius: 11px;
+
+    background: #2b193b;
+
+    font-size: 21px;
+}
+
+.ani-admin-shipping-info-card .ani-admin-card-eyebrow {
+    display: block;
+    margin-bottom: 5px;
+
+    color: #f05aa7;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.ani-admin-shipping-info-card h2 {
+    margin: 0 0 9px;
+
+    color: #ffffff;
+
+    font-size: 19px;
+    font-weight: 900;
+}
+
+.ani-admin-shipping-info-card > p {
+    margin: 0;
+
+    color: #b9aabe;
+
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.7;
+}
+
+.ani-admin-shipping-info-divider {
+    height: 1px;
+
+    margin: 20px 0;
+
+    background: #362942;
+}
+
+
+/* =========================
+   INFO ITEMS
+   ========================= */
+
+.ani-admin-shipping-info-item {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    margin-bottom: 14px;
+}
+
+.ani-admin-shipping-info-item:last-child {
+    margin-bottom: 0;
+}
+
+.ani-admin-shipping-info-item-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    border: 1px solid #473651;
+    border-radius: 8px;
+
+    background: #21182b;
+
+    font-size: 14px;
+}
+
+.ani-admin-shipping-info-item strong {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.ani-admin-shipping-info-item span {
+    display: block;
+
+    color: #a99bb4;
+
+    font-size: 9px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   TYPOGRAPHY BOOST
+   ========================= */
+
+.ani-admin-shipping-form-header h1 {
+    font-size: 36px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-shipping-form-header p {
+    color: #d8ccdf !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+}
+
+.ani-admin-shipping-form-page .ani-admin-eyebrow {
+    font-size: 11px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-shipping-form-page .ani-admin-back-btn {
+    color: #e1d6e7 !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-shipping-form-card-header h2 {
+    font-size: 21px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-shipping-form-card-header span {
+    font-size: 10px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-shipping-field label {
+    color: #ffffff !important;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-shipping-field input,
+.ani-admin-shipping-field select {
+    color: #ffffff !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+}
+
+.ani-admin-shipping-field input::placeholder {
+    color: #b7a9c1 !important;
+    font-weight: 600 !important;
+}
+
+.ani-admin-shipping-field-help {
+    color: #b9aabe !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+}
+
+.ani-admin-shipping-field-error {
+    color: #ef9aaa !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+}
+
+.ani-admin-shipping-input-prefix > span {
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-shipping-cancel-btn,
+.ani-admin-shipping-save-btn {
+    font-size: 11px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-shipping-required-info {
+    font-size: 10px !important;
+    font-weight: 700 !important;
+}
+
+.ani-admin-shipping-info-card .ani-admin-card-eyebrow {
+    font-size: 10px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-shipping-info-card h2 {
+    font-size: 21px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-shipping-info-card > p {
+    color: #c5b8ce !important;
+    font-size: 11px !important;
+    font-weight: 650 !important;
+}
+
+.ani-admin-shipping-info-item strong {
+    font-size: 11px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-shipping-info-item span {
+    color: #b9aabe !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 991.98px) {
+
+    .ani-admin-shipping-form-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .ani-admin-shipping-form-header .ani-admin-back-btn {
+        align-self: flex-start;
+    }
+
+}
+
+@media (max-width: 767.98px) {
+
+    .ani-admin-shipping-form-header h1 {
+        font-size: 30px !important;
+    }
+
+    .ani-admin-shipping-form-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .ani-admin-shipping-form-actions {
+        width: 100%;
+    }
+
+    .ani-admin-shipping-form-actions a,
+    .ani-admin-shipping-form-actions button {
+        flex: 1;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .ani-admin-shipping-form-body {
+        padding: 20px 16px;
+    }
+
+    .ani-admin-shipping-form-card-header {
+        padding: 18px 16px;
+    }
+
+    .ani-admin-shipping-form-footer {
+        padding: 15px 16px;
+    }
+
+}
+
+/* =========================================================
+   SHIPPING RATE EDIT - CURRENT INFO
+   ========================================================= */
+
+   .ani-admin-shipping-current-info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+
+    margin-top: 20px;
+}
+
+.ani-admin-shipping-current-item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid #30243a;
+}
+
+.ani-admin-shipping-current-item:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.ani-admin-shipping-current-item > span {
+    color: #bfb2c8;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.ani-admin-shipping-current-item > strong {
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    text-align: right;
+}
+
+.ani-admin-shipping-current-item > strong.cost {
+    color: #f05aa7;
+
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.ani-admin-shipping-info-note {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 10px;
+
+    padding: 12px;
+
+    border: 1px solid #443650;
+    border-radius: 8px;
+
+    background: #21182b;
+}
+
+.ani-admin-shipping-info-note > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 22px;
+    height: 22px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #7c3aed;
+
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.ani-admin-shipping-info-note p {
+    margin: 0;
+
+    color: #cfc2d7;
+
+    font-size: 10px;
+    font-weight: 650;
+    line-height: 1.6;
+}
+
+
+/* Typography boost */
+.ani-admin-shipping-current-item > span {
+    color: #c4b7cd !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+}
+
+.ani-admin-shipping-current-item > strong {
+    color: #ffffff !important;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-shipping-current-item > strong.cost {
+    color: #f05aa7 !important;
+    font-size: 14px !important;
+    font-weight: 900 !important;
+}
+
+.ani-admin-shipping-info-note p {
+    color: #d0c3d8 !important;
+    font-size: 11px !important;
+    font-weight: 650 !important;
+}
+
+
+/* Mobile */
+@media (max-width: 576px) {
+
+    .ani-admin-shipping-current-item {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .ani-admin-shipping-current-item > strong {
+        text-align: left;
+    }
+
+}

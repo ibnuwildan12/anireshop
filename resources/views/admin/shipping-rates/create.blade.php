@@ -1,108 +1,328 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah Shipping Rate - Anireshop')
+@section('title', 'Tambah Shipping Rate - Admin Anireshop')
 
 @section('content')
-<div class="container py-5">
 
-    <div class="mb-4">
-        <h2 class="fw-bold mb-1">Tambah Shipping Rate</h2>
-        <p class="text-secondary mb-0">
-            Tambahkan tarif pengiriman baru
-        </p>
-    </div>
+<div class="ani-admin-shipping-form-page">
 
-    <div class="card bg-dark border-secondary shadow">
-        <div class="card-body p-4">
+    <div class="container py-5">
 
-            <form action="{{ route('admin.shipping-rates.store') }}"
-                  method="POST">
-                @csrf
+        {{-- HEADER --}}
+        <div class="ani-admin-shipping-form-header">
 
-                <div class="mb-3">
-                    <label for="courier" class="form-label">
-                        Courier
-                    </label>
+            <div>
+                <span class="ani-admin-eyebrow">
+                    SHIPPING MANAGEMENT
+                </span>
 
-                    <select name="courier"
-                            id="courier"
-                            class="form-select @error('courier') is-invalid @enderror">
+                <h1>Tambah Shipping Rate</h1>
 
-                        <option value="">-- Pilih Courier --</option>
+                <p>
+                    Tambahkan tarif pengiriman baru untuk Anireshop.
+                </p>
+            </div>
 
-                        <option value="JNE"
-                            {{ old('courier') === 'JNE' ? 'selected' : '' }}>
-                            JNE
-                        </option>
-
-                        <option value="J&T"
-                            {{ old('courier') === 'J&T' ? 'selected' : '' }}>
-                            J&T
-                        </option>
-
-                    </select>
-
-                    @error('courier')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-
-                <div class="mb-3">
-                    <label for="city" class="form-label">
-                        Kabupaten/Kota
-                    </label>
-
-                    <input type="text"
-                           id="city"
-                           name="city"
-                           value="{{ old('city') }}"
-                           class="form-control @error('city') is-invalid @enderror"
-                           placeholder="Contoh: Boyolali">
-
-                    @error('city')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-
-                <div class="mb-4">
-                    <label for="cost" class="form-label">
-                        Biaya Pengiriman
-                    </label>
-
-                    <input type="number"
-                           id="cost"
-                           name="cost"
-                           value="{{ old('cost') }}"
-                           min="0"
-                           class="form-control @error('cost') is-invalid @enderror"
-                           placeholder="Contoh: 15000">
-
-                    @error('cost')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-
-                <div class="d-flex gap-2">
-                    <button type="submit" class="btn btn-ani">
-                        Simpan
-                    </button>
-
-                    <a href="{{ route('admin.shipping-rates.index') }}"
-                       class="btn btn-secondary">
-                        Batal
-                    </a>
-                </div>
-
-            </form>
+            <a href="{{ route('admin.shipping-rates.index') }}"
+               class="ani-admin-back-btn">
+                ← Kembali ke Shipping Rates
+            </a>
 
         </div>
+
+
+        {{-- VALIDATION ALERT --}}
+        @if ($errors->any())
+
+            <div class="ani-admin-shipping-form-alert">
+
+                <div class="ani-admin-shipping-form-alert-icon">
+                    !
+                </div>
+
+                <div>
+
+                    <strong>
+                        Periksa kembali data shipping rate
+                    </strong>
+
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+
+                </div>
+
+            </div>
+
+        @endif
+
+
+        <div class="row g-4">
+
+            {{-- FORM --}}
+            <div class="col-lg-8">
+
+                <div class="ani-admin-shipping-form-card">
+
+                    <div class="ani-admin-shipping-form-card-header">
+
+                        <div class="ani-admin-form-number">
+                            01
+                        </div>
+
+                        <div>
+
+                            <span>
+                                SHIPPING INFORMATION
+                            </span>
+
+                            <h2>Data Tarif Pengiriman</h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <form action="{{ route('admin.shipping-rates.store') }}"
+                          method="POST">
+
+                        @csrf
+
+                        <div class="ani-admin-shipping-form-body">
+
+
+                            {{-- COURIER --}}
+                            <div class="ani-admin-shipping-field">
+
+                                <label for="courier">
+                                    Courier
+                                    <span>*</span>
+                                </label>
+
+                                <select name="courier"
+                                        id="courier"
+                                        class="@error('courier') is-invalid @enderror"
+                                        required>
+
+                                    <option value="">
+                                        -- Pilih Courier --
+                                    </option>
+
+                                    <option value="JNE"
+                                        {{ old('courier') === 'JNE' ? 'selected' : '' }}>
+                                        JNE
+                                    </option>
+
+                                    <option value="J&T"
+                                        {{ old('courier') === 'J&T' ? 'selected' : '' }}>
+                                        J&T
+                                    </option>
+
+                                </select>
+
+                                <div class="ani-admin-shipping-field-help">
+                                    Pilih jasa pengiriman yang digunakan untuk tarif ini.
+                                </div>
+
+                                @error('courier')
+
+                                    <div class="ani-admin-shipping-field-error">
+                                        {{ $message }}
+                                    </div>
+
+                                @enderror
+
+                            </div>
+
+
+                            {{-- CITY --}}
+                            <div class="ani-admin-shipping-field">
+
+                                <label for="city">
+                                    Kabupaten / Kota
+                                    <span>*</span>
+                                </label>
+
+                                <input type="text"
+                                       id="city"
+                                       name="city"
+                                       value="{{ old('city') }}"
+                                       class="@error('city') is-invalid @enderror"
+                                       placeholder="Contoh: Boyolali"
+                                       autocomplete="off"
+                                       required>
+
+                                <div class="ani-admin-shipping-field-help">
+                                    Masukkan nama Kabupaten atau Kota tujuan pengiriman.
+                                </div>
+
+                                @error('city')
+
+                                    <div class="ani-admin-shipping-field-error">
+                                        {{ $message }}
+                                    </div>
+
+                                @enderror
+
+                            </div>
+
+
+                            {{-- COST --}}
+                            <div class="ani-admin-shipping-field">
+
+                                <label for="cost">
+                                    Biaya Pengiriman
+                                    <span>*</span>
+                                </label>
+
+                                <div class="ani-admin-shipping-input-prefix">
+
+                                    <span>Rp</span>
+
+                                    <input type="number"
+                                           id="cost"
+                                           name="cost"
+                                           value="{{ old('cost') }}"
+                                           min="0"
+                                           class="@error('cost') is-invalid @enderror"
+                                           placeholder="15000"
+                                           required>
+
+                                </div>
+
+                                <div class="ani-admin-shipping-field-help">
+                                    Masukkan biaya pengiriman dalam Rupiah tanpa titik atau koma.
+                                </div>
+
+                                @error('cost')
+
+                                    <div class="ani-admin-shipping-field-error">
+                                        {{ $message }}
+                                    </div>
+
+                                @enderror
+
+                            </div>
+
+
+                        </div>
+
+
+                        {{-- FOOTER --}}
+                        <div class="ani-admin-shipping-form-footer">
+
+                            <div class="ani-admin-shipping-required-info">
+                                <span>*</span>
+                                Field wajib diisi
+                            </div>
+
+                            <div class="ani-admin-shipping-form-actions">
+
+                                <a href="{{ route('admin.shipping-rates.index') }}"
+                                   class="ani-admin-shipping-cancel-btn">
+                                    Batal
+                                </a>
+
+                                <button type="submit"
+                                        class="ani-admin-shipping-save-btn">
+                                    ✓ Simpan Tarif
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            {{-- INFO CARD --}}
+            <div class="col-lg-4">
+
+                <div class="ani-admin-shipping-info-card">
+
+                    <div class="ani-admin-shipping-info-icon">
+                        🚚
+                    </div>
+
+                    <span class="ani-admin-card-eyebrow">
+                        SHIPPING GUIDE
+                    </span>
+
+                    <h2>
+                        Tarif Pengiriman
+                    </h2>
+
+                    <p>
+                        Data shipping rate digunakan oleh sistem
+                        untuk menghitung biaya pengiriman saat customer
+                        melakukan checkout.
+                    </p>
+
+
+                    <div class="ani-admin-shipping-info-divider"></div>
+
+
+                    <div class="ani-admin-shipping-info-item">
+
+                        <div class="ani-admin-shipping-info-item-icon">
+                            🚚
+                        </div>
+
+                        <div>
+                            <strong>Courier</strong>
+                            <span>
+                                JNE atau J&T
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="ani-admin-shipping-info-item">
+
+                        <div class="ani-admin-shipping-info-item-icon">
+                            📍
+                        </div>
+
+                        <div>
+                            <strong>Tujuan</strong>
+                            <span>
+                                Kabupaten / Kota
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="ani-admin-shipping-info-item">
+
+                        <div class="ani-admin-shipping-info-item-icon">
+                            💰
+                        </div>
+
+                        <div>
+                            <strong>Biaya</strong>
+                            <span>
+                                Dalam Rupiah
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 
 </div>
+
 @endsection

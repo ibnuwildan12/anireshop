@@ -1,0 +1,594 @@
+/* =========================================================
+   ANIRESHOP AUTH V2
+   REGISTER / LOGIN
+   ========================================================= */
+
+   .ani-auth-page {
+    min-height: calc(100vh - 70px);
+
+    display: flex;
+    align-items: center;
+
+    padding: 55px 0;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(124, 58, 237, .13),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(236, 72, 153, .08),
+            transparent 30%
+        ),
+        #110d16;
+}
+
+
+/* =========================
+   CARD
+   ========================= */
+
+.ani-auth-card {
+    padding: 34px 35px;
+
+    border: 1px solid #3b2c47;
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #1d1524,
+            #17111d
+        );
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, .28);
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+.ani-auth-header {
+    text-align: center;
+    margin-bottom: 27px;
+}
+
+.ani-auth-brand {
+    margin-bottom: 14px;
+
+    color: #ffffff;
+
+    font-size: 27px;
+    font-weight: 900;
+    letter-spacing: -.5px;
+}
+
+.ani-auth-brand span {
+    color: #ec4899;
+}
+
+.ani-auth-eyebrow {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #f05aa7;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.ani-auth-header h1 {
+    margin: 0 0 8px;
+
+    color: #ffffff;
+
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.ani-auth-header p {
+    max-width: 340px;
+
+    margin: 0 auto;
+
+    color: #b9aabe;
+
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.7;
+}
+
+
+/* =========================
+   ALERT
+   ========================= */
+
+.ani-auth-alert {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 11px;
+
+    margin-bottom: 21px;
+    padding: 13px;
+
+    border: 1px solid #70404e;
+    border-radius: 9px;
+
+    background: #321b23;
+}
+
+.ani-auth-alert-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 27px;
+    height: 27px;
+
+    flex-shrink: 0;
+
+    border-radius: 7px;
+
+    background: #ec4899;
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.ani-auth-alert strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.ani-auth-alert ul {
+    margin: 0;
+    padding-left: 17px;
+
+    color: #d8cbdc;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.ani-auth-alert li {
+    margin-bottom: 2px;
+}
+
+
+/* =========================
+   FIELD
+   ========================= */
+
+.ani-auth-field {
+    margin-bottom: 17px;
+}
+
+.ani-auth-field.last {
+    margin-bottom: 22px;
+}
+
+.ani-auth-field label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #eee6f1;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.ani-auth-field label span {
+    color: #f05aa7;
+}
+
+.ani-auth-field input {
+    width: 100%;
+    height: 45px;
+
+    padding: 0 13px;
+
+    border: 1px solid #4a3a55;
+    border-radius: 8px;
+
+    outline: none;
+
+    background: #21182b;
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+
+    transition: .2s ease;
+}
+
+.ani-auth-field input::placeholder {
+    color: #8f8298;
+    opacity: 1;
+    font-weight: 500;
+}
+
+.ani-auth-field input:focus {
+    border-color: #ec4899;
+
+    background: #251b30;
+
+    box-shadow:
+        0 0 0 3px rgba(236, 72, 153, .10);
+}
+
+.ani-auth-field small {
+    display: block;
+
+    margin-top: 6px;
+
+    color: #9f91a8;
+
+    font-size: 9px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   SUBMIT
+   ========================= */
+
+.ani-auth-submit {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    min-height: 46px;
+
+    padding: 0 15px 0 18px;
+
+    border: 0;
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #ec4899
+        );
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 9px 22px rgba(124, 58, 237, .20);
+
+    transition: .2s ease;
+}
+
+.ani-auth-submit span {
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.ani-auth-submit strong {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 27px;
+    height: 27px;
+
+    border-radius: 7px;
+
+    background: rgba(255,255,255,.13);
+
+    font-size: 15px;
+    font-weight: 900;
+}
+
+.ani-auth-submit:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 13px 28px rgba(236, 72, 153, .25);
+}
+
+
+/* =========================
+   LOGIN LINK
+   ========================= */
+
+.ani-auth-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    margin-top: 22px;
+
+    color: #a99bb4;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.ani-auth-login a {
+    color: #f05aa7;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    text-decoration: none;
+}
+
+.ani-auth-login a:hover {
+    color: #f472b6;
+}
+
+
+/* =========================
+   FOOTNOTE
+   ========================= */
+
+.ani-auth-footnote {
+    margin-top: 19px;
+    padding-top: 17px;
+
+    border-top: 1px solid #30243a;
+
+    color: #766b7d;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    line-height: 1.6;
+
+    text-align: center;
+}
+
+
+/* =========================
+   TYPOGRAPHY BOOST
+   ========================= */
+
+.ani-auth-brand {
+    color: #ffffff !important;
+    font-size: 29px !important;
+    font-weight: 900 !important;
+}
+
+.ani-auth-brand span {
+    color: #ec4899 !important;
+}
+
+.ani-auth-eyebrow {
+    color: #f05aa7 !important;
+    font-size: 10px !important;
+    font-weight: 900 !important;
+    letter-spacing: 2px !important;
+}
+
+.ani-auth-header h1 {
+    color: #ffffff !important;
+    font-size: 27px !important;
+    font-weight: 900 !important;
+}
+
+.ani-auth-header p {
+    color: #c7b9cf !important;
+    font-size: 12px !important;
+    font-weight: 650 !important;
+}
+
+.ani-auth-alert strong {
+    color: #ffffff !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+.ani-auth-alert ul {
+    color: #ded1e2 !important;
+    font-size: 10px !important;
+    font-weight: 650 !important;
+}
+
+.ani-auth-field label {
+    color: #ffffff !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+}
+
+.ani-auth-field input {
+    color: #ffffff !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+}
+
+.ani-auth-field input::placeholder {
+    color: #b7a9c1 !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+}
+
+.ani-auth-field small {
+    color: #aaa0b2 !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+}
+
+.ani-auth-submit span {
+    font-size: 13px !important;
+    font-weight: 900 !important;
+}
+
+.ani-auth-login {
+    color: #c0b3c8 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+}
+
+.ani-auth-login a {
+    color: #f05aa7 !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+}
+
+.ani-auth-footnote {
+    color: #8f8298 !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 576px) {
+
+    .ani-auth-page {
+        padding: 35px 0;
+    }
+
+    .ani-auth-card {
+        padding: 27px 20px;
+        border-radius: 13px;
+    }
+
+    .ani-auth-header h1 {
+        font-size: 23px !important;
+    }
+
+    .ani-auth-brand {
+        font-size: 26px !important;
+    }
+
+}
+
+/* Center text on Register button */
+.ani-auth-submit {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.ani-auth-submit span {
+    position: static !important;
+    text-align: center !important;
+}
+
+.ani-auth-submit strong {
+    position: absolute !important;
+    right: 15px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* =========================================================
+   LOGIN SUCCESS
+   ========================================================= */
+
+   .ani-auth-success {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+
+    margin-bottom: 21px;
+    padding: 13px;
+
+    border: 1px solid #315f4b;
+    border-radius: 9px;
+
+    background: #15271f;
+}
+
+.ani-auth-success-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 27px;
+    height: 27px;
+
+    flex-shrink: 0;
+
+    border-radius: 7px;
+
+    background: #2d9b67;
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.ani-auth-success strong {
+    display: block;
+    margin-bottom: 3px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.ani-auth-success p {
+    margin: 0;
+
+    color: #cce8d8;
+
+    font-size: 10px;
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   LOGIN BUTTON - CENTER TEXT
+   ========================================================= */
+
+.ani-auth-submit {
+    position: relative !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.ani-auth-submit span {
+    position: static !important;
+
+    text-align: center !important;
+
+    font-size: 13px !important;
+    font-weight: 900 !important;
+}
+
+.ani-auth-submit strong {
+    position: absolute !important;
+    right: 15px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
