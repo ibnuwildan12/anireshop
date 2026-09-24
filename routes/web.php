@@ -15,7 +15,7 @@ use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\ShippingRateController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\WishlistController;
-
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -176,6 +176,16 @@ Route::middleware('auth')->group(function () {
 
     Route::put('/orders/{order}/payment-method', [PaymentController::class, 'updateMethod'])
     ->name('payments.method.update');
+
+    // Reviews
+    Route::post('/products/{product}/reviews', [ReviewController::class, 'store'])
+    ->name('reviews.store');
+
+    Route::put('/products/{product}/reviews', [ReviewController::class, 'update'])
+    ->name('reviews.update');
+
+    Route::delete('/products/{product}/reviews', [ReviewController::class, 'destroy'])
+    ->name('reviews.destroy');
 });
 
 

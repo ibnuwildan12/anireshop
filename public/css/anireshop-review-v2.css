@@ -1,0 +1,183 @@
+/* =========================================================
+   ANIRESHOP REVIEW & RATING - V2
+   ========================================================= */
+
+   .product-reviews-section {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.product-reviews-header {
+    margin-bottom: 25px;
+}
+
+.product-reviews-header h2 {
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.product-reviews-header p {
+    color: #aaa;
+    margin-bottom: 0;
+}
+
+.review-form-card,
+.review-login-card,
+.review-card {
+    background: #18121f;
+    border: 1px solid #30243a;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.review-form-card h4 {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.review-form-card .form-label {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.review-form-card .form-select,
+.review-form-card .form-control {
+    background-color: #100c15;
+    border: 1px solid #3a2c45;
+    color: #ffffff;
+}
+
+.review-form-card .form-select:focus,
+.review-form-card .form-control:focus {
+    border-color: #ec4899;
+    box-shadow: 0 0 0 0.2rem rgba(236, 72, 153, 0.15);
+}
+
+.review-login-card {
+    color: #cccccc;
+}
+
+.review-login-card p {
+    margin-bottom: 15px;
+}
+
+.review-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.review-card-header strong {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.review-card-header small {
+    color: #888;
+}
+
+.review-rating {
+    color: #ff69b4;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-top: 4px;
+}
+
+.review-comment {
+    color: #cccccc;
+    margin-top: 15px;
+    margin-bottom: 0;
+    line-height: 1.7;
+}
+
+.review-empty {
+    text-align: center;
+    padding: 50px 20px;
+    background: #18121f;
+    border: 1px dashed #3a2c45;
+    border-radius: 16px;
+}
+
+.review-empty-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.review-empty h4 {
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.review-empty p {
+    color: #999;
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .review-card-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* =========================================================
+   REVIEW ACTIONS
+   ========================================================= */
+
+   .review-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.review-actions .btn {
+    border-radius: 8px;
+}
+
+
+/* =========================================================
+   REVIEW MODAL
+   ========================================================= */
+
+.review-modal-content {
+    background: #18121f;
+    border: 1px solid #3a2c45;
+    color: #ffffff;
+}
+
+.review-modal-content .modal-header {
+    border-bottom: 1px solid #3a2c45;
+}
+
+.review-modal-content .modal-footer {
+    border-top: 1px solid #3a2c45;
+}
+
+.review-modal-content .modal-title {
+    color: #ffffff;
+}
+
+.review-modal-content .form-label {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.review-modal-content .form-select,
+.review-modal-content .form-control {
+    background-color: #100c15;
+    border: 1px solid #3a2c45;
+    color: #ffffff;
+}
+
+.review-modal-content .form-select:focus,
+.review-modal-content .form-control:focus {
+    border-color: #ec4899;
+    box-shadow: 0 0 0 0.2rem rgba(236, 72, 153, 0.15);
+}
+
+.review-modal-content .btn-close {
+    filter: invert(1);
+}

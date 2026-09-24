@@ -55,6 +55,8 @@
 
     <link rel="stylesheet" href="{{ asset('css/anireshop-wishlist-v2.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('css/anireshop-review-v2.css') }}">
+
     @stack('styles')
 
 </head>
@@ -168,7 +170,7 @@
                                     Wishlist
                                 </a>
                             </li>
-                            
+
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('orders.index') }}">
                                     My Orders

@@ -371,6 +371,258 @@
 
 </div>
 
+{{-- Review & Rating --}}
+<section class="product-reviews-section">
+    <div class="container">
+
+        <div class="product-reviews-header">
+            <h2>Review & Rating</h2>
+            <p>Bagikan pengalamanmu setelah membeli produk ini.</p>
+        </div>
+
+        @auth
+            <div class="review-form-card">
+                <h4>Tulis Review</h4>
+
+                <form action="{{ route('reviews.store', $product) }}" method="POST">
+                    @csrf
+
+                    <div class="mb-3">
+                        <label for="rating" class="form-label">
+                            Rating
+                        </label>
+
+                        <select
+                            name="rating"
+                            id="rating"
+                            class="form-select"
+                            required
+                        >
+                            <option value="">Pilih rating</option>
+                            <option value="5">★★★★★ — Sangat Bagus</option>
+                            <option value="4">★★★★☆ — Bagus</option>
+                            <option value="3">★★★☆☆ — Cukup</option>
+                            <option value="2">★★☆☆☆ — Kurang</option>
+                            <option value="1">★☆☆☆☆ — Sangat Kurang</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="comment" class="form-label">
+                            Komentar
+                        </label>
+
+                        <textarea
+                            name="comment"
+                            id="comment"
+                            class="form-control"
+                            rows="4"
+                            maxlength="1000"
+                            placeholder="Ceritakan pengalamanmu dengan produk ini..."
+                        >{{ old('comment') }}</textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-ani-pink">
+                        Kirim Review
+                    </button>
+                </form>
+            </div>
+        @else
+            <div class="review-login-card">
+                <p>Silakan login terlebih dahulu untuk memberikan review.</p>
+
+                <a href="{{ route('login') }}" class="btn btn-ani-pink">
+                    Login
+                </a>
+            </div>
+        @endauth
+
+        {{-- Daftar Review --}}
+        <div class="review-list">
+
+            @forelse($product->reviews()->with('user')->latest()->get() as $review)
+
+                <div class="review-card">
+
+                    <div class="review-card-header">
+                        <div>
+                            <strong>{{ $review->user->name }}</strong>
+
+                            <div class="review-rating">
+                                @for($i = 1; $i <= 5; $i++)
+                                    @if($i <= $review->rating)
+                                        ★
+                                    @else
+                                        ☆
+                                    @endif
+                                @endfor
+                            </div>
+                        </div>
+
+                        <small>
+                            {{ $review->created_at->format('d M Y') }}
+                        </small>
+                    </div>
+
+                    @if($review->comment)
+                        <p class="review-comment">
+                            {{ $review->comment }}
+                        </p>
+                    @endif
+
+                    @if(auth()->check() && auth()->id() === $review->user_id)
+                    <div class="review-actions">
+
+                        <button
+                            type="button"
+                            class="btn btn-sm btn-outline-light"
+                            data-bs-toggle="modal"
+                            data-bs-target="#editReviewModal{{ $review->id }}"
+                        >
+                            Edit
+                        </button>
+
+                        <form
+                            action="{{ route('reviews.destroy', $product) }}"
+                            method="POST"
+                            class="d-inline"
+                            onsubmit="return confirm('Yakin ingin menghapus review ini?')"
+                        >
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                Hapus
+                            </button>
+                        </form>
+
+                    </div>
+                @endif
+
+                @if(auth()->check() && auth()->id() === $review->user_id)
+                <div
+                    class="modal fade"
+                    id="editReviewModal{{ $review->id }}"
+                    tabindex="-1"
+                    aria-hidden="true"
+                >
+                    <div class="modal-dialog">
+                        <div class="modal-content review-modal-content">
+
+                            <div class="modal-header">
+                                <h5 class="modal-title">
+                                    Edit Review
+                                </h5>
+
+                                <button
+                                    type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                ></button>
+                            </div>
+
+                            <form
+                                action="{{ route('reviews.update', $product) }}"
+                                method="POST"
+                            >
+                                @csrf
+                                @method('PUT')
+
+                                <div class="modal-body">
+
+                                    <div class="mb-3">
+                                        <label
+                                            for="edit_rating_{{ $review->id }}"
+                                            class="form-label"
+                                        >
+                                            Rating
+                                        </label>
+
+                                        <select
+                                            name="rating"
+                                            id="edit_rating_{{ $review->id }}"
+                                            class="form-select"
+                                            required
+                                        >
+                                            @for($i = 5; $i >= 1; $i--)
+                                                <option
+                                                    value="{{ $i }}"
+                                                    @selected($review->rating == $i)
+                                                >
+                                                    {{ str_repeat('★', $i) }}
+                                                    {{ $i }}/5
+                                                </option>
+                                            @endfor
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label
+                                            for="edit_comment_{{ $review->id }}"
+                                            class="form-label"
+                                        >
+                                            Komentar
+                                        </label>
+
+                                        <textarea
+                                            name="comment"
+                                            id="edit_comment_{{ $review->id }}"
+                                            class="form-control"
+                                            rows="4"
+                                            maxlength="1000"
+                                        >{{ $review->comment }}</textarea>
+                                    </div>
+
+                                </div>
+
+                                <div class="modal-footer">
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-secondary"
+                                        data-bs-dismiss="modal"
+                                    >
+                                        Batal
+                                    </button>
+
+                                    <button
+                                        type="submit"
+                                        class="btn btn-ani-pink"
+                                    >
+                                        Simpan Perubahan
+                                    </button>
+
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            @endif
+
+                </div>
+
+            @empty
+
+                <div class="review-empty">
+                    <div class="review-empty-icon">⭐</div>
+
+                    <h4>Belum ada review</h4>
+
+                    <p>
+                        Jadilah orang pertama yang memberikan review untuk produk ini.
+                    </p>
+                </div>
+
+            @endforelse
+
+        </div>
+
+    </div>
+</section>
+
 @endsection
 
 
