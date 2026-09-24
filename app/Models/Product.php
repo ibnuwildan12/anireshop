@@ -46,4 +46,9 @@ class Product extends Model
     {
         return max(0, $this->stock - $this->reserved_stock);
     }
+
+    public function wishlists(): HasMany
+    {
+        return $this->hasMany(Wishlist::class);
+    }
 }
