@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@php
+    $isWishlisted = auth()->check()
+        && auth()->user()
+            ->wishlists()
+            ->where('product_id', $product->id)
+            ->exists();
+@endphp
+
 @section('title', $product->name . ' - Anireshop')
 
 @section('content')
@@ -184,6 +192,8 @@
 
                     {{-- ADD TO CART --}}
 
+                    <div class="product-action-area">
+
                     @if($product->available_stock > 0)
 
                         <form
@@ -257,19 +267,23 @@
                             </div>
 
 
-                            {{-- ADD CART BUTTON --}}
+                            {{-- ACTION BUTTONS --}}
 
-                            <button
-                                type="submit"
-                                class="product-add-cart"
-                            >
-                                <span>🛒</span>
-                                Tambah ke Keranjang
-                            </button>
+                            <div class="product-action-row">
 
-                        </form>
+                                <button
+                                    type="submit"
+                                    class="product-add-cart"
+                                >
+                                    <span>🛒</span>
+                                    ADD TO CART
+                                </button>
 
-                    @else
+                            </div>
+
+                            </form>
+
+                            @else
 
                         <button
                             type="button"
@@ -280,8 +294,64 @@
                         </button>
 
                     @endif
+                            
+                    {{-- ADD TO WISHLIST --}}
 
+                    <div class="product-wishlist-wrapper">
 
+                    @if(auth()->check())
+
+                        @if($isWishlisted)
+
+                            <form
+                                action="{{ route('wishlist.destroy', $product) }}"
+                                method="POST"
+                            >
+                                @csrf
+                                @method('DELETE')
+
+                                <button
+                                    type="submit"
+                                    class="ani-product-wishlist active"
+                                    title="Remove from wishlist"
+                                >
+                                    ♥
+                                </button>
+                            </form>
+
+                        @else
+
+                            <form
+                                action="{{ route('wishlist.store', $product) }}"
+                                method="POST"
+                            >
+                                @csrf
+
+                                <button
+                                    type="submit"
+                                    class="ani-product-wishlist"
+                                    title="Add to wishlist"
+                                >
+                                    ♡
+                                </button>
+                            </form>
+
+                        @endif
+
+                    @else
+
+                        <a
+                            href="{{ route('login') }}"
+                            class="ani-product-wishlist"
+                            title="Login to add wishlist"
+                        >
+                            ♡
+                        </a>
+
+                    @endif
+
+                    </div>
+                    </div>
                     {{-- BACK TO PRODUCTS --}}
 
                     <a

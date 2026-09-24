@@ -198,3 +198,26 @@
     }
 
 }
+
+/* =========================================================
+   NAVBAR MENU LINKS - V2
+   ========================================================= */
+
+   .ani-navbar .navbar-nav .nav-link {
+    color: #ffffff !important;
+    transition: color 0.2s ease;
+}
+
+
+/* HOVER MENU */
+
+.ani-navbar .navbar-nav a.nav-link:hover {
+    color: #ff69b4 !important;
+}
+
+
+/* ACTIVE / FOCUS */
+
+.ani-navbar .navbar-nav a.nav-link:focus {
+    color: #ff69b4 !important;
+}

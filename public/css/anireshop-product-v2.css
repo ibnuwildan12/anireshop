@@ -606,3 +606,82 @@
         height: 60px;
     }
 }
+
+/* =========================================================
+   PRODUCT WISHLIST
+   ========================================================= */
+
+   .ani-product-wishlist {
+    width: 44px;
+    height: 44px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #4b315c;
+    border-radius: 10px;
+
+    background: #21182b;
+    color: #ec4899;
+
+    font-size: 22px;
+    line-height: 1;
+
+    text-decoration: none;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.ani-product-wishlist:hover {
+    color: #ffffff;
+
+    border-color: #ec4899;
+    background: #ec4899;
+
+    transform: translateY(-1px);
+}
+
+.ani-product-wishlist.active {
+    color: #ff69b4;
+    border-color: #ec4899;
+}
+
+.ani-product-wishlist.active:hover {
+    color: #ffffff;
+    background: #ec4899;
+}
+
+/* =========================================================
+   PRODUCT ACTION AREA
+   ========================================================= */
+
+   .product-action-area {
+    position: relative;
+}
+
+.product-action-area .product-cart-form {
+    margin-bottom: 0;
+}
+
+.product-action-area .product-add-cart {
+    width: calc(100% - 54px);
+}
+
+
+/* WISHLIST */
+
+.product-wishlist-wrapper {
+    position: absolute;
+
+    right: 0;
+    bottom: 0;
+
+    width: 44px;
+    height: 44px;
+}
+
+.product-wishlist-wrapper form {
+    margin: 0;
+}

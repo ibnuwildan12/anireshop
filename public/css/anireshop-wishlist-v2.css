@@ -1,0 +1,213 @@
+/* =========================================================
+   ANIRESHOP WISHLIST V2
+   ========================================================= */
+
+   .ani-wishlist-empty {
+    padding: 80px 20px;
+}
+
+.ani-wishlist-heart {
+    font-size: 72px;
+    line-height: 1;
+    color: #ec4899;
+}
+
+.ani-wishlist-card {
+    background: #21182b;
+    border: 1px solid #4b315c;
+    border-radius: 12px;
+    overflow: hidden;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.ani-wishlist-card:hover {
+    transform: translateY(-3px);
+    border-color: #ec4899;
+
+    box-shadow:
+        0 10px 30px rgba(236, 72, 153, 0.12);
+}
+
+.ani-wishlist-image {
+    width: 100%;
+    height: 220px;
+
+    display: block;
+
+    object-fit: cover;
+
+    background: #17111f;
+}
+
+.ani-wishlist-no-image {
+    height: 220px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #17111f;
+
+    color: #9f91a9;
+}
+
+.ani-wishlist-content {
+    padding: 16px;
+}
+
+.ani-wishlist-name {
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    margin-bottom: 8px;
+}
+
+.ani-wishlist-price {
+    color: #ff69b4;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    margin-bottom: 16px;
+}
+
+.ani-wishlist-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ani-btn-pink {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 9px 16px;
+
+    border: 1px solid #ec4899;
+    border-radius: 8px;
+
+    background: #ec4899;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: all 0.2s ease;
+}
+
+.ani-btn-pink:hover {
+    background: #f472b6;
+    border-color: #f472b6;
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
+}
+
+.ani-btn-secondary {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 9px 16px;
+
+    border: 1px solid #4b315c;
+    border-radius: 8px;
+
+    background: transparent;
+    color: #c7b8d2;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: all 0.2s ease;
+}
+
+.ani-btn-secondary:hover {
+    color: #ff69b4;
+
+    border-color: #ec4899;
+
+    background: rgba(236, 72, 153, 0.06);
+}
+
+.ani-wishlist-remove {
+    width: 40px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #4b315c;
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: #ec4899;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.ani-wishlist-remove:hover {
+    color: #ffffff;
+
+    background: #ec4899;
+    border-color: #ec4899;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+
+    .ani-wishlist-empty {
+        padding: 60px 15px;
+    }
+
+    .ani-wishlist-heart {
+        font-size: 60px;
+    }
+
+    .ani-wishlist-image,
+    .ani-wishlist-no-image {
+        height: 180px;
+    }
+
+    .ani-wishlist-content {
+        padding: 12px;
+    }
+
+    .ani-wishlist-name {
+        font-size: 14px;
+    }
+
+    .ani-wishlist-actions {
+        flex-wrap: wrap;
+    }
+
+    .ani-btn-pink {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+
+}

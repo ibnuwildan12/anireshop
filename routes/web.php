@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\ShippingRateController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\WishlistController;
 
 
 /*
@@ -36,6 +37,16 @@ Route::post('/logout', [AuthController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/wishlist', [WishlistController::class, 'index'])
+        ->name('wishlist.index');
+    
+    Route::post('/wishlist/{product}', [WishlistController::class, 'store'])
+        ->name('wishlist.store');
+    
+    Route::delete('/wishlist/{product}', [WishlistController::class, 'destroy'])
+            ->name('wishlist.destroy');
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -201,4 +212,6 @@ Route::put('/cart/update/{product}', [CartController::class, 'update'])
 
 Route::delete('/cart/remove/{product}', [CartController::class, 'remove'])
     ->name('cart.remove');
+
+
 
